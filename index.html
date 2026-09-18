@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Vinyas Travels - Premier travel agency based in New-Nallakunta, Hyderabad. Specializing in India tour packages, international travel guidelines, luxury fleet, and customized holiday itineraries.">
+  <meta name="keywords"
+    content="Vinyas Travels, Hyderabad Travel Agency, New-Nallakunta, India Tour Packages, International Travel Guidelines, Holiday Packages">
+  <title>Vinyas Travels | Royal Journeys & Luxury Holidays</title>
+
+  <!-- Google Fonts: Cinzel, Oswald & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Oswald:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body>
+
+  <!-- =========================================================================
+       SITE HEADER (FITZROY STYLE: TRANSPARENT OVER HERO, WHITE ON SCROLL)
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="main-navbar">
+      <div class="container nav-container">
+        <!-- Left: Brand Logo -->
+        <a href="#home" class="brand-logo" id="brandLogo" aria-label="Vinyas Travels Home">
+          <img src="images/logo.png" alt="Vinyas Travels" class="brand-logo-img">
+        </a>
+
+        <!-- Center Menu Links (Fitzroy Style) -->
+        <nav class="nav-menu-wrap" id="navMenuWrap">
+          <ul class="nav-links">
+            <li>
+              <a href="#destinations" class="nav-link">
+                <span>Destinations</span>
+                <svg class="nav-caret-icon" viewBox="0 0 10 6" width="8" height="5" fill="none" stroke="currentColor"
+                  stroke-width="1.8">
+                  <path d="M1 1l4 4 4-4" />
+                </svg>
+              </a>
+            </li>
+            <li><a href="#group-tours" class="nav-link">Group Tours</a></li>
+            <li><a href="#family-tours" class="nav-link">Family & Private Tours</a></li>
+            <li><a href="#packages" class="nav-link">Explore Tours</a></li>
+          </ul>
+        </nav>
+
+
+        <!-- Gold Contact Button -->
+        <a href="#contact" class="btn-header-contact" id="headerContactBtn">Contact Us</a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO SECTION (FITZROY CINEMATIC FULLSCREEN STARRY NIGHT CAMP)
+       ========================================================================= -->
+  <section class="hero-section" id="home">
+    <div class="container hero-container">
+      <div class="hero-text-box">
+        <p class="hero-kicker">Explore. Experience. Enjoy.</p>
+        <h1 class="hero-headline">
+          Discover the World,<br>
+          <span class="hero-gold-text">Your Way</span>
+        </h1>
+        <p class="hero-narrative">
+          From exciting group adventures to personalized family holidays, discover thoughtfully planned travel
+          experiences across destinations around the world.
+        </p>
+        <div class="hero-actions-row">
+          <a href="#packages" class="btn-hero-explore" id="heroCtaGroupTours">
+            <span>Explore Group Tours</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#contact" class="btn-hero-outline trigger-booking-modal" data-package="Family Holiday"
+            id="heroCtaFamilyTrip">
+            <span>Plan Your Family Trip</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       LUXURY SEARCH & EXPEDITION FINDER CONSOLE
+       ========================================================================= -->
+  <div class="hero-discovery-bar-wrap" id="heroExploreBarWrap">
+    <div class="container">
+      <div class="hero-search-console">
+        <!-- Quick Category Selection Tabs -->
+        <div class="search-category-tabs" id="searchCategoryTabs">
+          <button type="button" class="search-tab active" data-type="All Tour Types">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
+            </svg>
+            <span>All Tours</span>
+          </button>
+          <button type="button" class="search-tab" data-type="Group Tours">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Group Tours</span>
+          </button>
+          <button type="button" class="search-tab" data-type="Family Holidays">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Family Holidays</span>
+          </button>
+        </div>
+
+        <!-- Main Search Form Card -->
+        <form class="hero-quick-finder" id="heroSearchForm">
+          <!-- 1. Where do you want to go? -->
+          <div class="finder-field-group">
+            <div class="finder-field-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+              </svg>
+            </div>
+            <div class="finder-field-inner">
+              <label for="heroDest">Where do you want to go?</label>
+              <input type="text" id="heroDest" placeholder="e.g. Switzerland, Bali, Dubai, Kashmir..." required
+                autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="finder-divider" aria-hidden="true"></div>
+
+          <!-- 2. Travel Date -->
+          <div class="finder-field-group">
+            <div class="finder-field-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path
+                  d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+              </svg>
+            </div>
+            <div class="finder-field-inner">
+              <label for="heroDate">Travel Date</label>
+              <input type="date" id="heroDate">
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="finder-divider" aria-hidden="true"></div>
+
+          <!-- 3. Tour Type -->
+          <div class="finder-field-group">
+            <div class="finder-field-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+              </svg>
+            </div>
+            <div class="finder-field-inner">
+              <label for="heroTourType">Tour Type</label>
+              <select id="heroTourType">
+                <option value="All Tour Types">All Tour Types</option>
+                <option value="Group Tours">Group Tours</option>
+                <option value="Family Holidays">Family Holidays</option>
+                <option value="Custom Holidays">Custom Holidays</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 4. Explore Tours CTA Button -->
+          <div class="finder-btn-wrap">
+            <button type="submit" class="finder-submit-btn" id="heroExploreBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Explore Tours</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       02. EXPLORE OUR TOURS SECTION (FEATURED EXPERIENCES)
+       ========================================================================= -->
+  <section class="section-block explore-tours-section" id="packages">
+    <div class="container explore-tours-container">
+      <div class="section-header explore-tours-header">
+        <h2 class="tours-section-title">Travel Experiences Designed Around You</h2>
+        <p class="tours-section-desc">
+          Choose from ready-to-book group tours or explore family and private tour packages designed for a more
+          personalized travel experience.
+        </p>
+      </div>
+
+      <div class="tours-cards-grid">
+        <!-- Card 1: Cabin / Group Tour Image -->
+        <div class="tour-card-item tour-image-card">
+          <img src="images/forest_cabin_lodge_1789713493015.jpg" alt="Group Tours Forest Cottage Retreat"
+            loading="lazy">
+        </div>
+
+        <!-- Card 2: Group Tours Dark Green Card -->
+        <div class="tour-card-item tour-content-card dark-green">
+          <div class="tour-card-content-top">
+            <span class="tour-card-kicker">Group Tours</span>
+            <h3 class="tour-card-title">Ready to Explore Together</h3>
+            <p class="tour-card-text">
+              Discover professionally planned group tours with fixed itineraries, scheduled departures, transparent
+              pricing and convenient online booking.
+            </p>
+          </div>
+          <div class="tour-card-content-bottom">
+            <a href="#bookingModal" class="tour-card-cta trigger-booking-modal" data-package="Group Tours">
+              <span>Explore Group Tours</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Resort Veranda / Family Tour Image -->
+        <div class="tour-card-item tour-image-card">
+          <img src="images/resort_veranda_deck_1789713512990.jpg" alt="Family & Private Luxury Resort Veranda"
+            loading="lazy">
+        </div>
+
+        <!-- Card 4: Family & Private Tours Olive Green Card -->
+        <div class="tour-card-item tour-content-card olive-green">
+          <div class="tour-card-content-top">
+            <span class="tour-card-kicker">Family & Private Tours</span>
+            <h3 class="tour-card-title">Travel Your Way</h3>
+            <p class="tour-card-text">
+              Explore thoughtfully designed family and private tour packages and connect with us to customize your
+              journey according to your requirements.
+            </p>
+          </div>
+          <div class="tour-card-content-bottom">
+            <a href="#bookingModal" class="tour-card-cta trigger-booking-modal" data-package="Family & Private Tours">
+              <span>Explore Family Tours</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botanical Watermark Accent (matching the reference image) -->
+    <div class="tours-botanical-watermark" aria-hidden="true">
+      <svg viewBox="0 0 200 200" width="220" height="220" fill="currentColor">
+        <path
+          d="M160 190c-15-20-25-45-28-70-1-10 1-22 6-31 2-4 5-7 9-10 8-6 18-9 28-9-1 10-5 19-11 27-6 8-13 14-22 18 10 2 20 1 29-3 9-4 17-11 23-19 4 10 4 21 1 31-4 12-12 23-22 30-4 13-7 24-13 36zm-45-60c-12-16-19-35-22-55-1-8 1-17 4-24 2-3 4-6 7-8 6-5 14-7 22-7-1 8-4 15-9 21-5 6-10 11-17 14 8 2 16 1 23-2 7-3 13-9 18-15 3 8 3 17 1 24-3 9-9 18-17 24-4 10-6 19-10 28zm-35-65c-8-12-14-26-16-41-1-6 1-13 3-18 1-2 3-5 5-6 5-4 11-5 17-5-1 6-3 11-7 16-4 5-8 8-13 11 6 2 12 1 17-2 5-2 10-7 14-11 2 6 2 13 1 18-2 7-7 14-13 18-3 8-5 14-8 20z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       03. POPULAR DESTINATIONS SECTION (CIRCULAR CAROUSEL DESIGN)
+       ========================================================================= -->
+  <section class="section-block popular-dest-section" id="destinations">
+    <!-- Subtle Topographic Contour Background Lines (Matching Reference Design) -->
+    <div class="dest-topo-bg" aria-hidden="true">
+      <svg viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none" stroke="currentColor">
+        <path d="M-50 80 C 250 20, 550 160, 850 70 C 1150 -20, 1350 120, 1500 60" stroke-width="1.2" opacity="0.08" />
+        <path d="M-50 180 C 200 120, 500 240, 800 160 C 1100 80, 1300 210, 1500 150" stroke-width="1.2" opacity="0.08" />
+        <path d="M-50 280 C 280 220, 580 320, 880 250 C 1180 180, 1380 290, 1500 240" stroke-width="1.2" opacity="0.08" />
+        <path d="M-50 380 C 220 330, 480 420, 780 360 C 1080 300, 1280 390, 1500 340" stroke-width="1.2" opacity="0.08" />
+        <path d="M-50 480 C 300 420, 600 510, 900 450 C 1200 390, 1400 470, 1500 430" stroke-width="1.2" opacity="0.08" />
+      </svg>
+    </div>
+
+    <div class="container popular-dest-container">
+      <div class="section-header popular-dest-header">
+        <h2 class="popular-dest-title">Popular Destinations</h2>
+        <p class="popular-dest-desc">
+          Discover memorable travel experiences across some of the world's most exciting destinations.
+        </p>
+      </div>
+
+      <!-- Circular Carousel Container with Left/Right Navigation -->
+      <div class="dest-carousel-wrapper">
+        <!-- Prev Button -->
+        <button type="button" class="dest-nav-btn prev" id="destPrevBtn" aria-label="Previous Destinations">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+
+        <!-- Carousel Track (8 Destinations in Agency Inventory) -->
+        <div class="dest-cards-track" id="destCardsTrack">
+          <!-- 1. Dubai -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Dubai Luxury Holiday" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&auto=format&fit=crop" 
+                   alt="Dubai Skyline & Marina" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Dubai</h3>
+            <span class="dest-card-activities">Activities (18)</span>
+          </div>
+
+          <!-- 2. Singapore -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Singapore City & Sentosa Tour" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=600&auto=format&fit=crop" 
+                   alt="Singapore Gardens by the Bay" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Singapore</h3>
+            <span class="dest-card-activities">Activities (15)</span>
+          </div>
+
+          <!-- 3. Thailand -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Thailand Beach & Bangkok Explorer" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600&auto=format&fit=crop" 
+                   alt="Thailand Islands & Beaches" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Thailand</h3>
+            <span class="dest-card-activities">Activities (24)</span>
+          </div>
+
+          <!-- 4. Europe -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Grand Europe Heritage Tour" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop" 
+                   alt="Rome Colosseum Europe" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Europe</h3>
+            <span class="dest-card-activities">Activities (32)</span>
+          </div>
+
+          <!-- 5. Maldives -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Maldives Island Luxury Resort" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=600&auto=format&fit=crop" 
+                   alt="Maldives Overwater Resort" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Maldives</h3>
+            <span class="dest-card-activities">Activities (21)</span>
+          </div>
+
+          <!-- 6. Bali -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Bali Tropical Paradise Tour" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=600&auto=format&fit=crop" 
+                   alt="Bali Lempuyang Temple Gates" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Bali</h3>
+            <span class="dest-card-activities">Activities (19)</span>
+          </div>
+
+          <!-- 7. Malaysia -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Malaysia Discovery Tour" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=600&auto=format&fit=crop" 
+                   alt="Malaysia Petronas Towers" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Malaysia</h3>
+            <span class="dest-card-activities">Activities (16)</span>
+          </div>
+
+          <!-- 8. Australia -->
+          <div class="dest-card-item trigger-booking-modal" data-package="Australia Highlights & Sydney" role="button" tabindex="0">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=600&auto=format&fit=crop" 
+                   alt="Australia Sydney Harbour" class="dest-circle-img" loading="lazy">
+            </div>
+            <h3 class="dest-card-name">Australia</h3>
+            <span class="dest-card-activities">Activities (22)</span>
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <button type="button" class="dest-nav-btn next" id="destNextBtn" aria-label="Next Destinations">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Bottom CTA: Explore Destinations -->
+      <div class="dest-cta-row">
+        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="Popular International Destinations">
+          <span>Explore Destinations</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       04. FEATURED GROUP TOURS SECTION (SCREENSHOT MATCHING DESIGN)
+       ========================================================================= -->
+  <section class="section-block package-showcase-section" id="group-tours">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Group Tours</h2>
+        <p class="section-desc">
+          Explore upcoming group departures with planned itineraries, available seats and convenient online booking.
+        </p>
+      </div>
+
+      <div class="pkg-cards-grid">
+        <!-- Group Tour Card 1: Dubai & Abu Dhabi -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" 
+                 alt="Dubai & Abu Dhabi Skyline" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Group Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Dubai & Abu Dhabi Royal Tour</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                Ex-Hyderabad, UAE
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">05 Nights / 06 Days</span>
+            </div>
+            <div class="pkg-extra-info">
+              <span>📅 Dep: 15 Oct 2026</span>
+              <span class="seats-badge">🔥 08 Seats Left</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Dubai & Abu Dhabi Group Tour">
+                  <span>Book Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Per Person</span>
+                <span class="pkg-price-val">₹38,500</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Group Tour Card 2: Bali Paradise -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop" 
+                 alt="Bali Paradise Tour" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Group Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Bali Paradise & Nusa Penida</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                Ex-Hyderabad, Indonesia
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">06 Nights / 07 Days</span>
+            </div>
+            <div class="pkg-extra-info">
+              <span>📅 Dep: 22 Oct 2026</span>
+              <span class="seats-badge">🔥 12 Seats Left</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Bali Paradise Group Tour">
+                  <span>Book Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Per Person</span>
+                <span class="pkg-price-val">₹42,999</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Group Tour Card 3: Thailand Wonders -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" 
+                 alt="Thailand Beach Explorer" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Group Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Thailand Bangkok & Phuket Wonders</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                Ex-Hyderabad, Thailand
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">05 Nights / 06 Days</span>
+            </div>
+            <div class="pkg-extra-info">
+              <span>📅 Dep: 05 Nov 2026</span>
+              <span class="seats-badge">🔥 06 Seats Left</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Thailand Wonders Group Tour">
+                  <span>Book Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Per Person</span>
+                <span class="pkg-price-val">₹34,500</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- CTA: View All Group Tours -->
+      <div class="dest-cta-row" style="margin-top: 44px;">
+        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="All Group Tours Calendar">
+          <span>View All Group Tours</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       05. FAMILY & PRIVATE TOURS SECTION (SCREENSHOT MATCHING DESIGN)
+       ========================================================================= -->
+  <section class="section-block package-showcase-section family-tours-bg" id="family-tours">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Personalized Journeys, Lasting Memories</h2>
+        <p class="section-desc">
+          Explore our family and private tour packages and choose an experience that matches your destination, travel dates, interests and travel style. Share your requirements with us, and our team will help plan your journey.
+        </p>
+      </div>
+
+      <div class="pkg-cards-grid">
+        <!-- Family Tour Card 1: European Family Escape -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop" 
+                 alt="European Family Escape" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Family Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">European Family Escape (Swiss & Paris)</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                Switzerland, France
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">10 Nights / 11 Days</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="European Family Escape (Inquiry)">
+                  <span>Enquire Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Custom Quote</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on Request</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Family Tour Card 2: Maldives Private Island -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop" 
+                 alt="Maldives Private Island Retreat" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Family Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Maldives Private Island & Villa Getaway</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                South Atoll, Maldives
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">04 Nights / 05 Days</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Maldives Private Island (Inquiry)">
+                  <span>Enquire Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Custom Quote</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on Request</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Family Tour Card 3: Singapore & Sentosa -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop" 
+                 alt="Singapore & Sentosa Family Fun" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Family Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Singapore & Sentosa Family Fun Explorer</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                Singapore, Sentosa Island
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">05 Nights / 06 Days</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Singapore Family Fun (Inquiry)">
+                  <span>Enquire Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Custom Quote</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on Request</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- CTA: Explore Family Tours -->
+      <div class="dest-cta-row" style="margin-top: 44px;">
+        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="Custom Family Holiday Inquiry">
+          <span>Explore Family Tours</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text-wrap" style="margin-bottom: 8px;">
+            <span class="brand-name" style="font-size: 1.5rem;">VINYAS</span>
+            <span class="brand-sub" style="font-size: 0.9rem;">TRAVELS</span>
+          </div>
+          <p class="footer-about">
+            Your trusted travel companion from New-Nallakunta, Hyderabad. Specializing in bespoke Indian holidays,
+            international visa coordination, and luxury transport solutions.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#packages">India Tour Packages</a>
+            <a href="#guidelines">International Guidelines</a>
+            <a href="#about">About Our Agency</a>
+            <a href="#gallery">Photo Gallery</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Top Destinations</h4>
+          <div class="footer-links">
+            <a href="#packages">Golden Triangle</a>
+            <a href="#packages">Kerala Backwaters</a>
+            <a href="#packages">Rajasthan Heritage</a>
+            <a href="#packages">Kashmir Valley</a>
+            <a href="#packages">Hyderabad City Tour</a>
+            <a href="#packages">Varanasi Pilgrimage</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Hyderabad Office</h4>
+          <p style="font-size: 0.86rem; line-height: 1.6; margin-bottom: 12px;">
+            New-Nallakunta, Hyderabad,<br>Telangana - 500044
+          </p>
+          <p style="font-size: 0.86rem; color:#ffde8a; margin-bottom: 6px;">
+            ✉ aravind.kumar@vinyastravels.com
+          </p>
+          <p style="font-size: 0.86rem; color:#ffde8a;">
+            ☎ +91 98490 12345
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vinyas Travels. All Rights Reserved. Designed with Royal Elegance.</p>
+        <p>New-Nallakunta, Hyderabad</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+
+  <!-- 1. Booking Modal -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Book Your Tour</h3>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted);">Reserve with Vinyas Travels • Instant
+          Confirmation Support</p>
+      </div>
+      <form id="bookingForm">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label for="bookingTourInput">Selected Package / Tour</label>
+          <input type="text" id="bookingTourInput" value="Golden Triangle Heritage Royal Tour" required>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="bookingName">Full Name *</label>
+            <input type="text" id="bookingName" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="bookingPhone">Phone *</label>
+            <input type="tel" id="bookingPhone" placeholder="+91 9876543210" required>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="bookingDeparture">Departure Date</label>
+            <input type="date" id="bookingDeparture" required>
+          </div>
+          <div class="form-group">
+            <label for="bookingTravelers">Travelers Count</label>
+            <select id="bookingTravelers">
+              <option>1 Adult</option>
+              <option selected>2 Adults (Couple)</option>
+              <option>Family (2 Adults + 1 Child)</option>
+              <option>Family (2 Adults + 2 Children)</option>
+              <option>Group (5+ Travelers)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label for="bookingNotes">Special Requests (Optional)</label>
+          <textarea id="bookingNotes" rows="2"
+            placeholder="Vegetarian meals, pickup location, hotel tier..."></textarea>
+        </div>
+        <button type="submit" class="btn-gold-submit" id="confirmBookingBtn">Confirm Reservation Inquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Search Modal -->
+  <div class="modal-backdrop" id="searchModal">
+    <div class="modal-card search-modal-card">
+      <button class="modal-close-btn" aria-label="Close search">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Search Vinyas Travels</h3>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted);">Find India tour packages, destinations, and
+          international guidelines</p>
+      </div>
+      <div class="search-input-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchQueryInput"
+          placeholder="Type a destination (e.g. Kerala, Agra, Rajasthan, Kashmir)...">
+      </div>
+      <div class="search-results-list" id="searchResults">
+        <p style="color:#718096; font-size:0.88rem; padding:8px;">Start typing destination, package name, or
+          guidelines...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Profile / Account Modal -->
+  <div class="modal-backdrop" id="profileModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close profile">&times;</button>
+      <div class="modal-header" style="text-align: center;">
+        <div
+          style="width:60px; height:60px; border-radius:50%; background:#edf4ea; color:#745811; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; border:2px solid #826210;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <h3 class="modal-title" style="font-size: 1.4rem;">Traveler Account</h3>
+        <p style="font-size: 0.86rem; color: var(--color-text-muted);">Access your itineraries, booking receipts, and
+          custom tour quotes.</p>
+      </div>
+      <form
+        onsubmit="event.preventDefault(); alert('Logged in successfully!'); document.getElementById('profileModal').classList.remove('active'); document.body.style.overflow='';">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Email or Mobile Number</label>
+          <input type="text" placeholder="Enter registered email / mobile" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-gold-submit">Sign In to Vinyas Portal</button>
+        <div style="text-align: center; margin-top: 14px; font-size: 0.84rem; color: var(--color-text-muted);">
+          Don't have an account? <a href="#contact"
+            onclick="document.getElementById('profileModal').classList.remove('active'); document.body.style.overflow='';"
+            style="color: var(--color-gold-brand); font-weight: 600;">Contact New-Nallakunta Desk</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
