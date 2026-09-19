@@ -636,7 +636,7 @@ textarea {
   align-items: center;
   background-color: #0b1a2f;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.52) 42%, rgba(255, 255, 255, 0.1) 68%, rgba(255, 255, 255, 0) 100%),
     url('../images/download.png');
   background-repeat: no-repeat;
   background-position: center right;
@@ -949,45 +949,238 @@ textarea {
   box-shadow: 0 6px 20px rgba(10, 25, 47, 0.35);
 }
 
+/* ==========================================================================
+   HERO SECTION & SEARCH CONSOLE - RESPONSIVE (TABLET & MOBILE)
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding: 115px 0 85px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.78) 55%, rgba(255, 255, 255, 0.35) 100%),
+      url('../images/download.png');
+  }
+
+  .hero-headline {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    line-height: 1.15;
+  }
+
+  .hero-narrative {
+    max-width: 480px;
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-trust-badges {
+    gap: 24px;
+  }
+
+  .hero-bottom-curve svg {
+    height: 55px;
+  }
+
+  .hero-search-console-wrap {
+    margin-top: -45px;
+    margin-bottom: 45px;
+  }
+
+  .hero-search-card {
+    padding: 16px 20px;
+    border-radius: 0 20px 20px 20px;
+  }
+
   .search-fields-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 10px 16px;
   }
 
   .search-field-col {
     border-right: none;
     border-bottom: 1px solid #e2e8f0;
-    padding: 10px 0;
+    padding: 10px 4px;
   }
 
   .search-field-col.search-col-submit {
     grid-column: span 2;
-    padding-top: 8px;
+    border-bottom: none;
+    padding-top: 10px;
+    padding-bottom: 0;
   }
 
   .hero-search-submit-btn {
     width: 100%;
     justify-content: center;
     margin-left: 0;
+    height: 48px;
+    font-size: 0.95rem;
   }
 }
 
-@media (max-width: 640px) {
+/* Mobile & Small Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 95px 0 60px;
+    background-image:
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0.72) 100%),
+      url('../images/download.png');
+    background-position: 70% center;
+  }
+
+  .hero-text-box {
+    max-width: 100%;
+  }
+
+  .hero-kicker {
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 7.5vw, 2.65rem);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .hero-narrative {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .hero-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+
+  .trust-badge-item {
+    gap: 9px;
+  }
+
+  .trust-badge-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .trust-line-1 {
+    font-size: 0.85rem;
+  }
+
+  .trust-line-2 {
+    font-size: 0.75rem;
+  }
+
+  .hero-bottom-curve svg {
+    height: 42px;
+  }
+
+  .hero-search-console-wrap {
+    margin-top: -24px;
+    margin-bottom: 35px;
+  }
+
+  /* Responsive Tabs Header on Mobile */
+  .hero-tabs-header {
+    display: flex;
+    width: 100%;
+    padding: 4px 6px 0;
+    border-radius: 14px 14px 0 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .hero-tabs-header::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-tab-btn {
+    flex: 1 1 auto;
+    padding: 10px 10px;
+    font-size: 0.84rem;
+    gap: 6px;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .hero-tab-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .hero-search-card {
+    padding: 14px 16px;
+    border-radius: 0 16px 16px 16px;
+  }
+
+  .hero-search-card.first-tab-inactive {
+    border-radius: 16px;
+  }
+
   .search-fields-grid {
     grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .search-field-col {
+    padding: 11px 4px;
+    border-right: none;
+    border-bottom: 1px solid #eef2f6;
   }
 
   .search-field-col.search-col-submit {
     grid-column: span 1;
+    border-bottom: none;
+    padding-top: 14px;
+    padding-bottom: 2px;
   }
 
-  .hero-trust-badges {
-    gap: 20px;
+  .hero-search-submit-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 0.98rem;
+    justify-content: center;
+    margin-left: 0;
+    border-radius: 12px;
+  }
+}
+
+/* Small Mobile (max-width: 440px) */
+@media (max-width: 440px) {
+  .hero-section {
+    padding: 85px 0 45px;
   }
 
   .hero-headline {
-    font-size: 2.4rem;
+    font-size: 1.95rem;
+  }
+
+  .hero-trust-badges {
+    gap: 12px 14px;
+  }
+
+  .hero-tab-btn {
+    padding: 9px 4px;
+    font-size: 0.76rem;
+    gap: 4px;
+  }
+
+  .hero-tab-btn span {
+    font-size: 0.76rem;
+  }
+
+  .search-field-input {
+    font-size: 0.9rem;
+  }
+
+  .search-field-label {
+    font-size: 0.72rem;
   }
 }
 
@@ -1887,34 +2080,7 @@ textarea {
     width: 100%;
   }
 
-  .hero-section {
-    padding: 60px 0 40px;
-    min-height: auto;
-  }
 
-  .hero-container {
-    min-height: auto;
-  }
-
-  .hero-headline {
-    font-size: 2.6rem;
-  }
-
-  .hero-narrative {
-    font-size: 1rem;
-  }
-
-  .hero-actions-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn-hero-explore,
-  .btn-hero-outline {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
 
   .features-grid {
     grid-template-columns: 1fr;
