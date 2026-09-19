@@ -3,6 +3,56 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Sticky Header Scroll Effect (Solid Black on Scroll Down) ---
+  const siteHeader = document.getElementById('siteHeader');
+  if (siteHeader) {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+  // --- Hero Search Console Tabs (All Tours, Group Tours, Family Tours) ---
+  const heroTabBtns = document.querySelectorAll('.hero-tab-btn');
+  const heroTourType = document.getElementById('heroTourType');
+
+  heroTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      heroTabBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const tourType = btn.getAttribute('data-type');
+      if (heroTourType) {
+        if (tourType === 'Group Tours') {
+          heroTourType.value = 'Group (6+)';
+        } else if (tourType === 'Family Tours') {
+          heroTourType.value = 'Family (4+)';
+        }
+      }
+    });
+  });
+
+  // Location Swap Button
+  const swapBtn = document.getElementById('swapLocationsBtn');
+  const fromInput = document.getElementById('searchFromInput');
+  const toInput = document.getElementById('heroDest');
+  if (swapBtn && fromInput && toInput) {
+    swapBtn.addEventListener('click', () => {
+      const temp = fromInput.value;
+      fromInput.value = toInput.value;
+      toInput.value = temp;
+    });
+  }
+
   // --- Mobile Menu Toggle ---
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenuWrap = document.getElementById('navMenuWrap');
@@ -34,6 +84,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.remove('active');
       document.body.style.overflow = '';
+    }
+  }
+
+  // --- Traveler Account / Profile Dropdown Card Handler ---
+  const headerUserBtn = document.getElementById('headerUserBtn');
+  const profileDropdownCard = document.getElementById('profileDropdownCard');
+  if (headerUserBtn && profileDropdownCard) {
+    headerUserBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      profileDropdownCard.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!profileDropdownCard.contains(e.target) && !headerUserBtn.contains(e.target)) {
+        profileDropdownCard.classList.remove('show');
+      }
+    });
+
+    // Dark mode toggle inside profile card
+    const profileDarkToggle = document.getElementById('profileDarkToggle');
+    if (profileDarkToggle) {
+      profileDarkToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profileDarkToggle.classList.toggle('off');
+        document.body.classList.toggle('dark-mode');
+      });
+    }
+
+    // Log out button inside profile card
+    const profileLogoutBtn = document.getElementById('profileLogoutBtn');
+    if (profileLogoutBtn) {
+      profileLogoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        profileDropdownCard.classList.remove('show');
+        showToast('You have been logged out successfully.');
+      });
     }
   }
 
@@ -176,19 +263,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Profile / Account Modal ---
+  // --- Profile Dropdown Menu Logic ---
   const profileBtn = document.getElementById('profileBtn');
-  if (profileBtn) {
-    profileBtn.addEventListener('click', () => {
-      openModal('profileModal');
+  const profileDropdownCard = document.getElementById('profileDropdownCard');
+  const headerProfileDropdownWrap = document.getElementById('headerProfileDropdownWrap');
+  const profileDarkToggle = document.getElementById('profileDarkToggle');
+
+  if (profileBtn && profileDropdownCard) {
+    profileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isShowing = profileDropdownCard.classList.toggle('show');
+      profileBtn.setAttribute('aria-expanded', isShowing ? 'true' : 'false');
     });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (headerProfileDropdownWrap && !headerProfileDropdownWrap.contains(e.target)) {
+        profileDropdownCard.classList.remove('show');
+        profileBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && profileDropdownCard.classList.contains('show')) {
+        profileDropdownCard.classList.remove('show');
+        profileBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Dark Mode Toggle inside Dropdown
+    if (profileDarkToggle) {
+      profileDarkToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = profileDarkToggle.classList.toggle('active');
+        profileDarkToggle.setAttribute('aria-checked', isActive ? 'true' : 'false');
+        showToast(isActive ? 'Dark mode enabled' : 'Dark mode disabled');
+      });
+    }
+
+    // Logout Click
+    const menuItemLogout = document.getElementById('menuItemLogout');
+    if (menuItemLogout) {
+      menuItemLogout.addEventListener('click', (e) => {
+        e.preventDefault();
+        profileDropdownCard.classList.remove('show');
+        profileBtn.setAttribute('aria-expanded', 'false');
+        showToast('Signed out of Traveler Account');
+      });
+    }
+
+    // Profile Click opens Traveler Account Modal
+    const menuItemProfile = document.getElementById('menuItemProfile');
+    if (menuItemProfile) {
+      menuItemProfile.addEventListener('click', (e) => {
+        e.preventDefault();
+        profileDropdownCard.classList.remove('show');
+        profileBtn.setAttribute('aria-expanded', 'false');
+        openModal('profileModal');
+      });
+    }
+
+    // Notifications Click
+    const menuItemNotifications = document.getElementById('menuItemNotifications');
+    if (menuItemNotifications) {
+      menuItemNotifications.addEventListener('click', (e) => {
+        e.preventDefault();
+        profileDropdownCard.classList.remove('show');
+        profileBtn.setAttribute('aria-expanded', 'false');
+        showToast('You have 2 new itinerary updates!');
+      });
+    }
   }
 
   // --- Category Tabs Sync with Tour Type Dropdown ---
   const searchTabs = document.querySelectorAll('.search-tab');
   const tourTypeSelect = document.getElementById('heroTourType');
+  const heroSearchFormElement = document.getElementById('heroSearchForm');
   if (searchTabs.length && tourTypeSelect) {
-    searchTabs.forEach(tab => {
+    searchTabs.forEach((tab, index) => {
       tab.addEventListener('click', () => {
         searchTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
@@ -196,13 +349,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetType) {
           tourTypeSelect.value = targetType;
         }
+        if (heroSearchFormElement) {
+          if (index === 0) {
+            heroSearchFormElement.classList.remove('first-tab-inactive');
+          } else {
+            heroSearchFormElement.classList.add('first-tab-inactive');
+          }
+        }
       });
     });
 
     tourTypeSelect.addEventListener('change', () => {
-      searchTabs.forEach(tab => {
+      searchTabs.forEach((tab, index) => {
         if (tab.getAttribute('data-type') === tourTypeSelect.value) {
           tab.classList.add('active');
+          if (heroSearchFormElement) {
+            if (index === 0) {
+              heroSearchFormElement.classList.remove('first-tab-inactive');
+            } else {
+              heroSearchFormElement.classList.add('first-tab-inactive');
+            }
+          }
         } else {
           tab.classList.remove('active');
         }
@@ -484,6 +651,15 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       startTestiAutoScroll();
     }
+  }
+});
+
+
+
+testiObserver.observe(testiTrack);
+    } else {
+  startTestiAutoScroll();
+}
   }
 });
 
