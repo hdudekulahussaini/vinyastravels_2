@@ -108,6 +108,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Plan Your Next Journey Form Submission ---
+  const journeyInquiryForm = document.getElementById('journeyInquiryForm');
+  if (journeyInquiryForm) {
+    journeyInquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('journeyName').value || 'Traveler';
+      const destination = document.getElementById('journeyDestination').value || 'your destination';
+      journeyInquiryForm.reset();
+      showToast(`Thank you, ${name}! Your trip inquiry for "${destination}" has been received. Our luxury travel advisor will contact you shortly.`);
+    });
+  }
+
   // --- Search Overlay Modal ---
   const searchBtn = document.getElementById('searchBtn');
   const searchInput = document.getElementById('searchQueryInput');
@@ -362,5 +374,117 @@ document.addEventListener('DOMContentLoaded', () => {
       startAutoScroll();
     }
   }
+
+  // --- 10. Testimonials Auto-Scroll Engine & Dot Controls ---
+  const testiTrack = document.getElementById('testiTrackWrap');
+  const testiDots = document.querySelectorAll('.testi-dot');
+  const testiCardCols = document.querySelectorAll('.testi-card-col');
+
+  if (testiTrack && testiCardCols.length > 0) {
+    let testiAutoScrollInterval = null;
+    let isTestiPaused = false;
+
+    const getTestiStep = () => {
+      const firstCard = testiTrack.querySelector('.testi-card-col');
+      return firstCard ? firstCard.offsetWidth + 24 : 340;
+    };
+
+    const updateTestiActiveDot = () => {
+      if (testiDots.length === 0) return;
+      const step = getTestiStep();
+      const currentScroll = testiTrack.scrollLeft;
+      const activeIdx = Math.round(currentScroll / step) % testiDots.length;
+      testiDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIdx);
+      });
+    };
+
+    const scrollTestiNext = () => {
+      const maxScrollLeft = testiTrack.scrollWidth - testiTrack.clientWidth;
+      const step = getTestiStep();
+      if (testiTrack.scrollLeft >= maxScrollLeft - 20) {
+        testiTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        testiTrack.scrollBy({ left: step, behavior: 'smooth' });
+      }
+      setTimeout(updateTestiActiveDot, 350);
+    };
+
+    const startTestiAutoScroll = () => {
+      if (!testiAutoScrollInterval && !isTestiPaused) {
+        testiAutoScrollInterval = setInterval(() => {
+          scrollTestiNext();
+        }, 3200);
+      }
+    };
+
+    const stopTestiAutoScroll = () => {
+      if (testiAutoScrollInterval) {
+        clearInterval(testiAutoScrollInterval);
+        testiAutoScrollInterval = null;
+      }
+    };
+
+    const resetTestiAutoScroll = () => {
+      stopTestiAutoScroll();
+      startTestiAutoScroll();
+    };
+
+    // Pause on hover, resume on mouse leave
+    testiTrack.addEventListener('mouseenter', () => {
+      isTestiPaused = true;
+      stopTestiAutoScroll();
+    });
+
+    testiTrack.addEventListener('mouseleave', () => {
+      isTestiPaused = false;
+      startTestiAutoScroll();
+    });
+
+    // Pause on mobile touch
+    testiTrack.addEventListener('touchstart', () => {
+      isTestiPaused = true;
+      stopTestiAutoScroll();
+    }, { passive: true });
+
+    testiTrack.addEventListener('touchend', () => {
+      isTestiPaused = false;
+      resetTestiAutoScroll();
+    }, { passive: true });
+
+    // Sync dots on user scroll
+    testiTrack.addEventListener('scroll', () => {
+      updateTestiActiveDot();
+    }, { passive: true });
+
+    // Clicking pagination dots scrolls to corresponding position
+    testiDots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const step = getTestiStep();
+        testiTrack.scrollTo({ left: idx * step, behavior: 'smooth' });
+        testiDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        resetTestiAutoScroll();
+      });
+    });
+
+    // Auto-scroll only when visible in viewport
+    if ('IntersectionObserver' in window) {
+      const testiObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            isTestiPaused = false;
+            startTestiAutoScroll();
+          } else {
+            stopTestiAutoScroll();
+          }
+        });
+      }, { threshold: 0.15 });
+
+      testiObserver.observe(testiTrack);
+    } else {
+      startTestiAutoScroll();
+    }
+  }
 });
+
 

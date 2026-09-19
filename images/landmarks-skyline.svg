@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="100%" height="100%" fill="none" stroke="#c2a05e" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Base Ground Line -->
+  <line x1="0" y1="196" x2="1200" y2="196" stroke-width="1.5" stroke-opacity="0.5" />
+
+  <!-- 1. EIFFEL TOWER (X: 60 - 160) -->
+  <g stroke-width="1.2" stroke-opacity="0.38">
+    <!-- Spire & Tip -->
+    <line x1="110" y1="10" x2="110" y2="35" stroke-width="1.8" />
+    <circle cx="110" cy="10" r="2" fill="#c2a05e" fill-opacity="0.5" />
+    <!-- Top Platform -->
+    <rect x="105" y="35" width="10" height="5" />
+    <line x1="102" y1="40" x2="118" y2="40" />
+    <!-- Upper Legs -->
+    <line x1="106" y1="40" x2="100" y2="85" />
+    <line x1="114" y1="40" x2="120" y2="85" />
+    <line x1="103" y1="52" x2="117" y2="52" />
+    <line x1="101" y1="68" x2="119" y2="68" />
+    <!-- Cross Bracing Upper -->
+    <line x1="106" y1="40" x2="119" y2="52" />
+    <line x1="114" y1="40" x2="103" y2="52" />
+    <line x1="103" y1="52" x2="119" y2="68" />
+    <line x1="117" y1="52" x2="101" y2="68" />
+    <line x1="101" y1="68" x2="120" y2="85" />
+    <line x1="119" y1="68" x2="100" y2="85" />
+    <!-- Second Platform -->
+    <rect x="94" y="85" width="32" height="7" rx="1" />
+    <!-- Lower Legs -->
+    <path d="M 98 92 L 68 196" />
+    <path d="M 85 92 L 76 196" />
+    <path d="M 122 92 L 152 196" />
+    <path d="M 135 92 L 144 196" />
+    <!-- Lower Bracing -->
+    <line x1="94" y1="115" x2="126" y2="115" />
+    <line x1="88" y1="140" x2="132" y2="140" />
+    <line x1="80" y1="168" x2="140" y2="168" />
+    <line x1="94" y1="115" x2="132" y2="140" />
+    <line x1="126" y1="115" x2="88" y2="140" />
+    <line x1="88" y1="140" x2="140" y2="168" />
+    <line x1="132" y1="140" x2="80" y2="168" />
+    <!-- Base Arch -->
+    <path d="M 82 196 C 92 145, 128 145, 138 196" stroke-width="1.6" />
+  </g>
+
+  <!-- 2. ROMAN COLOSSEUM (X: 190 - 320) -->
+  <g stroke-width="1.2" stroke-opacity="0.32">
+    <!-- Colosseum Outer Wall / Tier 3 -->
+    <path d="M 195 145 C 205 130, 225 125, 260 125 C 295 125, 315 132, 320 148 L 320 196 L 195 196 Z" />
+    <!-- Top Broken Edge Detail -->
+    <path d="M 195 145 L 205 142 L 208 148 L 220 140 L 225 145 L 245 135 L 255 138 L 275 128 L 290 134 L 305 130 L 320 148" stroke-width="1.5" />
+    <!-- Horizontal Moldings -->
+    <line x1="196" y1="150" x2="319" y2="150" />
+    <line x1="195" y1="168" x2="320" y2="168" />
+    <line x1="195" y1="182" x2="320" y2="182" />
+    <!-- Arches Tier 1 (Bottom) -->
+    <path d="M 202 196 L 202 188 C 202 185, 208 185, 208 188 L 208 196" />
+    <path d="M 214 196 L 214 188 C 214 185, 220 185, 220 188 L 220 196" />
+    <path d="M 226 196 L 226 188 C 226 185, 232 185, 232 188 L 232 196" />
+    <path d="M 238 196 L 238 188 C 238 185, 244 185, 244 188 L 244 196" />
+    <path d="M 250 196 L 250 188 C 250 185, 256 185, 256 188 L 256 196" />
+    <path d="M 262 196 L 262 188 C 262 185, 268 185, 268 188 L 268 196" />
+    <path d="M 274 196 L 274 188 C 274 185, 280 185, 280 188 L 280 196" />
+    <path d="M 286 196 L 286 188 C 286 185, 292 185, 292 188 L 292 196" />
+    <path d="M 298 196 L 298 188 C 298 185, 304 185, 304 188 L 304 196" />
+    <path d="M 310 196 L 310 188 C 310 185, 316 185, 316 188 L 316 196" />
+    <!-- Arches Tier 2 (Middle) -->
+    <path d="M 205 182 L 205 174 C 205 171, 211 171, 211 174 L 211 182" />
+    <path d="M 217 182 L 217 174 C 217 171, 223 171, 223 174 L 223 182" />
+    <path d="M 229 182 L 229 174 C 229 171, 235 171, 235 174 L 235 182" />
+    <path d="M 241 182 L 241 174 C 241 171, 247 171, 247 174 L 247 182" />
+    <path d="M 253 182 L 253 174 C 253 171, 259 171, 259 174 L 259 182" />
+    <path d="M 265 182 L 265 174 C 265 171, 271 171, 271 174 L 271 182" />
+    <path d="M 277 182 L 277 174 C 277 171, 283 171, 283 174 L 283 182" />
+    <path d="M 289 182 L 289 174 C 289 171, 295 171, 295 174 L 295 182" />
+    <path d="M 301 182 L 301 174 C 301 171, 307 171, 307 174 L 307 182" />
+    <!-- Arches Tier 3 (Top) -->
+    <path d="M 220 168 L 220 157 C 220 155, 226 155, 226 157 L 226 168" />
+    <path d="M 235 168 L 235 157 C 235 155, 241 155, 241 157 L 241 168" />
+    <path d="M 250 168 L 250 157 C 250 155, 256 155, 256 157 L 256 168" />
+    <path d="M 265 168 L 265 157 C 265 155, 271 155, 271 157 L 271 168" />
+    <path d="M 280 168 L 280 157 C 280 155, 286 155, 286 157 L 286 168" />
+    <path d="M 295 168 L 295 157 C 295 155, 301 155, 301 157 L 301 168" />
+  </g>
+
+  <!-- 3. TAJ MAHAL (X: 350 - 520) -->
+  <g stroke-width="1.2" stroke-opacity="0.38">
+    <!-- Plinth Base -->
+    <rect x="360" y="190" width="150" height="6" />
+    <!-- Left Outer Minaret -->
+    <line x1="365" y1="190" x2="367" y2="78" />
+    <line x1="371" y1="190" x2="369" y2="78" />
+    <rect x="364" y="115" width="8" height="3" />
+    <rect x="365" y="150" width="6" height="3" />
+    <!-- Minaret Balcony & Dome -->
+    <path d="M 363 78 L 373 78 L 370 70 C 368 66, 368 66, 368 64 L 368 58 L 368 64 C 368 66, 368 66, 366 70 Z" />
+    <!-- Right Outer Minaret -->
+    <line x1="499" y1="190" x2="501" y2="78" />
+    <line x1="505" y1="190" x2="503" y2="78" />
+    <rect x="498" y="115" width="8" height="3" />
+    <rect x="499" y="150" width="6" height="3" />
+    <!-- Minaret Balcony & Dome -->
+    <path d="M 497 78 L 507 78 L 504 70 C 502 66, 502 66, 502 64 L 502 58 L 502 64 C 502 66, 502 66, 500 70 Z" />
+
+    <!-- Main Mausoleum Building -->
+    <rect x="390" y="145" width="90" height="45" />
+    <!-- Grand Central Iwan Arch -->
+    <path d="M 416 190 L 416 156 C 416 148, 435 145, 435 145 C 435 145, 454 148, 454 156 L 454 190 Z" stroke-width="1.4" />
+    <!-- Inner Doorway -->
+    <path d="M 424 190 L 424 168 C 424 164, 435 162, 435 162 C 435 162, 446 164, 446 168 L 446 190 Z" />
+    <!-- Side Arches Left -->
+    <path d="M 397 165 L 397 155 C 397 152, 407 152, 407 155 L 407 165 Z" />
+    <path d="M 397 186 L 397 173 C 397 170, 407 170, 407 173 L 407 186 Z" />
+    <!-- Side Arches Right -->
+    <path d="M 463 165 L 463 155 C 463 152, 473 152, 473 155 L 473 165 Z" />
+    <path d="M 463 186 L 463 173 C 463 170, 473 170, 473 173 L 473 186 Z" />
+
+    <!-- Central Onion Dome Drum & Dome -->
+    <rect x="420" y="132" width="30" height="13" />
+    <!-- Majestic Bulbous Onion Dome -->
+    <path d="M 420 132 C 412 118, 414 98, 435 88 C 456 98, 458 118, 450 132 Z" stroke-width="1.6" />
+    <!-- Finial -->
+    <line x1="435" y1="88" x2="435" y2="70" stroke-width="1.8" />
+    <circle cx="435" cy="74" r="1.8" fill="#c2a05e" fill-opacity="0.5" />
+    <circle cx="435" cy="70" r="1.2" fill="#c2a05e" fill-opacity="0.8" />
+
+    <!-- Left Smaller Kiosk / Chhatri -->
+    <rect x="402" y="136" width="12" height="9" />
+    <path d="M 400 136 C 398 128, 418 128, 416 136 Z" />
+    <line x1="408" y1="128" x2="408" y2="122" />
+    <!-- Right Smaller Kiosk / Chhatri -->
+    <rect x="456" y="136" width="12" height="9" />
+    <path d="M 454 136 C 452 128, 472 128, 470 136 Z" />
+    <line x1="462" y1="128" x2="462" y2="122" />
+  </g>
+
+  <!-- 4. ASIAN PAGODA / TEMPLE (X: 540 - 640) -->
+  <g stroke-width="1.2" stroke-opacity="0.34">
+    <!-- Level 1 Base & Roof -->
+    <rect x="565" y="172" width="40" height="24" />
+    <path d="M 550 172 C 555 164, 615 164, 620 172" stroke-width="1.6" />
+    <!-- Level 2 -->
+    <rect x="570" y="148" width="30" height="18" />
+    <path d="M 556 148 C 562 140, 608 140, 614 148" stroke-width="1.6" />
+    <!-- Level 3 -->
+    <rect x="575" y="126" width="20" height="16" />
+    <path d="M 562 126 C 568 118, 602 118, 608 126" stroke-width="1.6" />
+    <!-- Level 4 -->
+    <rect x="579" y="106" width="12" height="14" />
+    <path d="M 568 106 C 573 98, 597 98, 602 106" stroke-width="1.6" />
+    <!-- Spire / Finial -->
+    <line x1="585" y1="98" x2="585" y2="68" stroke-width="1.8" />
+    <circle cx="585" cy="74" r="3" />
+    <circle cx="585" cy="80" r="4" />
+    <circle cx="585" cy="86" r="5" />
+    <!-- Doorway -->
+    <rect x="580" y="182" width="10" height="14" />
+  </g>
+
+  <!-- 5. LONDON BIG BEN / HOUSES OF PARLIAMENT (X: 660 - 780) -->
+  <g stroke-width="1.2" stroke-opacity="0.32">
+    <!-- Clock Tower Body -->
+    <rect x="685" y="60" width="32" height="136" />
+    <!-- Clock Face -->
+    <circle cx="701" cy="84" r="10" stroke-width="1.4" />
+    <circle cx="701" cy="84" r="7.5" stroke-dasharray="2 2" />
+    <line x1="701" y1="84" x2="701" y2="78" />
+    <line x1="701" y1="84" x2="705" y2="84" />
+    <!-- Belfry / Spire -->
+    <polygon points="685,60 701,20 717,60" stroke-width="1.5" />
+    <line x1="701" y1="20" x2="701" y2="8" stroke-width="1.8" />
+    <circle cx="701" cy="8" r="1.5" fill="#c2a05e" />
+    <!-- Parliament Hall Extension -->
+    <rect x="717" y="125" width="55" height="71" />
+    <line x1="717" y1="125" x2="772" y2="125" />
+    <!-- Pointed Windows -->
+    <path d="M 724 165 L 724 145 C 724 140, 728 138, 728 138 C 728 138, 732 140, 732 145 L 732 165 Z" />
+    <path d="M 738 165 L 738 145 C 738 140, 742 138, 742 138 C 742 138, 746 140, 746 145 L 746 165 Z" />
+    <path d="M 752 165 L 752 145 C 752 140, 756 138, 756 138 C 756 138, 760 140, 760 145 L 760 165 Z" />
+    <line x1="685" y1="108" x2="717" y2="108" />
+    <line x1="685" y1="140" x2="717" y2="140" />
+    <line x1="685" y1="170" x2="717" y2="170" />
+  </g>
+
+  <!-- 6. PYRAMID / DESERT DUNES / PALM (X: 810 - 930) -->
+  <g stroke-width="1.2" stroke-opacity="0.28">
+    <polygon points="820,196 875,120 930,196" />
+    <line x1="875" y1="120" x2="885" y2="196" stroke-width="1.4" />
+    <!-- Smaller Pyramid Behind -->
+    <polygon points="885,196 935,138 980,196" />
+  </g>
+
+  <!-- 7. SUSPENSION BRIDGE / GOLDEN GATE CABLES (X: 990 - 1180) -->
+  <g stroke-width="1.2" stroke-opacity="0.25">
+    <rect x="1030" y="70" width="8" height="126" />
+    <rect x="1110" y="70" width="8" height="126" />
+    <path d="M 990 100 C 1030 150, 1110 150, 1150 100" stroke-width="1.5" />
+    <line x1="1050" y1="145" x2="1050" y2="196" stroke-dasharray="2 3" />
+    <line x1="1070" y1="148" x2="1070" y2="196" stroke-dasharray="2 3" />
+    <line x1="1090" y1="145" x2="1090" y2="196" stroke-dasharray="2 3" />
+  </g>
+</svg>

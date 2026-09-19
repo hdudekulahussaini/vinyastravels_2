@@ -10,15 +10,18 @@
     content="Vinyas Travels, Hyderabad Travel Agency, New-Nallakunta, India Tour Packages, International Travel Guidelines, Holiday Packages">
   <title>Vinyas Travels | Royal Journeys & Luxury Holidays</title>
 
-  <!-- Google Fonts: Cinzel, Oswald & Poppins -->
+  <!-- Google Fonts: Caveat, Cinzel, Oswald, Playfair Display & Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Oswald:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@600;700;800;900&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=38">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
@@ -51,7 +54,6 @@
             </li>
             <li><a href="#group-tours" class="nav-link">Group Tours</a></li>
             <li><a href="#family-tours" class="nav-link">Family & Private Tours</a></li>
-            <li><a href="#packages" class="nav-link">Explore Tours</a></li>
           </ul>
         </nav>
 
@@ -69,7 +71,6 @@
           </svg>
         </button>
       </div>
-    </div>
     </div>
   </header>
 
@@ -109,101 +110,130 @@
   <!-- =========================================================================
        LUXURY SEARCH & EXPEDITION FINDER CONSOLE
        ========================================================================= -->
-  <div class="hero-discovery-bar-wrap" id="heroExploreBarWrap">
+  <div class="position-relative" style="margin-top: -55px; z-index: 30;" id="heroExploreBarWrap">
     <div class="container">
-      <div class="hero-search-console">
-        <!-- Quick Category Selection Tabs -->
-        <div class="search-category-tabs" id="searchCategoryTabs">
-          <button type="button" class="search-tab active" data-type="All Tour Types">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
-            </svg>
-            <span>All Tours</span>
-          </button>
-          <button type="button" class="search-tab" data-type="Group Tours">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <span>Group Tours</span>
-          </button>
-          <button type="button" class="search-tab" data-type="Family Holidays">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>Family Holidays</span>
-          </button>
-        </div>
-
-        <!-- Main Search Form Card -->
-        <form class="hero-quick-finder" id="heroSearchForm">
-          <!-- 1. Where do you want to go? -->
-          <div class="finder-field-group">
-            <div class="finder-field-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+      <div class="w-100">
+        <!-- Quick Category Selection Tabs (Bootstrap nav-tabs) -->
+        <ul class="nav nav-tabs border-bottom-0 ps-3 gap-2 flex-nowrap overflow-auto" id="searchCategoryTabs"
+          role="tablist"
+          style="--bs-nav-tabs-link-active-bg: #ffffff; --bs-nav-tabs-link-active-color: #826210; --bs-nav-link-color: rgba(255, 255, 255, 0.9); --bs-nav-tabs-border-width: 0;">
+          <li class="nav-item" role="presentation">
+            <button type="button"
+              class="nav-link active search-tab d-inline-flex align-items-center gap-2 rounded-top-3 rounded-bottom-0 py-2 px-3 fw-bold border-0"
+              data-type="All Tour Types">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
               </svg>
-            </div>
-            <div class="finder-field-inner">
-              <label for="heroDest">Where do you want to go?</label>
-              <input type="text" id="heroDest" placeholder="e.g. Switzerland, Bali, Dubai, Kashmir..." required
-                autocomplete="off">
-            </div>
-          </div>
-
-          <!-- Divider -->
-          <div class="finder-divider" aria-hidden="true"></div>
-
-          <!-- 2. Travel Date -->
-          <div class="finder-field-group">
-            <div class="finder-field-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path
-                  d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
-              </svg>
-            </div>
-            <div class="finder-field-inner">
-              <label for="heroDate">Travel Date</label>
-              <input type="date" id="heroDate">
-            </div>
-          </div>
-
-          <!-- Divider -->
-          <div class="finder-divider" aria-hidden="true"></div>
-
-          <!-- 3. Tour Type -->
-          <div class="finder-field-group">
-            <div class="finder-field-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
-              </svg>
-            </div>
-            <div class="finder-field-inner">
-              <label for="heroTourType">Tour Type</label>
-              <select id="heroTourType">
-                <option value="All Tour Types">All Tour Types</option>
-                <option value="Group Tours">Group Tours</option>
-                <option value="Family Holidays">Family Holidays</option>
-                <option value="Custom Holidays">Custom Holidays</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- 4. Explore Tours CTA Button -->
-          <div class="finder-btn-wrap">
-            <button type="submit" class="finder-submit-btn" id="heroExploreBtn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <span>Explore Tours</span>
+              <span>All Tours</span>
             </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button type="button"
+              class="nav-link search-tab d-inline-flex align-items-center gap-2 rounded-top-3 rounded-bottom-0 py-2 px-3 fw-semibold border-0"
+              data-type="Group Tours">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Group Tours</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button type="button"
+              class="nav-link search-tab d-inline-flex align-items-center gap-2 rounded-top-3 rounded-bottom-0 py-2 px-3 fw-semibold border-0"
+              data-type="Family Holidays">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Family Holidays</span>
+            </button>
+          </li>
+        </ul>
+
+        <!-- Main Search Form Card (Bootstrap 5 Grid) -->
+        <form class="bg-white rounded-4 p-3 border shadow-none" id="heroSearchForm">
+          <div class="row g-3 align-items-center">
+            <!-- 1. Where do you want to go? -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="d-flex align-items-center p-2 rounded-3 bg-light h-100">
+                <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 me-3"
+                  style="width: 60px; height: 60px; background-color: #f6eedd; color: #826210;">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                  </svg>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <label for="heroDest" class="form-label small fw-bold text-uppercase mb-1 d-block"
+                    style="font-size: 0.72rem; letter-spacing: 1px; color: #826210;">Where do you want to go?</label>
+                  <input type="text"
+                    class="form-control form-control-sm border-0 bg-transparent fw-semibold p-0 shadow-none text-dark"
+                    id="heroDest" placeholder="e.g. Switzerland, Bali, Dubai, Kashmir..." required autocomplete="off">
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Travel Date -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="d-flex align-items-center p-2 rounded-3 bg-light h-100">
+                <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 me-3"
+                  style="width: 60px; height: 60px; background-color: #f6eedd; color: #826210;">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path
+                      d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+                  </svg>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <label for="heroDate" class="form-label small fw-bold text-uppercase mb-1 d-block"
+                    style="font-size: 0.72rem; letter-spacing: 1px; color: #826210;">Travel Date</label>
+                  <input type="date"
+                    class="form-control form-control-sm border-0 bg-transparent fw-semibold p-0 shadow-none text-dark"
+                    id="heroDate">
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Tour Type -->
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="d-flex align-items-center p-2 rounded-3 bg-light h-100">
+                <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 me-3"
+                  style="width: 60px; height: 60px; background-color: #f6eedd; color: #826210;">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+                  </svg>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <label for="heroTourType" class="form-label small fw-bold text-uppercase mb-1 d-block"
+                    style="font-size: 0.72rem; letter-spacing: 1px; color: #826210;">Tour Type</label>
+                  <select
+                    class="form-select form-select-sm border-0 bg-transparent fw-semibold p-0 shadow-none text-dark"
+                    id="heroTourType">
+                    <option value="All Tour Types">All Tour Types</option>
+                    <option value="Group Tours">Group Tours</option>
+                    <option value="Family Holidays">Family Holidays</option>
+                    <option value="Custom Holidays">Custom Holidays</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Explore Tours CTA Button -->
+            <div class="col-12 col-md-6 col-lg-2">
+              <button type="submit"
+                class="btn w-100 py-3 h-100 fw-bold text-uppercase text-white d-inline-flex align-items-center justify-content-center gap-2 rounded-3 border-0 shadow-none"
+                id="heroExploreBtn" style="background-color: #826210;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span>Explore Tours</span>
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -216,7 +246,10 @@
   <section class="section-block explore-tours-section" id="packages">
     <div class="container explore-tours-container">
       <div class="section-header explore-tours-header">
-        <h2 class="tours-section-title">Travel Experiences Designed Around You</h2>
+        <h2 class="tours-section-title">
+          Travel Experiences<br>
+          <span class="tours-title-gold">Designed Around You</span>
+        </h2>
         <p class="tours-section-desc">
           Choose from ready-to-book group tours or explore family and private tour packages designed for a more
           personalized travel experience.
@@ -282,33 +315,18 @@
       </div>
     </div>
 
-    <!-- Botanical Watermark Accent (matching the reference image) -->
-    <div class="tours-botanical-watermark" aria-hidden="true">
-      <svg viewBox="0 0 200 200" width="220" height="220" fill="currentColor">
-        <path
-          d="M160 190c-15-20-25-45-28-70-1-10 1-22 6-31 2-4 5-7 9-10 8-6 18-9 28-9-1 10-5 19-11 27-6 8-13 14-22 18 10 2 20 1 29-3 9-4 17-11 23-19 4 10 4 21 1 31-4 12-12 23-22 30-4 13-7 24-13 36zm-45-60c-12-16-19-35-22-55-1-8 1-17 4-24 2-3 4-6 7-8 6-5 14-7 22-7-1 8-4 15-9 21-5 6-10 11-17 14 8 2 16 1 23-2 7-3 13-9 18-15 3 8 3 17 1 24-3 9-9 18-17 24-4 10-6 19-10 28zm-35-65c-8-12-14-26-16-41-1-6 1-13 3-18 1-2 3-5 5-6 5-4 11-5 17-5-1 6-3 11-7 16-4 5-8 8-13 11 6 2 12 1 17-2 5-2 10-7 14-11 2 6 2 13 1 18-2 7-7 14-13 18-3 8-5 14-8 20z" />
-      </svg>
-    </div>
+
   </section>
 
   <!-- =========================================================================
        03. POPULAR DESTINATIONS SECTION (CIRCULAR CAROUSEL DESIGN)
        ========================================================================= -->
   <section class="section-block popular-dest-section" id="destinations">
-    <!-- Subtle Topographic Contour Background Lines (Matching Reference Design) -->
-    <div class="dest-topo-bg" aria-hidden="true">
-      <svg viewBox="0 0 1440 600" preserveAspectRatio="none" fill="none" stroke="currentColor">
-        <path d="M-50 80 C 250 20, 550 160, 850 70 C 1150 -20, 1350 120, 1500 60" stroke-width="1.2" opacity="0.08" />
-        <path d="M-50 180 C 200 120, 500 240, 800 160 C 1100 80, 1300 210, 1500 150" stroke-width="1.2" opacity="0.08" />
-        <path d="M-50 280 C 280 220, 580 320, 880 250 C 1180 180, 1380 290, 1500 240" stroke-width="1.2" opacity="0.08" />
-        <path d="M-50 380 C 220 330, 480 420, 780 360 C 1080 300, 1280 390, 1500 340" stroke-width="1.2" opacity="0.08" />
-        <path d="M-50 480 C 300 420, 600 510, 900 450 C 1200 390, 1400 470, 1500 430" stroke-width="1.2" opacity="0.08" />
-      </svg>
-    </div>
+
 
     <div class="container popular-dest-container">
       <div class="section-header popular-dest-header">
-        <h2 class="popular-dest-title">Popular Destinations</h2>
+        <h2 class="popular-dest-title">Popular <span class="popular-dest-title-gold">Destinations</span></h2>
         <p class="popular-dest-desc">
           Discover memorable travel experiences across some of the world's most exciting destinations.
         </p>
@@ -318,7 +336,8 @@
       <div class="dest-carousel-wrapper">
         <!-- Prev Button -->
         <button type="button" class="dest-nav-btn prev" id="destPrevBtn" aria-label="Previous Destinations">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
@@ -327,89 +346,98 @@
         <!-- Carousel Track (8 Destinations in Agency Inventory) -->
         <div class="dest-cards-track" id="destCardsTrack">
           <!-- 1. Dubai -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Dubai Luxury Holiday" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Dubai Luxury Holiday" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&auto=format&fit=crop" 
-                   alt="Dubai Skyline & Marina" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&auto=format&fit=crop"
+                alt="Dubai Skyline & Marina" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Dubai</h3>
-            <span class="dest-card-activities">Activities (18)</span>
+            <span class="dest-card-activities">Tours (18)</span>
           </div>
 
           <!-- 2. Singapore -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Singapore City & Sentosa Tour" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Singapore City & Sentosa Tour" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=600&auto=format&fit=crop" 
-                   alt="Singapore Gardens by the Bay" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=600&auto=format&fit=crop"
+                alt="Singapore Gardens by the Bay" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Singapore</h3>
-            <span class="dest-card-activities">Activities (15)</span>
+            <span class="dest-card-activities">Tours (15)</span>
           </div>
 
           <!-- 3. Thailand -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Thailand Beach & Bangkok Explorer" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Thailand Beach & Bangkok Explorer"
+            role="button" tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600&auto=format&fit=crop" 
-                   alt="Thailand Islands & Beaches" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600&auto=format&fit=crop"
+                alt="Thailand Islands & Beaches" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Thailand</h3>
-            <span class="dest-card-activities">Activities (24)</span>
+            <span class="dest-card-activities">Tours (24)</span>
           </div>
 
           <!-- 4. Europe -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Grand Europe Heritage Tour" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Grand Europe Heritage Tour" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop" 
-                   alt="Rome Colosseum Europe" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop"
+                alt="Rome Colosseum Europe" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Europe</h3>
-            <span class="dest-card-activities">Activities (32)</span>
+            <span class="dest-card-activities">Tours (32)</span>
           </div>
 
           <!-- 5. Maldives -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Maldives Island Luxury Resort" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Maldives Island Luxury Resort" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=600&auto=format&fit=crop" 
-                   alt="Maldives Overwater Resort" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=600&auto=format&fit=crop"
+                alt="Maldives Overwater Resort" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Maldives</h3>
-            <span class="dest-card-activities">Activities (21)</span>
+            <span class="dest-card-activities">Tours (21)</span>
           </div>
 
           <!-- 6. Bali -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Bali Tropical Paradise Tour" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Bali Tropical Paradise Tour" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=600&auto=format&fit=crop" 
-                   alt="Bali Lempuyang Temple Gates" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=600&auto=format&fit=crop"
+                alt="Bali Lempuyang Temple Gates" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Bali</h3>
-            <span class="dest-card-activities">Activities (19)</span>
+            <span class="dest-card-activities">Tours (19)</span>
           </div>
 
           <!-- 7. Malaysia -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Malaysia Discovery Tour" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Malaysia Discovery Tour" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=600&auto=format&fit=crop" 
-                   alt="Malaysia Petronas Towers" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=600&auto=format&fit=crop"
+                alt="Malaysia Petronas Towers" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Malaysia</h3>
-            <span class="dest-card-activities">Activities (16)</span>
+            <span class="dest-card-activities">Tours (16)</span>
           </div>
 
           <!-- 8. Australia -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Australia Highlights & Sydney" role="button" tabindex="0">
+          <div class="dest-card-item trigger-booking-modal" data-package="Australia Highlights & Sydney" role="button"
+            tabindex="0">
             <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=600&auto=format&fit=crop" 
-                   alt="Australia Sydney Harbour" class="dest-circle-img" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=600&auto=format&fit=crop"
+                alt="Australia Sydney Harbour" class="dest-circle-img" loading="lazy">
             </div>
             <h3 class="dest-card-name">Australia</h3>
-            <span class="dest-card-activities">Activities (22)</span>
+            <span class="dest-card-activities">Tours (22)</span>
           </div>
         </div>
 
         <!-- Next Button -->
         <button type="button" class="dest-nav-btn next" id="destNextBtn" aria-label="Next Destinations">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -418,9 +446,11 @@
 
       <!-- Bottom CTA: Explore Destinations -->
       <div class="dest-cta-row">
-        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="Popular International Destinations">
+        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal"
+          data-package="Popular International Destinations">
           <span>Explore Destinations</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -435,7 +465,7 @@
   <section class="section-block package-showcase-section" id="group-tours">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Featured Group Tours</h2>
+        <h2 class="section-title">Featured <span class="section-title-gold">Group Tours</span></h2>
         <p class="section-desc">
           Explore upcoming group departures with planned itineraries, available seats and convenient online booking.
         </p>
@@ -445,8 +475,8 @@
         <!-- Group Tour Card 1: Dubai & Abu Dhabi -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" 
-                 alt="Dubai & Abu Dhabi Skyline" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop"
+              alt="Dubai & Abu Dhabi Skyline" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Group Tour</span>
             </div>
@@ -455,7 +485,10 @@
             <h3 class="pkg-card-title">Dubai & Abu Dhabi Royal Tour</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
                 Ex-Hyderabad, UAE
               </span>
               <span class="pkg-meta-arrow">⟷</span>
@@ -467,9 +500,13 @@
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Dubai & Abu Dhabi Group Tour">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal"
+                  data-package="Dubai & Abu Dhabi Group Tour">
                   <span>Book Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </button>
               </div>
               <div class="pkg-price-box">
@@ -479,8 +516,14 @@
             </div>
             <div class="pkg-divider"></div>
             <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
             </div>
           </div>
         </article>
@@ -488,8 +531,8 @@
         <!-- Group Tour Card 2: Bali Paradise -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop" 
-                 alt="Bali Paradise Tour" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop"
+              alt="Bali Paradise Tour" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Group Tour</span>
             </div>
@@ -498,7 +541,10 @@
             <h3 class="pkg-card-title">Bali Paradise & Nusa Penida</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
                 Ex-Hyderabad, Indonesia
               </span>
               <span class="pkg-meta-arrow">⟷</span>
@@ -512,7 +558,10 @@
               <div class="pkg-btn-wrap">
                 <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Bali Paradise Group Tour">
                   <span>Book Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </button>
               </div>
               <div class="pkg-price-box">
@@ -522,8 +571,14 @@
             </div>
             <div class="pkg-divider"></div>
             <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
             </div>
           </div>
         </article>
@@ -531,8 +586,8 @@
         <!-- Group Tour Card 3: Thailand Wonders -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" 
-                 alt="Thailand Beach Explorer" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop"
+              alt="Thailand Beach Explorer" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Group Tour</span>
             </div>
@@ -541,7 +596,10 @@
             <h3 class="pkg-card-title">Thailand Bangkok & Phuket Wonders</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
                 Ex-Hyderabad, Thailand
               </span>
               <span class="pkg-meta-arrow">⟷</span>
@@ -553,9 +611,13 @@
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Thailand Wonders Group Tour">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal"
+                  data-package="Thailand Wonders Group Tour">
                   <span>Book Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </button>
               </div>
               <div class="pkg-price-box">
@@ -565,18 +627,25 @@
             </div>
             <div class="pkg-divider"></div>
             <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
             </div>
           </div>
         </article>
       </div>
 
       <!-- CTA: View All Group Tours -->
-      <div class="dest-cta-row" style="margin-top: 44px;">
+      <div class="dest-cta-row">
         <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="All Group Tours Calendar">
           <span>View All Group Tours</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -591,9 +660,10 @@
   <section class="section-block package-showcase-section family-tours-bg" id="family-tours">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Personalized Journeys, Lasting Memories</h2>
+        <h2 class="section-title">Featured <span class="section-title-gold">Family Tours</span></h2>
         <p class="section-desc">
-          Explore our family and private tour packages and choose an experience that matches your destination, travel dates, interests and travel style. Share your requirements with us, and our team will help plan your journey.
+          Explore our family and private tour packages and choose an experience that matches your destination, travel
+          dates, interests and travel style. Share your requirements with us, and our team will help plan your journey.
         </p>
       </div>
 
@@ -601,8 +671,8 @@
         <!-- Family Tour Card 1: European Family Escape -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop" 
-                 alt="European Family Escape" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop"
+              alt="European Family Escape" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Family Tour</span>
             </div>
@@ -611,7 +681,10 @@
             <h3 class="pkg-card-title">European Family Escape (Swiss & Paris)</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
                 Switzerland, France
               </span>
               <span class="pkg-meta-arrow">⟷</span>
@@ -619,20 +692,31 @@
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="European Family Escape (Inquiry)">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal"
+                  data-package="European Family Escape (Inquiry)">
                   <span>Enquire Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </button>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Custom Quote</span>
-                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on Request</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
+                  Request</span>
               </div>
             </div>
             <div class="pkg-divider"></div>
             <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
             </div>
           </div>
         </article>
@@ -640,8 +724,8 @@
         <!-- Family Tour Card 2: Maldives Private Island -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop" 
-                 alt="Maldives Private Island Retreat" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop"
+              alt="Maldives Private Island Retreat" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Family Tour</span>
             </div>
@@ -650,7 +734,10 @@
             <h3 class="pkg-card-title">Maldives Private Island & Villa Getaway</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
                 South Atoll, Maldives
               </span>
               <span class="pkg-meta-arrow">⟷</span>
@@ -658,20 +745,31 @@
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Maldives Private Island (Inquiry)">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal"
+                  data-package="Maldives Private Island (Inquiry)">
                   <span>Enquire Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </button>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Custom Quote</span>
-                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on Request</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
+                  Request</span>
               </div>
             </div>
             <div class="pkg-divider"></div>
             <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
             </div>
           </div>
         </article>
@@ -679,8 +777,8 @@
         <!-- Family Tour Card 3: Singapore & Sentosa -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop" 
-                 alt="Singapore & Sentosa Family Fun" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop"
+              alt="Singapore & Sentosa Family Fun" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Family Tour</span>
             </div>
@@ -689,7 +787,10 @@
             <h3 class="pkg-card-title">Singapore & Sentosa Family Fun Explorer</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
                 Singapore, Sentosa Island
               </span>
               <span class="pkg-meta-arrow">⟷</span>
@@ -697,30 +798,43 @@
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Singapore Family Fun (Inquiry)">
+                <button class="pkg-action-btn btn-gold trigger-booking-modal"
+                  data-package="Singapore Family Fun (Inquiry)">
                   <span>Enquire Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </button>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Custom Quote</span>
-                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on Request</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
+                  Request</span>
               </div>
             </div>
             <div class="pkg-divider"></div>
             <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inclusion ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
             </div>
           </div>
         </article>
       </div>
 
       <!-- CTA: Explore Family Tours -->
-      <div class="dest-cta-row" style="margin-top: 44px;">
-        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="Custom Family Holiday Inquiry">
+      <div class="dest-cta-row">
+        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal"
+          data-package="Custom Family Holiday Inquiry">
           <span>Explore Family Tours</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -730,63 +844,1232 @@
   </section>
 
   <!-- =========================================================================
-       FOOTER
+       06. HOW IT WORKS - PLAN YOUR JOURNEY IN FOUR STEPS (SCREENSHOT MATCHING)
        ========================================================================= -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="brand-text-wrap" style="margin-bottom: 8px;">
-            <span class="brand-name" style="font-size: 1.5rem;">VINYAS</span>
-            <span class="brand-sub" style="font-size: 0.9rem;">TRAVELS</span>
-          </div>
-          <p class="footer-about">
-            Your trusted travel companion from New-Nallakunta, Hyderabad. Specializing in bespoke Indian holidays,
-            international visa coordination, and luxury transport solutions.
-          </p>
+  <section class="section-block how-it-works-section" id="how-it-works">
+    <div class="container position-relative" style="z-index: 2;">
+      <!-- Section Header Matching Reference -->
+      <div class="text-center how-header mb-4">
+        <div class="how-kicker-wrap d-inline-flex align-items-center justify-content-center mb-2">
+          <span class="how-kicker-bar"></span>
+          <span class="how-kicker">HOW IT WORKS</span>
+          <span class="how-kicker-bar"></span>
         </div>
+        <p class="how-subheading">Simple From Start to Finish</p>
+        <h2 class="how-main-title">
+          Plan Your Journey <span class="how-title-gold">in Four Steps</span>
+        </h2>
+      </div>
 
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#packages">India Tour Packages</a>
-            <a href="#guidelines">International Guidelines</a>
-            <a href="#about">About Our Agency</a>
-            <a href="#gallery">Photo Gallery</a>
-            <a href="#contact">Contact Us</a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Top Destinations</h4>
-          <div class="footer-links">
-            <a href="#packages">Golden Triangle</a>
-            <a href="#packages">Kerala Backwaters</a>
-            <a href="#packages">Rajasthan Heritage</a>
-            <a href="#packages">Kashmir Valley</a>
-            <a href="#packages">Hyderabad City Tour</a>
-            <a href="#packages">Varanasi Pilgrimage</a>
+      <!-- 4 Steps Interactive Row -->
+      <div class="how-steps-container position-relative">
+        <!-- Connecting Flight Path SVG with Airplane on Top Right -->
+        <div class="how-flight-path-wrap" aria-hidden="true">
+          <svg class="how-flight-svg" viewBox="0 0 1140 220" fill="none" preserveAspectRatio="none">
+            <path d="M 140 105 C 220 30, 310 180, 425 105 C 530 40, 610 180, 715 105 C 810 40, 890 140, 1020 35"
+              stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="6 6" stroke-linecap="round" />
+          </svg>
+          <!-- Blue Airplane at the top right of the dotted trail -->
+          <div class="how-plane-badge">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="#3182ce">
+              <path
+                d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+            </svg>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4>Hyderabad Office</h4>
-          <p style="font-size: 0.86rem; line-height: 1.6; margin-bottom: 12px;">
-            New-Nallakunta, Hyderabad,<br>Telangana - 500044
+        <div class="row g-4 justify-content-center text-center position-relative">
+          <!-- Step 1: Explore -->
+          <div class="col-12 col-sm-6 col-lg-3 how-step-item">
+            <div class="how-circle-wrap mx-auto">
+              <div class="how-circle-dashed">
+                <div class="how-circle-inner">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/step1_explore_map_1789736609983.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=crop';"
+                    alt="01 Explore Travel Map & Magnifying Glass" class="how-step-img" loading="lazy">
+                </div>
+              </div>
+              <!-- Directional Next Arrow -->
+              <div class="how-arrow-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="how-step-number">01</div>
+            <h3 class="how-step-heading">Explore</h3>
+            <p class="how-step-text">
+              Browse destinations and discover group, family and private tour packages.
+            </p>
+          </div>
+
+          <!-- Step 2: Choose -->
+          <div class="col-12 col-sm-6 col-lg-3 how-step-item">
+            <div class="how-circle-wrap mx-auto">
+              <div class="how-circle-dashed">
+                <div class="how-circle-inner">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/step2_choose_laptop_1789736629730.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&auto=format&fit=crop';"
+                    alt="02 Choose Tour Packages on Laptop" class="how-step-img" loading="lazy">
+                </div>
+              </div>
+              <!-- Directional Next Arrow -->
+              <div class="how-arrow-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="how-step-number">02</div>
+            <h3 class="how-step-heading">Choose</h3>
+            <p class="how-step-text">
+              Book an available group tour or select a family/private package for enquiry.
+            </p>
+          </div>
+
+          <!-- Step 3: Confirm -->
+          <div class="col-12 col-sm-6 col-lg-3 how-step-item">
+            <div class="how-circle-wrap mx-auto">
+              <div class="how-circle-dashed">
+                <div class="how-circle-inner">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/step3_confirm_checklist_1789736655268.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=600&auto=format&fit=crop';"
+                    alt="03 Confirm Travel Itinerary & Checklist" class="how-step-img" loading="lazy">
+                </div>
+              </div>
+              <!-- Directional Next Arrow -->
+              <div class="how-arrow-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="how-step-number">03</div>
+            <h3 class="how-step-heading">Confirm</h3>
+            <p class="how-step-text">
+              Complete your booking or discuss your requirements with our travel team.
+            </p>
+          </div>
+
+          <!-- Step 4: Travel -->
+          <div class="col-12 col-sm-6 col-lg-3 how-step-item">
+            <div class="how-circle-wrap mx-auto">
+              <div class="how-circle-dashed">
+                <div class="how-circle-inner">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/step4_travel_airplane_1789736678228.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop';"
+                    alt="04 Travel Airplane Flying in Sunset" class="how-step-img" loading="lazy">
+                </div>
+              </div>
+            </div>
+            <div class="how-step-number">04</div>
+            <h3 class="how-step-heading">Travel</h3>
+            <p class="how-step-text">
+              Get ready to experience your destination with the support you need along the way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       07. TRAVEL WITH CONFIDENCE - YOUR JOURNEY, OUR COMMITMENT
+       ========================================================================= -->
+  <section class="section-block commitment-section" id="about">
+    <!-- Right-Side Decorative Flight Graphic: World Map + Flight Loop + Airplane + Script Tag -->
+    <div class="commitment-decor-wrap" aria-hidden="true">
+      <!-- Authentic World Map Silhouette Vector -->
+      <svg class="decor-world-map-svg" viewBox="0 0 1000 500" fill="currentColor">
+        <!-- North America -->
+        <path
+          d="M 120 70 Q 140 40 180 50 Q 230 40 270 70 Q 290 100 280 140 Q 240 160 210 190 Q 180 210 160 170 Q 130 150 110 110 Z" />
+        <path d="M 230 200 Q 260 220 280 250 Q 260 270 240 240 Z" />
+        <path d="M 290 60 Q 320 40 360 55 Q 350 85 310 90 Z" />
+        <!-- South America -->
+        <path d="M 230 250 Q 280 240 320 270 Q 340 320 310 380 Q 280 430 250 420 Q 230 360 220 300 Z" />
+        <!-- Europe -->
+        <path d="M 460 70 Q 520 60 550 90 Q 560 130 520 150 Q 480 160 450 130 Q 440 90 460 70 Z" />
+        <path d="M 440 90 Q 460 80 470 100 Q 450 115 435 105 Z" />
+        <path d="M 480 40 Q 510 30 520 50 Q 490 65 475 50 Z" />
+        <!-- Africa -->
+        <path d="M 460 170 Q 540 160 570 200 Q 580 260 550 320 Q 510 370 480 340 Q 450 280 440 220 Z" />
+        <path d="M 580 290 Q 600 285 605 320 Q 590 340 580 315 Z" />
+        <!-- Asia -->
+        <path d="M 550 70 Q 660 50 750 75 Q 830 100 850 160 Q 820 220 740 230 Q 680 250 630 210 Q 580 180 560 130 Z" />
+        <path d="M 680 240 Q 720 250 740 290 Q 710 310 670 280 Z" />
+        <path d="M 770 220 Q 810 240 820 270 Q 790 290 760 260 Z" />
+        <path d="M 830 130 Q 860 140 870 180 Q 840 200 820 165 Z" />
+        <!-- Australia -->
+        <path d="M 760 330 Q 840 320 870 360 Q 850 420 790 430 Q 740 400 750 360 Z" />
+        <path d="M 880 390 Q 900 380 910 410 Q 890 430 875 410 Z" />
+      </svg>
+
+      <!-- Flight Trail & Plane Combo Container -->
+      <div class="decor-flight-combo">
+        <svg class="decor-flight-svg" viewBox="0 0 360 260" fill="none">
+          <path
+            d="M 40 235 C 100 245, 170 240, 215 180 C 245 130, 210 80, 165 105 C 130 125, 150 175, 195 180 C 245 185, 290 125, 320 55"
+            stroke="#2d3748" stroke-width="2" stroke-dasharray="6 6" opacity="0.6" stroke-linecap="round" />
+        </svg>
+
+        <!-- Airplane Icon -->
+        <div class="decor-plane-icon">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="#1a202c">
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+          </svg>
+        </div>
+
+        <!-- Handwriting Script: "Travel With Us" with Gold Underline -->
+        <div class="decor-script-badge">
+          <span class="script-line-1">Travel</span>
+          <span class="script-line-2">With Us</span>
+          <svg class="script-swoosh" viewBox="0 0 120 14" fill="none">
+            <path d="M 4 8 Q 60 14, 116 3" stroke="#826210" stroke-width="2.6" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="container commitment-container">
+      <!-- Section Header -->
+      <div class="commitment-header">
+        <div class="commitment-kicker-wrap">
+          <span class="kicker-line"></span>
+          <span class="commitment-kicker">TRAVEL WITH CONFIDENCE</span>
+          <span class="kicker-line"></span>
+        </div>
+        <h2 class="commitment-title">
+          Your Journey, <span class="commitment-title-gold">Our Commitment</span>
+        </h2>
+        <p class="commitment-desc">
+          We make travel planning simpler by combining carefully planned experiences with personalized assistance and
+          dependable support.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Row -->
+      <div class="commitment-pillars-row">
+        <!-- Pillar 1: Carefully Planned Tours -->
+        <div class="commitment-pillar-item">
+          <div class="pillar-icon-circle icon-sage">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <circle cx="8" cy="14" r="1.1" fill="currentColor"></circle>
+              <circle cx="12" cy="14" r="1.1" fill="currentColor"></circle>
+              <circle cx="16" cy="14" r="1.1" fill="currentColor"></circle>
+              <circle cx="8" cy="18" r="1.1" fill="currentColor"></circle>
+              <circle cx="12" cy="18" r="1.1" fill="currentColor"></circle>
+              <circle cx="16" cy="18" r="1.1" fill="currentColor"></circle>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Carefully Planned Tours</h3>
+          <p class="pillar-desc">
+            Well-organized itineraries designed to make your journey comfortable and enjoyable.
           </p>
-          <p style="font-size: 0.86rem; color:#ffde8a; margin-bottom: 6px;">
-            ✉ aravind.kumar@vinyastravels.com
+        </div>
+
+        <div class="pillar-sep-line"></div>
+
+        <!-- Pillar 2: Personalized Experiences -->
+        <div class="commitment-pillar-item">
+          <div class="pillar-icon-circle icon-cream">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Personalized Experiences</h3>
+          <p class="pillar-desc">
+            Travel options that can be tailored to your requirements, preferences and schedule.
           </p>
-          <p style="font-size: 0.86rem; color:#ffde8a;">
-            ☎ +91 98490 12345
+        </div>
+
+        <div class="pillar-sep-line"></div>
+
+        <!-- Pillar 3: Transparent Pricing -->
+        <div class="commitment-pillar-item">
+          <div class="pillar-icon-circle icon-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="8" ry="2.6"></ellipse>
+              <path d="M4 5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6V5"></path>
+              <path d="M4 9.5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6v-4"></path>
+              <path d="M4 14v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6v-4"></path>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Transparent Pricing</h3>
+          <p class="pillar-desc">
+            Clear package information and pricing so you can plan with confidence.
+          </p>
+        </div>
+
+        <div class="pillar-sep-line"></div>
+
+        <!-- Pillar 4: Dedicated Support -->
+        <div class="commitment-pillar-item">
+          <div class="pillar-icon-circle icon-peach">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path
+                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Dedicated Support</h3>
+          <p class="pillar-desc">
+            Assistance throughout your travel planning and booking journey.
           </p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Vinyas Travels. All Rights Reserved. Designed with Royal Elegance.</p>
-        <p>New-Nallakunta, Hyderabad</p>
+  <!-- =========================================================================
+       10. TESTIMONIALS - MEMORIES THAT TRAVEL WITH YOU (SCREENSHOT MATCHING)
+       ========================================================================= -->
+  <section class="section-block testimonials-section" id="testimonials">
+    <div class="container position-relative">
+      <!-- Section Header Matching Reference -->
+      <div class="text-center testi-header">
+        <div class="testi-kicker-wrap">
+          <span class="testi-kicker-line"></span>
+          <span class="testi-kicker-text">TESTIMONIALS</span>
+          <span class="testi-kicker-line"></span>
+        </div>
+        <p class="testi-subheading">Our Travelers' Experiences</p>
+        <h2 class="testi-main-title">
+          Memories That <span class="testi-title-gold">Travel With You</span>
+        </h2>
+        <p class="testi-desc">
+          Real stories from travelers who explored the world with us.
+        </p>
+      </div>
+
+      <!-- Testimonials Auto-Scroll Carousel Showcase -->
+      <div class="testi-carousel-wrapper">
+        <!-- Continuous Auto-Scroll Track -->
+        <div class="testi-track-wrap" id="testiTrackWrap">
+          <div class="testi-cards-track" id="testiCardsTrack">
+            <!-- Card 1: Priya S. (Soft Warm Cream) -->
+            <div class="testi-card-col">
+              <div class="testi-card card-cream w-100">
+                <div class="testi-quote-badge badge-cream">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                  </svg>
+                </div>
+                <p class="testi-quote">
+                  “Everything was well organized and the trip was a wonderful experience from start to finish.”
+                </p>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div class="testi-divider"></div>
+                <div class="testi-author">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/priya_avatar_1789738267326.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop';"
+                    alt="Priya S. Traveler" class="testi-avatar" loading="lazy">
+                  <div class="testi-author-meta">
+                    <h4 class="testi-author-name">Priya S.</h4>
+                    <span class="testi-author-location">Bangalore, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Rahul M. (Soft Mint / Sage) -->
+            <div class="testi-card-col">
+              <div class="testi-card card-mint w-100">
+                <div class="testi-quote-badge badge-mint">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                  </svg>
+                </div>
+                <p class="testi-quote">
+                  “The team made planning our family holiday simple and stress-free.”
+                </p>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div class="testi-divider"></div>
+                <div class="testi-author">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/rahul_avatar_1789738289779.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop';"
+                    alt="Rahul M. Traveler" class="testi-avatar" loading="lazy">
+                  <div class="testi-author-meta">
+                    <h4 class="testi-author-name">Rahul M.</h4>
+                    <span class="testi-author-location">Hyderabad, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Anjali K. (Soft Ice Blue) -->
+            <div class="testi-card-col">
+              <div class="testi-card card-blue w-100">
+                <div class="testi-quote-badge badge-blue">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                  </svg>
+                </div>
+                <p class="testi-quote">
+                  “A memorable trip with excellent arrangements and support.”
+                </p>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div class="testi-divider"></div>
+                <div class="testi-author">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/anjali_avatar_1789738309800.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop';"
+                    alt="Anjali K. Traveler" class="testi-avatar" loading="lazy">
+                  <div class="testi-author-meta">
+                    <h4 class="testi-author-name">Anjali K.</h4>
+                    <span class="testi-author-location">Pune, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Vikram R. (Soft Warm Cream) -->
+            <div class="testi-card-col">
+              <div class="testi-card card-cream w-100">
+                <div class="testi-quote-badge badge-cream">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                  </svg>
+                </div>
+                <p class="testi-quote">
+                  “Our Rajasthan palace tour was unforgettable. Every stay and safari was executed to perfection.”
+                </p>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div class="testi-divider"></div>
+                <div class="testi-author">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/vikram_avatar_1789738718993.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300&auto=format&fit=crop';"
+                    alt="Vikram R. Traveler" class="testi-avatar" loading="lazy">
+                  <div class="testi-author-meta">
+                    <h4 class="testi-author-name">Vikram R.</h4>
+                    <span class="testi-author-location">Mumbai, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5: Rajesh V. (Soft Mint / Sage) -->
+            <div class="testi-card-col">
+              <div class="testi-card card-mint w-100">
+                <div class="testi-quote-badge badge-mint">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                  </svg>
+                </div>
+                <p class="testi-quote">
+                  “Outstanding guidance on our Kerala backwaters houseboat experience and customized family package.”
+                </p>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div class="testi-divider"></div>
+                <div class="testi-author">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/rajesh_avatar_1789738742251.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&auto=format&fit=crop';"
+                    alt="Rajesh V. Traveler" class="testi-avatar" loading="lazy">
+                  <div class="testi-author-meta">
+                    <h4 class="testi-author-name">Rajesh V.</h4>
+                    <span class="testi-author-location">Chennai, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6: Meera N. (Soft Ice Blue) -->
+            <div class="testi-card-col">
+              <div class="testi-card card-blue w-100">
+                <div class="testi-quote-badge badge-blue">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                  </svg>
+                </div>
+                <p class="testi-quote">
+                  “From airport transfers to luxury resorts in Kashmir, the whole trip was smooth and worry-free.”
+                </p>
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div class="testi-divider"></div>
+                <div class="testi-author">
+                  <img
+                    src="C:/Users/HP/.gemini/antigravity-ide/brain/4781624e-1fcd-48c5-b5ed-f7811a5e5ec6/meera_avatar_1789738772467.jpg"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=300&auto=format&fit=crop';"
+                    alt="Meera N. Traveler" class="testi-avatar" loading="lazy">
+                  <div class="testi-author-meta">
+                    <h4 class="testi-author-name">Meera N.</h4>
+                    <span class="testi-author-location">Delhi, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centered 3-Dot Pagination Matching Reference -->
+      <div class="testi-dots-row" id="testiDotsRow">
+        <button type="button" class="testi-dot active" data-index="0" aria-label="Slide 1"></button>
+        <button type="button" class="testi-dot" data-index="1" aria-label="Slide 2"></button>
+        <button type="button" class="testi-dot" data-index="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. PLAN YOUR NEXT JOURNEY - CONTACT & TRIP INQUIRY (SCREENSHOT MATCHING)
+       ========================================================================= -->
+  <section class="section-block journey-contact-section" id="contact">
+    <!-- Background Watermarks & Artwork Decor -->
+    <div class="journey-decor-wrap" aria-hidden="true">
+      <!-- Curved Flight Trail & Gold Airplane -->
+      <div class="journey-decor-flight">
+        <svg class="journey-flight-svg" viewBox="0 0 300 180" fill="none">
+          <path d="M 20 160 C 100 140, 180 60, 280 40" stroke="#9b7625" stroke-width="2" stroke-dasharray="6 6"
+            stroke-linecap="round" />
+        </svg>
+        <div class="journey-plane-icon">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="#9b7625">
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container position-relative" style="z-index: 5;">
+      <div class="row g-5 align-items-center">
+        <!-- Left Column: Information & Value Props -->
+        <div class="col-12 col-lg-6">
+          <!-- Top Kicker -->
+          <div class="journey-kicker-wrap">
+            <span class="journey-kicker-line"></span>
+            <span class="journey-kicker-text">PLAN YOUR NEXT JOURNEY</span>
+            <span class="journey-kicker-line"></span>
+          </div>
+
+          <!-- Main Heading -->
+          <h2 class="journey-title">
+            Where Will Your<br>
+            <span class="journey-title-gold">Next Journey</span><br>
+            Take You?
+          </h2>
+
+          <!-- Narrative Description -->
+          <p class="journey-desc">
+            Explore our group tours or tell us about your ideal family holiday.<br class="d-none d-md-inline">
+            Let's start planning your next unforgettable journey.
+          </p>
+
+          <!-- 4 Features Row -->
+          <div class="journey-features-row">
+            <!-- Feature 1: Amazing Destinations -->
+            <div class="journey-feat-item">
+              <div class="journey-feat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
+                </svg>
+              </div>
+              <span class="journey-feat-label">Amazing<br>Destinations</span>
+            </div>
+
+            <div class="journey-feat-divider"></div>
+
+            <!-- Feature 2: Trusted Travel Partner -->
+            <div class="journey-feat-item">
+              <div class="journey-feat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <span class="journey-feat-label">Trusted<br>Travel Partner</span>
+            </div>
+
+            <div class="journey-feat-divider"></div>
+
+            <!-- Feature 3: Memorable Experiences -->
+            <div class="journey-feat-item">
+              <div class="journey-feat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <span class="journey-feat-label">Memorable<br>Experiences</span>
+            </div>
+
+            <div class="journey-feat-divider"></div>
+
+            <!-- Feature 4: Dedicated Support -->
+            <div class="journey-feat-item">
+              <div class="journey-feat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                  <path
+                    d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                </svg>
+              </div>
+              <span class="journey-feat-label">Dedicated<br>Support</span>
+            </div>
+          </div>
+
+          <!-- Signature Tag -->
+          <div class="journey-script-tag">
+            <span class="script-tag-1">Travel More</span>
+            <span class="script-tag-2">Live Better</span>
+            <svg class="script-tag-swoosh" viewBox="0 0 130 14" fill="none">
+              <path d="M 4 8 Q 65 14, 126 3" stroke="#8c6418" stroke-width="2.6" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right Column: White Elevated Form Card -->
+        <div class="col-12 col-lg-6">
+          <div class="journey-form-card">
+            <form id="journeyInquiryForm" class="journey-inquiry-form">
+              <div class="row g-3">
+                <!-- Name -->
+                <div class="col-12 col-sm-6">
+                  <div class="journey-input-wrap">
+                    <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <input type="text" class="journey-input" id="journeyName" name="name" placeholder="Your Name *"
+                      required>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-12 col-sm-6">
+                  <div class="journey-input-wrap">
+                    <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    <input type="email" class="journey-input" id="journeyEmail" name="email" placeholder="Your Email *"
+                      required>
+                  </div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="col-12 col-sm-6">
+                  <div class="journey-input-wrap">
+                    <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <input type="tel" class="journey-input" id="journeyPhone" name="phone"
+                      placeholder="Your Phone Number *" required>
+                  </div>
+                </div>
+
+                <!-- Number of Travellers -->
+                <div class="col-12 col-sm-6">
+                  <div class="journey-input-wrap">
+                    <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <input type="text" class="journey-input" id="journeyTravellers" name="travellers"
+                      placeholder="Number of Travellers">
+                  </div>
+                </div>
+
+                <!-- Preferred Travel Date -->
+                <div class="col-12">
+                  <div class="journey-input-wrap">
+                    <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    <input type="text" class="journey-input" id="journeyDate" name="date"
+                      placeholder="Preferred Travel Date" onfocus="(this.type='date')"
+                      onblur="if(!this.value)this.type='text'">
+                  </div>
+                </div>
+
+                <!-- Dream Destination -->
+                <div class="col-12">
+                  <div class="journey-input-wrap">
+                    <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <input type="text" class="journey-input" id="journeyDestination" name="destination"
+                      placeholder="Your Dream Destination">
+                  </div>
+                </div>
+
+                <!-- Trip Notes -->
+                <div class="col-12">
+                  <div class="journey-input-wrap textarea-wrap">
+                    <svg class="input-icon textarea-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                    <textarea class="journey-input journey-textarea" id="journeyNotes" name="notes" rows="3"
+                      placeholder="Tell us about your trip (optional)"></textarea>
+                  </div>
+                </div>
+
+                <!-- Plan Your Trip CTA -->
+                <div class="col-12">
+                  <button type="submit" class="btn-journey-submit" id="journeySubmitBtn">
+                    <span>Plan Your Trip</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Privacy Assurance -->
+            <div class="journey-privacy-note">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path
+                  d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm3 8H9V7a3 3 0 0 1 6 0v3z" />
+              </svg>
+              <span>Your information is safe with us.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer" id="footer">
+    <!-- Background Artwork Layer: Landmarks Skyline, Dotted World Map, Flight Path, Compass Rose & Watermark -->
+    <div class="footer-bg-decor" aria-hidden="true">
+      <!-- 1. Dotted World Map Watermark (Top Right) -->
+      <div class="footer-bg-map">
+        <svg class="footer-map-svg" viewBox="0 0 1000 500" fill="none">
+          <defs>
+            <pattern id="goldWorldDots" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+              <circle cx="4" cy="4" r="1.8" fill="#c2a05e" />
+            </pattern>
+          </defs>
+          <g fill="url(#goldWorldDots)" opacity="0.32">
+            <!-- North America & Greenland -->
+            <path
+              d="M 75 105 C 95 80, 135 65, 175 70 C 215 60, 255 55, 295 65 C 330 80, 340 105, 325 125 C 305 130, 290 145, 290 160 C 315 170, 325 195, 310 225 C 290 230, 275 245, 265 270 C 250 270, 235 240, 215 245 C 195 240, 175 250, 160 225 C 145 195, 130 175, 140 150 C 125 140, 95 140, 75 125 Z" />
+            <path d="M 365 40 C 390 30, 425 35, 435 55 C 440 80, 420 110, 395 115 C 370 118, 355 85, 365 40 Z" />
+            <!-- South America -->
+            <path
+              d="M 260 310 C 295 295, 340 305, 370 325 C 410 350, 425 385, 410 425 C 390 465, 355 490, 340 515 C 325 515, 315 480, 305 440 C 290 400, 270 370, 255 340 C 248 328, 252 318, 260 310 Z" />
+            <!-- Europe -->
+            <path
+              d="M 515 65 C 535 50, 565 55, 580 75 C 585 100, 560 135, 540 130 C 530 110, 535 90, 515 65 Z M 455 160 C 490 150, 530 155, 565 170 C 560 195, 530 205, 510 215 C 485 215, 455 225, 445 195 C 440 175, 445 165, 455 160 Z" />
+            <path
+              d="M 465 115 C 480 108, 485 125, 475 145 C 465 150, 458 135, 465 115 Z M 445 122 C 455 120, 455 135, 448 140 C 442 135, 440 128, 445 122 Z" />
+            <!-- Africa -->
+            <path
+              d="M 460 225 C 520 215, 580 220, 625 245 C 640 270, 620 310, 590 360 C 570 410, 555 445, 535 445 C 515 440, 495 370, 465 320 C 435 285, 435 250, 460 225 Z" />
+            <path d="M 635 360 C 645 355, 645 395, 635 405 C 625 400, 628 375, 635 360 Z" />
+            <!-- Middle East -->
+            <path d="M 595 240 C 625 240, 645 260, 635 285 C 615 295, 595 280, 595 255 Z" />
+            <!-- Asia -->
+            <path
+              d="M 565 75 C 640 60, 740 55, 840 65 C 925 80, 945 115, 915 135 C 865 135, 815 120, 765 125 C 705 115, 635 130, 565 120 Z" />
+            <path d="M 630 135 C 715 125, 800 130, 855 160 C 865 190, 840 230, 785 235 C 735 225, 685 200, 630 185 Z" />
+            <path
+              d="M 670 225 C 715 220, 735 250, 715 290 C 695 300, 675 265, 670 225 Z M 712 302 C 718 300, 720 312, 714 316 C 708 314, 708 306, 712 302 Z" />
+            <path d="M 885 150 C 905 155, 895 190, 875 185 C 870 170, 875 155, 885 150 Z" />
+            <path d="M 750 235 C 785 230, 795 270, 765 285 C 750 270, 745 250, 750 235 Z" />
+            <path
+              d="M 755 300 C 785 310, 770 325, 750 315 Z M 780 320 C 815 325, 805 335, 775 330 Z M 795 285 C 825 280, 830 310, 805 310 Z M 870 310 C 910 310, 905 330, 865 325 Z M 835 255 C 850 265, 840 290, 830 275 Z" />
+            <!-- Australia & Oceania -->
+            <path d="M 795 355 C 840 340, 885 350, 905 380 C 915 420, 885 445, 835 445 C 790 440, 775 400, 795 355 Z" />
+            <path
+              d="M 865 455 C 875 455, 872 468, 862 468 C 858 462, 860 455, 865 455 Z M 930 425 C 942 430, 935 455, 925 450 Z M 938 460 C 950 470, 940 490, 930 480 Z" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 2. Curved Golden Flight Trail & Airplane (Top Right) -->
+      <div class="footer-flight-decor">
+        <svg viewBox="0 0 260 180" width="260" height="180" fill="none">
+          <path d="M 10 160 C 65 135, 150 100, 218 40" stroke="#c2a05e" stroke-width="1.8" stroke-dasharray="5 5"
+            stroke-opacity="0.65" stroke-linecap="round" />
+          <!-- Golden Airplane at Flight Trail Tip (Matching User Reference) -->
+          <g transform="translate(230, 28) rotate(45) scale(1.15) translate(-12, -12)">
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+              fill="#c2a05e" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 3. World Monuments Skyline Silhouette (Along Bottom Edge) -->
+      <div class="footer-skyline-decor">
+        <svg class="footer-skyline-svg" viewBox="0 0 1200 200" width="100%" height="100%" fill="none" stroke="#c2a05e"
+          stroke-linecap="round" stroke-linejoin="round">
+          <!-- Eiffel Tower -->
+          <g stroke-width="1.3" stroke-opacity="0.48">
+            <line x1="110" y1="10" x2="110" y2="35" stroke-width="2" />
+            <circle cx="110" cy="10" r="2" fill="#c2a05e" fill-opacity="0.7" />
+            <rect x="105" y="35" width="10" height="5" />
+            <line x1="106" y1="40" x2="100" y2="85" />
+            <line x1="114" y1="40" x2="120" y2="85" />
+            <line x1="103" y1="52" x2="117" y2="52" />
+            <line x1="101" y1="68" x2="119" y2="68" />
+            <line x1="106" y1="40" x2="119" y2="52" />
+            <line x1="114" y1="40" x2="103" y2="52" />
+            <line x1="103" y1="52" x2="119" y2="68" />
+            <line x1="117" y1="52" x2="101" y2="68" />
+            <rect x="94" y="85" width="32" height="7" rx="1" />
+            <path d="M 98 92 L 68 196" />
+            <path d="M 85 92 L 76 196" />
+            <path d="M 122 92 L 152 196" />
+            <path d="M 135 92 L 144 196" />
+            <line x1="94" y1="115" x2="126" y2="115" />
+            <line x1="88" y1="140" x2="132" y2="140" />
+            <line x1="80" y1="168" x2="140" y2="168" />
+            <line x1="94" y1="115" x2="132" y2="140" />
+            <line x1="126" y1="115" x2="88" y2="140" />
+            <line x1="88" y1="140" x2="140" y2="168" />
+            <line x1="132" y1="140" x2="80" y2="168" />
+            <path d="M 82 196 C 92 145, 128 145, 138 196" stroke-width="1.8" />
+          </g>
+          <!-- Roman Colosseum -->
+          <g stroke-width="1.3" stroke-opacity="0.42">
+            <path d="M 195 145 C 205 130, 225 125, 260 125 C 295 125, 315 132, 320 148 L 320 196 L 195 196 Z" />
+            <path
+              d="M 195 145 L 205 142 L 208 148 L 220 140 L 225 145 L 245 135 L 255 138 L 275 128 L 290 134 L 305 130 L 320 148"
+              stroke-width="1.6" />
+            <line x1="196" y1="150" x2="319" y2="150" />
+            <line x1="195" y1="168" x2="320" y2="168" />
+            <line x1="195" y1="182" x2="320" y2="182" />
+            <path d="M 202 196 L 202 188 C 202 185, 208 185, 208 188 L 208 196" />
+            <path d="M 214 196 L 214 188 C 214 185, 220 185, 220 188 L 220 196" />
+            <path d="M 226 196 L 226 188 C 226 185, 232 185, 232 188 L 232 196" />
+            <path d="M 238 196 L 238 188 C 238 185, 244 185, 244 188 L 244 196" />
+            <path d="M 250 196 L 250 188 C 250 185, 256 185, 256 188 L 256 196" />
+            <path d="M 262 196 L 262 188 C 262 185, 268 185, 268 188 L 268 196" />
+            <path d="M 274 196 L 274 188 C 274 185, 280 185, 280 188 L 280 196" />
+            <path d="M 286 196 L 286 188 C 286 185, 292 185, 292 188 L 292 196" />
+            <path d="M 298 196 L 298 188 C 298 185, 304 185, 304 188 L 304 196" />
+            <path d="M 310 196 L 310 188 C 310 185, 316 185, 316 188 L 316 196" />
+            <path d="M 205 182 L 205 174 C 205 171, 211 171, 211 174 L 211 182" />
+            <path d="M 217 182 L 217 174 C 217 171, 223 171, 223 174 L 223 182" />
+            <path d="M 229 182 L 229 174 C 229 171, 235 171, 235 174 L 235 182" />
+            <path d="M 241 182 L 241 174 C 241 171, 247 171, 247 174 L 247 182" />
+            <path d="M 253 182 L 253 174 C 253 171, 259 171, 259 174 L 259 182" />
+            <path d="M 265 182 L 265 174 C 265 171, 271 171, 271 174 L 271 182" />
+            <path d="M 277 182 L 277 174 C 277 171, 283 171, 283 174 L 283 182" />
+            <path d="M 289 182 L 289 174 C 289 171, 295 171, 295 174 L 295 182" />
+            <path d="M 301 182 L 301 174 C 301 171, 307 171, 307 174 L 307 182" />
+          </g>
+          <!-- Taj Mahal -->
+          <g stroke-width="1.3" stroke-opacity="0.48">
+            <rect x="360" y="190" width="150" height="6" />
+            <line x1="365" y1="190" x2="367" y2="78" />
+            <line x1="371" y1="190" x2="369" y2="78" />
+            <rect x="364" y="115" width="8" height="3" />
+            <rect x="365" y="150" width="6" height="3" />
+            <path
+              d="M 363 78 L 373 78 L 370 70 C 368 66, 368 66, 368 64 L 368 58 L 368 64 C 368 66, 368 66, 366 70 Z" />
+            <line x1="499" y1="190" x2="501" y2="78" />
+            <line x1="505" y1="190" x2="503" y2="78" />
+            <rect x="498" y="115" width="8" height="3" />
+            <rect x="499" y="150" width="6" height="3" />
+            <path
+              d="M 497 78 L 507 78 L 504 70 C 502 66, 502 66, 502 64 L 502 58 L 502 64 C 502 66, 502 66, 500 70 Z" />
+            <rect x="390" y="145" width="90" height="45" />
+            <path d="M 416 190 L 416 156 C 416 148, 435 145, 435 145 C 435 145, 454 148, 454 156 L 454 190 Z"
+              stroke-width="1.5" />
+            <rect x="420" y="132" width="30" height="13" />
+            <path d="M 420 132 C 412 118, 414 98, 435 88 C 456 98, 458 118, 450 132 Z" stroke-width="1.8" />
+            <line x1="435" y1="88" x2="435" y2="70" stroke-width="2" />
+            <circle cx="435" cy="74" r="2" fill="#c2a05e" fill-opacity="0.6" />
+            <circle cx="435" cy="70" r="1.3" fill="#c2a05e" fill-opacity="0.9" />
+            <rect x="402" y="136" width="12" height="9" />
+            <path d="M 400 136 C 398 128, 418 128, 416 136 Z" />
+            <rect x="456" y="136" width="12" height="9" />
+            <path d="M 454 136 C 452 128, 472 128, 470 136 Z" />
+          </g>
+          <!-- Asian Pagoda -->
+          <g stroke-width="1.3" stroke-opacity="0.45">
+            <rect x="565" y="172" width="40" height="24" />
+            <path d="M 550 172 C 555 164, 615 164, 620 172" stroke-width="1.8" />
+            <rect x="570" y="148" width="30" height="18" />
+            <path d="M 556 148 C 562 140, 608 140, 614 148" stroke-width="1.8" />
+            <rect x="575" y="126" width="20" height="16" />
+            <path d="M 562 126 C 568 118, 602 118, 608 126" stroke-width="1.8" />
+            <rect x="579" y="106" width="12" height="14" />
+            <path d="M 568 106 C 573 98, 597 98, 602 106" stroke-width="1.8" />
+            <line x1="585" y1="98" x2="585" y2="68" stroke-width="2" />
+            <circle cx="585" cy="74" r="3" />
+            <circle cx="585" cy="80" r="4" />
+          </g>
+          <!-- Big Ben / London -->
+          <g stroke-width="1.3" stroke-opacity="0.42">
+            <rect x="685" y="60" width="32" height="136" />
+            <circle cx="701" cy="84" r="10" stroke-width="1.5" />
+            <line x1="701" y1="84" x2="701" y2="78" />
+            <line x1="701" y1="84" x2="705" y2="84" />
+            <polygon points="685,60 701,20 717,60" stroke-width="1.6" />
+            <line x1="701" y1="20" x2="701" y2="8" stroke-width="2" />
+            <circle cx="701" cy="8" r="1.5" fill="#c2a05e" />
+            <rect x="717" y="125" width="55" height="71" />
+            <path d="M 724 165 L 724 145 C 724 140, 728 138, 728 138 C 728 138, 732 140, 732 145 L 732 165 Z" />
+            <path d="M 738 165 L 738 145 C 738 140, 742 138, 742 138 C 742 138, 746 140, 746 145 L 746 165 Z" />
+            <path d="M 752 165 L 752 145 C 752 140, 756 138, 756 138 C 756 138, 760 140, 760 145 L 760 165 Z" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 4. Nautical Compass Rose Watermark (Bottom Right) -->
+      <div class="footer-compass-decor">
+        <svg class="footer-compass-svg" viewBox="0 0 300 300" width="100%" height="100%" fill="none" stroke="#c2a05e">
+          <circle cx="150" cy="150" r="140" stroke-width="1.2" stroke-opacity="0.4" />
+          <circle cx="150" cy="150" r="132" stroke-width="0.8" stroke-dasharray="3 3" stroke-opacity="0.4" />
+          <circle cx="150" cy="150" r="100" stroke-width="1" stroke-opacity="0.3" />
+          <circle cx="150" cy="150" r="48" stroke-width="1" stroke-opacity="0.35" />
+          <!-- Cardinal Letters -->
+          <text x="150" y="32" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">N</text>
+          <text x="150" y="278" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">S</text>
+          <text x="278" y="156" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">E</text>
+          <text x="22" y="156" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">W</text>
+          <!-- 4 Primary Points -->
+          <polygon points="150,150 150,42 140,140" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 150,42 160,140" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <polygon points="150,150 150,258 160,160" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 150,258 140,160" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <polygon points="150,150 258,150 160,140" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 258,150 160,160" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <polygon points="150,150 42,150 140,160" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 42,150 140,140" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <circle cx="150" cy="150" r="10" fill="#c2a05e" fill-opacity="0.6" stroke="#c2a05e" stroke-width="1.5" />
+          <circle cx="150" cy="150" r="3" fill="#ffffff" stroke="none" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="container footer-container">
+      <div class="footer-grid-4col">
+        <!-- Column 1: Brand, Royal Crest & Narrative -->
+        <div class="footer-brand-col">
+          <a href="#home" class="footer-brand-link" aria-label="Vinyas Travels Home">
+            <img src="images/logo.png" alt="Vinyas Travels Royal Emblem" class="footer-brand-logo">
+          </a>
+          <div class="footer-brand-motto">EXPLORE &bull; EXPERIENCE &bull; ENJOY</div>
+          <p class="footer-about-p">
+            At Vinyas Travels, we turn your travel dreams into unforgettable experiences. From group tours to family
+            holidays, we bring you closer to the world with trusted service and personalized care.
+          </p>
+          <div class="footer-social-row">
+            <a href="#" class="footer-social-circle" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="X">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
+          <!-- Script Tagline: Travel More Live Better with gold line and swoosh -->
+          <div class="footer-script-wrap">
+            <span class="script-dash-line"></span>
+            <span class="script-tag-cursive">Travel More Live Better</span>
+            <svg class="script-tag-swoosh" viewBox="0 0 140 12" fill="none">
+              <path d="M 4 8 C 45 12, 95 6, 136 2" stroke="#c2a05e" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Column 2: QUICK LINKS -->
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <div class="footer-title-bar"></div>
+          <ul class="footer-menu-links">
+            <li><a href="#home"><span class="chevron">&rsaquo;</span> Home</a></li>
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Destinations</a></li>
+            <li><a href="#group-tours"><span class="chevron">&rsaquo;</span> Group Tours</a></li>
+            <li><a href="#family-tours"><span class="chevron">&rsaquo;</span> Family Tours</a></li>
+            <li><a href="#about"><span class="chevron">&rsaquo;</span> About Us</a></li>
+            <li><a href="#contact"><span class="chevron">&rsaquo;</span> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: POPULAR DESTINATIONS -->
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">POPULAR DESTINATIONS</h4>
+          <div class="footer-title-bar"></div>
+          <ul class="footer-menu-links">
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Dubai</a></li>
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Singapore</a></li>
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Thailand</a></li>
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Maldives</a></li>
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Bali</a></li>
+            <li><a href="#destinations"><span class="chevron">&rsaquo;</span> Europe</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: GET IN TOUCH -->
+        <div class="footer-contact-col">
+          <h4 class="footer-col-title">GET IN TOUCH</h4>
+          <div class="footer-title-bar"></div>
+          <div class="footer-contact-items">
+            <div class="footer-ci-row">
+              <div class="footer-gold-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+              </div>
+              <div class="footer-ci-desc">
+                123 Travel Street,<br>
+                Hyderabad, India - 500081
+              </div>
+            </div>
+
+            <div class="footer-ci-row">
+              <div class="footer-gold-badge">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path
+                    d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.72 11.72 0 0 0 3.7.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.72 11.72 0 0 0 .59 3.7 1 1 0 0 1-.25 1.02l-2.22 2.07z" />
+                </svg>
+              </div>
+              <div class="footer-ci-desc">
+                <a href="tel:+919876543210">+91 98765 43210</a>
+              </div>
+            </div>
+
+            <div class="footer-ci-row">
+              <div class="footer-gold-badge">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </div>
+              <div class="footer-ci-desc">
+                <a href="mailto:info@vinyastravels.com">info@vinyastravels.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- Footer Bottom Copyright & Legal Links Bar -->
+      <div class="footer-royal-bottom">
+        <p class="footer-bottom-copy">&copy; 2026 Vinyas Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-actions">
+          <div class="footer-legal-nav">
+            <a href="#">Privacy Policy</a>
+            <span class="legal-pipe">|</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="legal-pipe">|</span>
+            <a href="#">FAQ</a>
+            <span class="legal-pipe">|</span>
+            <a href="#">Sitemap</a>
+          </div>
+          <a href="#home" class="footer-scroll-up-btn" aria-label="Scroll to top of page">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -904,6 +2187,9 @@
       </form>
     </div>
   </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
