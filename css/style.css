@@ -1385,7 +1385,7 @@ textarea {
 
 .section-title {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #000000;
   line-height: 1.2;
@@ -2371,7 +2371,7 @@ textarea {
 
 .tours-section-title {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #000000;
   line-height: 1.18;
@@ -2612,7 +2612,7 @@ textarea {
 
 .popular-dest-title {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #000000;
   line-height: 1.18;
@@ -3163,7 +3163,7 @@ textarea {
 
 .how-main-title {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #000000;
   line-height: 1.2;
@@ -3469,7 +3469,7 @@ textarea {
 
 .commitment-title {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #000000;
   line-height: 1.2;
@@ -3645,7 +3645,7 @@ textarea {
   }
 
   .commitment-title {
-    font-size: 1.95rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -3696,7 +3696,7 @@ textarea {
 
 .testi-main-title {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #000000;
   line-height: 1.22;
@@ -3939,7 +3939,7 @@ textarea {
   }
 
   .testi-main-title {
-    font-size: 1.95rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -4802,7 +4802,7 @@ textarea {
 
 .final-cta-headline {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.5px;
