@@ -103,16 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (heroDateInput) {
     heroDateInput.min = minDateStr;
-
-    // Pre-fill with tomorrow's date if empty
-    if (!heroDateInput.value) {
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const tY = tomorrow.getFullYear();
-      const tM = String(tomorrow.getMonth() + 1).padStart(2, '0');
-      const tD = String(tomorrow.getDate()).padStart(2, '0');
-      heroDateInput.value = `${tY}-${tM}-${tD}`;
-    }
+    heroDateInput.value = ''; // Do not pre-fill date; show dd-mm-yyyy by default
 
     const openPicker = () => {
       try {
@@ -177,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
       if (navMenuWrap.classList.contains('open') &&
-          !navMenuWrap.contains(e.target) &&
-          !mobileToggle.contains(e.target)) {
+        !navMenuWrap.contains(e.target) &&
+        !mobileToggle.contains(e.target)) {
         closeDrawer();
       }
     });

@@ -1017,12 +1017,35 @@ textarea {
 }
 
 .hero-date-picker-input {
+  position: relative;
   cursor: pointer;
+  width: 100%;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0a192f;
+}
+
+.hero-date-picker-input::-webkit-datetime-edit,
+.hero-date-picker-input::-webkit-datetime-edit-fields-wrapper,
+.hero-date-picker-input::-webkit-datetime-edit-text,
+.hero-date-picker-input::-webkit-datetime-edit-month-field,
+.hero-date-picker-input::-webkit-datetime-edit-day-field,
+.hero-date-picker-input::-webkit-datetime-edit-year-field {
+  color: #0a192f;
+  font-weight: 700;
 }
 
 .hero-date-picker-input::-webkit-calendar-picker-indicator {
-  display: none !important;
-  -webkit-appearance: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0 !important;
+  cursor: pointer !important;
 }
 
 .hero-date-picker-input::-webkit-inner-spin-button,
