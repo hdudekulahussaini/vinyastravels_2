@@ -1,6 +1,19 @@
-/**
- * Vinyas Travels - Interactive Script
- */
+// Global Modal Management Helpers
+window.openModal = function (modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeModal = function (modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Sticky Header Scroll Effect ---
@@ -311,7 +324,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Booking Modal Triggering ---
-  const bookingModalTriggers = document.querySelectorAll('.trigger-booking-modal, .top-quick-link[data-action="booking"]');
+  const bookingModalTriggers = document.querySelectorAll(
+    '#headerContactBtn, a[href="#bookingModal"], .trigger-booking-modal, .top-quick-link[data-action="booking"]'
+  );
   bookingModalTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -322,6 +337,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       openModal('bookingModal');
     });
+  });
+
+  // Global click event delegation for #headerContactBtn or any a[href="#bookingModal"]
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('#headerContactBtn, a[href="#bookingModal"]');
+    if (trigger) {
+      e.preventDefault();
+      const packageName = trigger.getAttribute('data-package') || 'Custom Luxury Tour';
+      const packageInput = document.getElementById('bookingTourInput');
+      if (packageInput) {
+        packageInput.value = packageName;
+      }
+      openModal('bookingModal');
+    }
   });
 
   // Booking Form Submission
