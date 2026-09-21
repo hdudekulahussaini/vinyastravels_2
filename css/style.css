@@ -174,20 +174,60 @@ textarea {
 }
 
 .brand-logo-img {
-  height: 52px;
+  height: 55px;
   width: auto;
-  max-width: 240px;
+  max-width: 290px;
   object-fit: contain;
   display: block;
-  transition: transform var(--transition-fast), filter var(--transition-fast);
+  transition: height 0.3s ease, transform var(--transition-fast), filter var(--transition-fast);
 }
 
-.site-header:not(.scrolled) .brand-logo-img {
+/* Logo Switch: White logo on transparent header, logo-backup on sticky header */
+.site-header:not(.scrolled) .logo-sticky {
+  display: none !important;
+}
+
+.site-header:not(.scrolled) .logo-transparent {
+  display: block !important;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
 
-.site-header.scrolled .brand-logo-img {
+.site-header.scrolled .logo-transparent {
+  display: none !important;
+}
+
+.site-header.scrolled .logo-sticky {
+  display: block !important;
   filter: none;
+}
+
+.site-header.scrolled .brand-logo-img {
+  height: 56px;
+  max-width: 250px;
+}
+
+@media (max-width: 991px) {
+  .brand-logo-img {
+    height: 56px;
+    max-width: 250px;
+  }
+
+  .site-header.scrolled .brand-logo-img {
+    height: 50px;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-logo-img {
+    height: 50px;
+    max-width: 220px;
+  }
+
+  .site-header.scrolled .brand-logo-img {
+    height: 46px;
+    max-width: 200px;
+  }
 }
 
 /* Navigation Links */
@@ -1347,14 +1387,14 @@ textarea {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 700;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   line-height: 1.2;
   margin-bottom: 14px;
   letter-spacing: -0.4px;
 }
 
 .section-title-gold {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   font-family: inherit;
 }
 
@@ -2333,14 +2373,14 @@ textarea {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 700;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   line-height: 1.18;
   letter-spacing: -0.4px;
   margin-bottom: 15px;
 }
 
 .tours-title-gold {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   font-family: inherit;
 }
 
@@ -2574,14 +2614,14 @@ textarea {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 700;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   line-height: 1.18;
   margin-bottom: 15px;
   letter-spacing: -0.4px;
 }
 
 .popular-dest-title-gold {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   font-family: inherit;
 }
 
@@ -3125,13 +3165,13 @@ textarea {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 700;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   line-height: 1.2;
   letter-spacing: -0.4px;
 }
 
 .how-title-gold {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   font-family: inherit;
 }
 
@@ -3431,7 +3471,7 @@ textarea {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 700;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   line-height: 1.2;
   margin-bottom: 14px;
   letter-spacing: -0.4px;
@@ -3440,7 +3480,7 @@ textarea {
 }
 
 .commitment-title-gold {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   font-family: inherit;
 }
 
@@ -3658,7 +3698,7 @@ textarea {
   font-family: 'Cinzel', 'Oswald', Georgia, serif;
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 700;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   line-height: 1.22;
   margin-bottom: 12px;
   letter-spacing: -0.4px;
@@ -3667,7 +3707,7 @@ textarea {
 }
 
 .testi-title-gold {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   font-family: inherit;
 }
 
@@ -4766,12 +4806,12 @@ textarea {
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.5px;
-  color: var(--brand-gold, #B88918);
+  color: #000000;
   margin-bottom: 16px;
 }
 
 .final-cta-headline .gold-highlight {
-  color: var(--brand-gold, #B88918);
+  color: #000000;
 }
 
 .final-cta-narrative {
