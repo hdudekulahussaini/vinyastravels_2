@@ -21,7 +21,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=86">
+  <link rel="stylesheet" href="css/style.css?v=117">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
@@ -37,11 +37,21 @@
       <div class="container nav-container">
         <!-- Left: Brand Logo -->
         <a href="#home" class="brand-logo" id="brandLogo" aria-label="Vinyas Travels Home">
-          <img src="images/logo.png" alt="Vinyas Travels" class="brand-logo-img">
+          <img src="images/logo-primary.png" alt="Vinyas Travels" class="brand-logo-img">
         </a>
 
         <!-- Center Menu Links (Exact Mockup Navigation) -->
         <nav class="nav-menu-wrap" id="navMenuWrap">
+          <!-- Mobile Drawer Top with Close Icon -->
+          <div class="nav-menu-drawer-top">
+            <button type="button" class="nav-menu-close-btn" id="navMenuCloseBtn" aria-label="Close Menu">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
           <ul class="nav-links">
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#destinations" class="nav-link">Destinations</a></li>
@@ -55,8 +65,8 @@
           <!-- Traveler Account / Profile Dropdown Wrap -->
           <div class="header-profile-dropdown-wrap" id="headerProfileDropdownWrap">
             <button type="button" class="header-user-btn" id="headerUserBtn" aria-label="Sign In / Traveler Account"
-              title="Sign In / Traveler Account">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2.2"
+              title="Sign In / Traveler Account" onclick="toggleProfileDropdown(event)">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#8a660e" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 20a6 6 0 0 0-12 0" />
                 <circle cx="12" cy="10" r="4" />
@@ -64,119 +74,81 @@
               </svg>
             </button>
 
-            <!-- Floating Profile Dropdown Card (Exact Match to Screenshot) -->
-            <div class="profile-dropdown-card" id="profileDropdownCard">
-              <div class="profile-card-header">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop"
-                  alt="Eden Smith" class="profile-card-avatar">
-                <div class="profile-card-user-info">
-                  <h4 class="profile-card-name">Eden Smith</h4>
-                  <span class="profile-card-location">Los Angeles, CA</span>
+            <!-- Quick Traveler Sign-In Dropdown Card with Input Fields -->
+            <div class="profile-dropdown-card quick-signin-dropdown" id="profileDropdownCard">
+              <div class="quick-signin-header">
+                <div class="quick-signin-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a660e" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="quick-signin-title">Traveler Portal</h4>
+                  <p class="quick-signin-subtitle">Sign in to manage your holidays</p>
                 </div>
               </div>
 
-              <div class="profile-card-divider"></div>
-
-              <ul class="profile-card-list">
-                <li>
-                  <a href="#profile" class="profile-card-link">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                      </svg>
-                      <span>Profile</span>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#notifications" class="profile-card-link">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                      </svg>
-                      <span>Notifications</span>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#my-listings" class="profile-card-link">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-                      </svg>
-                      <span>My listings</span>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#wishlist" class="profile-card-link">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                      </svg>
-                      <span>Wishlist</span>
-                    </span>
-                  </a>
-                </li>
-              </ul>
-
-              <div class="profile-card-divider"></div>
-
-              <ul class="profile-card-list">
-                <li>
-                  <div class="profile-card-link profile-toggle-row">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 18h6" />
-                        <path d="M10 22h4" />
-                        <path d="M12 2v1" />
-                        <path d="M12 8a4 4 0 0 0-4 4c0 1.5.8 2.8 2 3.4V17h4v-1.6c1.2-.6 2-1.9 2-3.4a4 4 0 0 0-4-4z" />
-                      </svg>
-                      <span>Dark mode</span>
-                    </span>
-                    <span class="profile-toggle-switch" id="profileDarkToggle"></span>
+              <form class="quick-signin-form" id="quickSignInForm">
+                <div class="quick-form-group">
+                  <label for="quickUserEmail" class="quick-form-label">Email or Mobile</label>
+                  <div class="quick-input-wrap">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    <input type="text" id="quickUserEmail" class="quick-form-input" placeholder="name@example.com"
+                      required>
                   </div>
-                </li>
-                <li>
-                  <a href="#rtl" class="profile-card-link">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12h16m0 0l-6-6m6 6l-6 6" />
-                      </svg>
-                      <span>RTL theme ↗</span>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#logout" class="profile-card-link profile-logout-link" id="profileLogoutBtn">
-                    <span class="profile-link-left">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                        <polyline points="16 17 21 12 16 7" />
-                        <line x1="21" y1="12" x2="9" y2="12" />
-                      </svg>
-                      <span>Log out</span>
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                </div>
+
+                <div class="quick-form-group">
+                  <label for="quickUserPassword" class="quick-form-label">Password</label>
+                  <div class="quick-input-wrap">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <input type="password" id="quickUserPassword" class="quick-form-input" placeholder="••••••••"
+                      required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-quick-signin" id="quickSignInSubmitBtn">
+                  <span>Sign In</span>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </form>
+
+              <div class="quick-signin-footer">
+                <a href="#bookingModal" class="quick-footer-link trigger-booking-modal"
+                  data-package="Custom Luxury Tour">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                  </svg>
+                  <span>Book Tour</span>
+                </a>
+                <span class="quick-footer-dot">•</span>
+                <a href="#contact" class="quick-footer-link" id="quickSupportLink">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  <span>Help Desk</span>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Plan Your Trip Navy Pill Button -->
           <a href="#contact" class="btn-header-contact btn-plan-trip" id="headerContactBtn">
-            <span>Plan Your Trip</span>
+            <span>Book Now</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -184,13 +156,18 @@
             </svg>
           </a>
 
-          <!-- Mobile Hamburger Toggle -->
+          <!-- Mobile Hamburger / Close Toggle -->
           <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
         </div>
@@ -198,6 +175,20 @@
     </div>
   </header>
   <script>
+    // Global traveler account dropdown toggle
+    window.toggleProfileDropdown = function (e) {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
+      var profileCard = document.getElementById('profileDropdownCard');
+      var userBtn = document.getElementById('headerUserBtn');
+      if (profileCard) {
+        var isShowing = profileCard.classList.toggle('show');
+        if (userBtn) userBtn.setAttribute('aria-expanded', isShowing ? 'true' : 'false');
+      }
+    };
+
     (function () {
       var header = document.getElementById('siteHeader');
       if (header) {
@@ -210,6 +201,31 @@
         };
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
+      }
+
+      // Close dropdown when clicking outside or pressing Escape
+      var profileCard = document.getElementById('profileDropdownCard');
+      var userBtn = document.getElementById('headerUserBtn');
+      if (profileCard) {
+        profileCard.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+
+        document.addEventListener('click', function (e) {
+          if (profileCard.classList.contains('show')) {
+            if (!profileCard.contains(e.target) && (!userBtn || !userBtn.contains(e.target))) {
+              profileCard.classList.remove('show');
+              if (userBtn) userBtn.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && profileCard.classList.contains('show')) {
+            profileCard.classList.remove('show');
+            if (userBtn) userBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
       }
     })();
   </script>
@@ -237,10 +253,10 @@
               <svg viewBox="0 0 32 32" width="34" height="34" fill="none">
                 <path
                   d="M16 2.5L18.7 5.8L23 5.4L24.4 9.4L28.6 10.7L28.4 15.1L31.5 18L29.6 21.9L30.9 26.1L26.8 27.8L26.3 32.2L22 32L19.4 35.4L16 33.2L12.6 35.4L10 32L5.7 32.2L5.2 27.8L1.1 26.1L2.4 21.9L0.5 18L3.6 15.1L3.4 10.7L7.6 9.4L9 5.4L13.3 5.8L16 2.5Z"
-                  stroke="#d97706" stroke-width="2" stroke-linejoin="round" />
-                <line x1="11" y1="21" x2="21" y2="11" stroke="#d97706" stroke-width="2" stroke-linecap="round" />
-                <circle cx="12" cy="12" r="1.8" fill="#d97706" />
-                <circle cx="20" cy="20" r="1.8" fill="#d97706" />
+                  stroke="#8a660e" stroke-width="2" stroke-linejoin="round" />
+                <line x1="11" y1="21" x2="21" y2="11" stroke="#8a660e" stroke-width="2" stroke-linecap="round" />
+                <circle cx="12" cy="12" r="1.8" fill="#8a660e" />
+                <circle cx="20" cy="20" r="1.8" fill="#8a660e" />
               </svg>
             </div>
             <div class="trust-badge-text">
@@ -252,13 +268,13 @@
           <!-- Badge 2: 24/7 Support -->
           <div class="trust-badge-item">
             <div class="trust-badge-icon">
-              <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#d97706" stroke-width="2"
+              <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#8a660e" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 17v-3a11 11 0 0 1 22 0v3" />
                 <rect x="3" y="17" width="5" height="8" rx="2" fill="none" />
                 <rect x="24" y="17" width="5" height="8" rx="2" fill="none" />
                 <path d="M24 23c0 3-2 5-6 5h-2" />
-                <circle cx="15" cy="28" r="1.5" fill="#d97706" />
+                <circle cx="15" cy="28" r="1.5" fill="#8a660e" />
               </svg>
             </div>
             <div class="trust-badge-text">
@@ -270,7 +286,7 @@
           <!-- Badge 3: Trusted by 1M+ Travelers -->
           <div class="trust-badge-item">
             <div class="trust-badge-icon">
-              <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#d97706" stroke-width="2"
+              <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#8a660e" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 3L5 7v9c0 8 5 13 11 15 6-2 11-7 11-15V7L16 3z" />
                 <path d="M11 16l3.5 3.5L21 12" />
@@ -301,7 +317,8 @@
       <div class="hero-search-inner">
         <!-- 3 Stepped Tabs: All Tours (active), Group Tours, Family Tours -->
         <div class="hero-tabs-header" role="tablist">
-          <button type="button" class="hero-tab-btn active" data-type="All Tours" role="tab" aria-selected="true">
+          <button type="button" class="hero-tab-btn active" data-type="All Tours" role="tab" aria-selected="true"
+            onclick="switchHeroTab(this)">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
@@ -311,7 +328,8 @@
             </svg>
             <span>All Tours</span>
           </button>
-          <button type="button" class="hero-tab-btn" data-type="Group Tours" role="tab" aria-selected="false">
+          <button type="button" class="hero-tab-btn" data-type="Group Tours" role="tab" aria-selected="false"
+            onclick="switchHeroTab(this)">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -321,7 +339,8 @@
             </svg>
             <span>Group Tours</span>
           </button>
-          <button type="button" class="hero-tab-btn" data-type="Family Tours" role="tab" aria-selected="false">
+          <button type="button" class="hero-tab-btn" data-type="Family Tours" role="tab" aria-selected="false"
+            onclick="switchHeroTab(this)">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -433,6 +452,36 @@
       </div>
     </div>
   </div>
+  <script>
+    function switchHeroTab(btn) {
+      var tabs = document.querySelectorAll('.hero-tab-btn');
+      var form = document.getElementById('heroSearchForm');
+      var select = document.getElementById('heroTourType');
+      tabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      var type = btn.getAttribute('data-type');
+      if (form) {
+        if (type === 'All Tours') {
+          form.classList.remove('first-tab-inactive');
+        } else {
+          form.classList.add('first-tab-inactive');
+        }
+      }
+      if (select) {
+        if (type === 'Group Tours') {
+          select.value = 'Group (6+)';
+        } else if (type === 'Family Tours') {
+          select.value = 'Family (4+)';
+        } else {
+          select.value = '1 Adult';
+        }
+      }
+    }
+  </script>
 
   <!-- =========================================================================
        02. EXPLORE OUR TOURS SECTION (FEATURED EXPERIENCES)
@@ -1044,15 +1093,12 @@
     <div class="container position-relative" style="z-index: 2;">
       <!-- Section Header Matching Reference -->
       <div class="text-center how-header mb-4">
-        <div class="how-kicker-wrap d-inline-flex align-items-center justify-content-center mb-2">
-          <span class="how-kicker-bar"></span>
-          <span class="how-kicker">HOW IT WORKS</span>
-          <span class="how-kicker-bar"></span>
-        </div>
-        <p class="how-subheading">Simple From Start to Finish</p>
         <h2 class="how-main-title">
           Plan Your Journey <span class="how-title-gold">in Four Steps</span>
         </h2>
+        <p class="how-desc">
+          A simple, seamless process designed to help you choose, plan, and embark on your dream holiday with ease.
+        </p>
       </div>
 
       <!-- 4 Steps Interactive Row -->
@@ -1236,11 +1282,6 @@
     <div class="container commitment-container">
       <!-- Section Header -->
       <div class="commitment-header">
-        <div class="commitment-kicker-wrap">
-          <span class="kicker-line"></span>
-          <span class="commitment-kicker">TRAVEL WITH CONFIDENCE</span>
-          <span class="kicker-line"></span>
-        </div>
         <h2 class="commitment-title">
           Your Journey, <span class="commitment-title-gold">Our Commitment</span>
         </h2>
@@ -1255,18 +1296,13 @@
         <!-- Pillar 1: Carefully Planned Tours -->
         <div class="commitment-pillar-item">
           <div class="pillar-icon-circle icon-sage">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-              <circle cx="8" cy="14" r="1.1" fill="currentColor"></circle>
-              <circle cx="12" cy="14" r="1.1" fill="currentColor"></circle>
-              <circle cx="16" cy="14" r="1.1" fill="currentColor"></circle>
-              <circle cx="8" cy="18" r="1.1" fill="currentColor"></circle>
-              <circle cx="12" cy="18" r="1.1" fill="currentColor"></circle>
-              <circle cx="16" cy="18" r="1.1" fill="currentColor"></circle>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" class="pillar-svg-anim">
+              <rect x="3" y="4" width="18" height="18" rx="3" stroke="#173D2B" stroke-width="1.8" fill="none"></rect>
+              <path d="M3 9h18" stroke="#B88918" stroke-width="1.8"></path>
+              <line x1="8" y1="2" x2="8" y2="5" stroke="#B88918" stroke-width="2" stroke-linecap="round"></line>
+              <line x1="16" y1="2" x2="16" y2="5" stroke="#B88918" stroke-width="2" stroke-linecap="round"></line>
+              <path d="M8 14.5l2.5 2.5L16 12" stroke="#B88918" stroke-width="1.9" stroke-linecap="round"
+                stroke-linejoin="round"></path>
             </svg>
           </div>
           <h3 class="pillar-title">Carefully Planned Tours</h3>
@@ -1280,10 +1316,12 @@
         <!-- Pillar 2: Personalized Experiences -->
         <div class="commitment-pillar-item">
           <div class="pillar-icon-circle icon-cream">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" class="pillar-svg-anim">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" stroke="#173D2B" stroke-width="1.8"
+                stroke-linecap="round"></path>
+              <circle cx="12" cy="7" r="4" stroke="#173D2B" stroke-width="1.8"></circle>
+              <path d="M19 3.5l.6 1.4 1.5.2-1.1 1 .3 1.5-1.3-.7-1.3.7.3-1.5-1.1-1 1.5-.2.6-1.4z" fill="#B88918"
+                stroke="#B88918" stroke-width="0.5"></path>
             </svg>
           </div>
           <h3 class="pillar-title">Personalized Experiences</h3>
@@ -1297,12 +1335,11 @@
         <!-- Pillar 3: Transparent Pricing -->
         <div class="commitment-pillar-item">
           <div class="pillar-icon-circle icon-blue">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-              stroke-linecap="round" stroke-linejoin="round">
-              <ellipse cx="12" cy="5" rx="8" ry="2.6"></ellipse>
-              <path d="M4 5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6V5"></path>
-              <path d="M4 9.5v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6v-4"></path>
-              <path d="M4 14v4c0 1.43 3.58 2.6 8 2.6s8-1.17 8-2.6v-4"></path>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" class="pillar-svg-anim">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke="#173D2B"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="7" cy="7" r="1.8" fill="#B88918"></circle>
+              <path d="M11 15l3-3m-1.5-1.5l3 3" stroke="#B88918" stroke-width="1.6" stroke-linecap="round"></path>
             </svg>
           </div>
           <h3 class="pillar-title">Transparent Pricing</h3>
@@ -1316,12 +1353,14 @@
         <!-- Pillar 4: Dedicated Support -->
         <div class="commitment-pillar-item">
           <div class="pillar-icon-circle icon-peach">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-              <path
-                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
-              </path>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" class="pillar-svg-anim">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke="#173D2B" stroke-width="1.8" stroke-linecap="round"></path>
+              <rect x="2" y="14" width="4" height="7" rx="2" stroke="#B88918" stroke-width="1.8"
+                fill="rgba(184, 137, 24, 0.1)"></rect>
+              <rect x="18" y="14" width="4" height="7" rx="2" stroke="#B88918" stroke-width="1.8"
+                fill="rgba(184, 137, 24, 0.1)"></rect>
+              <path d="M19 19c0 2-2 3-5 3" stroke="#B88918" stroke-width="1.8" stroke-linecap="round"></path>
+              <circle cx="14" cy="22" r="1.2" fill="#B88918"></circle>
             </svg>
           </div>
           <h3 class="pillar-title">Dedicated Support</h3>
@@ -1340,12 +1379,6 @@
     <div class="container position-relative">
       <!-- Section Header Matching Reference -->
       <div class="text-center testi-header">
-        <div class="testi-kicker-wrap">
-          <span class="testi-kicker-line"></span>
-          <span class="testi-kicker-text">TESTIMONIALS</span>
-          <span class="testi-kicker-line"></span>
-        </div>
-        <p class="testi-subheading">Our Travelers' Experiences</p>
         <h2 class="testi-main-title">
           Memories That <span class="testi-title-gold">Travel With You</span>
         </h2>
@@ -1676,73 +1709,28 @@
 
         <!-- Description -->
         <p class="final-cta-narrative">
-          Explore our group tours or tell us about your ideal family holiday. Let’s start planning your next
+          Explore our group tours or tell us about your ideal family holiday. Let's start planning your next
           unforgettable journey.
         </p>
 
         <!-- CTA Buttons Row -->
         <div class="final-cta-buttons-row">
           <a href="#packages" class="btn-cta-explore-group">
-            <span>EXPLORE GROUP TOURS</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+            <span>Explore Group Tours</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
           <a href="#contact" class="btn-cta-plan-trip">
-            <span>PLAN YOUR TRIP</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+            <span>Plan Your Trip</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-        </div>
-
-        <!-- 3 Feature Pillars: Plan Your Trip, Pack Your Bags, Create New Memories -->
-        <div class="final-cta-pillars-row">
-          <!-- Pillar 1: Airplane -->
-          <div class="final-cta-pillar-item">
-            <div class="pillar-icon-badge">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#9a7522" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.8-.2-1.6.2-1.8 1-.3.8.1 1.6.8 1.9l6.2 3.8-3.4 3.4-2.8-.7c-.5-.1-1 .1-1.2.5-.3.4-.1.9.3 1.2l2.4 1.8 1.8 2.4c.3.4.8.6 1.2.3.4-.2.6-.7.5-1.2l-.7-2.8 3.4-3.4 3.8 6.2c.3.7 1.1 1.1 1.9.8.8-.2 1.2-1 1-1.8z" />
-              </svg>
-            </div>
-            <span class="pillar-label">Plan<br>Your Trip</span>
-          </div>
-
-          <div class="pillar-divider"></div>
-
-          <!-- Pillar 2: Suitcase / Luggage -->
-          <div class="final-cta-pillar-item">
-            <div class="pillar-icon-badge">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#9a7522" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="7" width="18" height="14" rx="2" ry="2"></rect>
-                <path d="M8 7V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"></path>
-                <line x1="8" y1="12" x2="8" y2="16"></line>
-                <line x1="16" y1="12" x2="16" y2="16"></line>
-              </svg>
-            </div>
-            <span class="pillar-label">Pack<br>Your Bags</span>
-          </div>
-
-          <div class="pillar-divider"></div>
-
-          <!-- Pillar 3: Camera -->
-          <div class="final-cta-pillar-item">
-            <div class="pillar-icon-badge">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#9a7522" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                <circle cx="12" cy="13" r="4"></circle>
-              </svg>
-            </div>
-            <span class="pillar-label">Create<br>New Memories</span>
-          </div>
         </div>
 
         <!-- Bottom Tagline -->
@@ -1975,7 +1963,7 @@
         <!-- Column 1: Brand, Royal Crest & Narrative -->
         <div class="footer-brand-col">
           <a href="#home" class="footer-brand-link" aria-label="Vinyas Travels Home">
-            <img src="images/logo.png" alt="Vinyas Travels Royal Emblem" class="footer-brand-logo">
+            <img src="images/logo-backup.png" alt="Vinyas Travels Royal Emblem" class="footer-brand-logo">
           </a>
           <div class="footer-brand-motto">EXPLORE &bull; EXPERIENCE &bull; ENJOY</div>
           <p class="footer-about-p">
@@ -2243,7 +2231,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- JavaScript -->
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=15"></script>
 </body>
 
 </html>

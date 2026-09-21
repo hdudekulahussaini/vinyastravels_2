@@ -3,43 +3,80 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Sticky Header Scroll Effect (Solid Black on Scroll Down) ---
+  // --- Sticky Header Scroll Effect ---
   const siteHeader = document.getElementById('siteHeader');
   if (siteHeader) {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      if (scrollPos > 20) {
         siteHeader.classList.add('scrolled');
       } else {
         siteHeader.classList.remove('scrolled');
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('load', handleScroll);
     handleScroll();
   }
 
   // --- Hero Search Console Tabs (All Tours, Group Tours, Family Tours) ---
   const heroTabBtns = document.querySelectorAll('.hero-tab-btn');
   const heroTourType = document.getElementById('heroTourType');
+  const heroSearchFormElement = document.getElementById('heroSearchForm');
 
-  heroTabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      heroTabBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
+  if (heroTabBtns.length) {
+    heroTabBtns.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        heroTabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
 
-      const tourType = btn.getAttribute('data-type');
-      if (heroTourType) {
-        if (tourType === 'Group Tours') {
-          heroTourType.value = 'Group (6+)';
-        } else if (tourType === 'Family Tours') {
-          heroTourType.value = 'Family (4+)';
+        const tourType = btn.getAttribute('data-type');
+        if (heroTourType) {
+          if (tourType === 'Group Tours') {
+            heroTourType.value = 'Group (6+)';
+          } else if (tourType === 'Family Tours') {
+            heroTourType.value = 'Family (4+)';
+          } else {
+            heroTourType.value = '1 Adult';
+          }
         }
-      }
+
+        if (heroSearchFormElement) {
+          if (index === 0) {
+            heroSearchFormElement.classList.remove('first-tab-inactive');
+          } else {
+            heroSearchFormElement.classList.add('first-tab-inactive');
+          }
+        }
+      });
     });
-  });
+
+    if (heroTourType) {
+      heroTourType.addEventListener('change', () => {
+        const val = heroTourType.value;
+        let activeType = 'All Tours';
+        if (val.includes('Group')) activeType = 'Group Tours';
+        else if (val.includes('Family')) activeType = 'Family Tours';
+
+        heroTabBtns.forEach((tab, index) => {
+          const isMatch = tab.getAttribute('data-type') === activeType;
+          tab.classList.toggle('active', isMatch);
+          tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          if (isMatch && heroSearchFormElement) {
+            if (index === 0) {
+              heroSearchFormElement.classList.remove('first-tab-inactive');
+            } else {
+              heroSearchFormElement.classList.add('first-tab-inactive');
+            }
+          }
+        });
+      });
+    }
+  }
 
   // Location Swap Button
   const swapBtn = document.getElementById('swapLocationsBtn');
@@ -56,17 +93,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Menu Toggle ---
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenuWrap = document.getElementById('navMenuWrap');
+  const navMenuCloseBtn = document.getElementById('navMenuCloseBtn');
 
   if (mobileToggle && navMenuWrap) {
-    mobileToggle.addEventListener('click', () => {
-      navMenuWrap.classList.toggle('open');
+    const closeDrawer = () => {
+      navMenuWrap.classList.remove('open');
+      mobileToggle.classList.remove('is-active');
+    };
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenuWrap.classList.toggle('open');
+      mobileToggle.classList.toggle('is-active', isOpen);
     });
 
-    // Close mobile menu when clicking outside or on a link
+    if (navMenuCloseBtn) {
+      navMenuCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeDrawer();
+      });
+    }
+
+    // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        navMenuWrap.classList.remove('open');
+        closeDrawer();
       });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navMenuWrap.classList.contains('open') &&
+          !navMenuWrap.contains(e.target) &&
+          !mobileToggle.contains(e.target)) {
+        closeDrawer();
+      }
     });
   }
 
@@ -90,36 +151,73 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Traveler Account / Profile Dropdown Card Handler ---
   const headerUserBtn = document.getElementById('headerUserBtn');
   const profileDropdownCard = document.getElementById('profileDropdownCard');
-  if (headerUserBtn && profileDropdownCard) {
-    headerUserBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      profileDropdownCard.classList.toggle('show');
-    });
+  const headerProfileDropdownWrap = document.getElementById('headerProfileDropdownWrap');
 
+  if (headerUserBtn && profileDropdownCard) {
+    // User click is cleanly dispatched by onclick="toggleProfileDropdown(event)"
+    // As a robust fallback, assign onclick without adding duplicate addEventListener
+    if (!headerUserBtn.onclick) {
+      headerUserBtn.onclick = (e) => {
+        if (typeof window.toggleProfileDropdown === 'function') {
+          window.toggleProfileDropdown(e);
+        }
+      };
+    }
+
+    // Close dropdown when clicking anywhere outside
     document.addEventListener('click', (e) => {
-      if (!profileDropdownCard.contains(e.target) && !headerUserBtn.contains(e.target)) {
-        profileDropdownCard.classList.remove('show');
+      if (profileDropdownCard.classList.contains('show')) {
+        if (!profileDropdownCard.contains(e.target) && !headerUserBtn.contains(e.target)) {
+          profileDropdownCard.classList.remove('show');
+          headerUserBtn.setAttribute('aria-expanded', 'false');
+        }
       }
     });
 
-    // Dark mode toggle inside profile card
-    const profileDarkToggle = document.getElementById('profileDarkToggle');
-    if (profileDarkToggle) {
-      profileDarkToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        profileDarkToggle.classList.toggle('off');
-        document.body.classList.toggle('dark-mode');
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && profileDropdownCard.classList.contains('show')) {
+        profileDropdownCard.classList.remove('show');
+        headerUserBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Prevent clicking inside form or inputs from closing dropdown
+    profileDropdownCard.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Quick Sign-In Form submission
+    const quickSignInForm = document.getElementById('quickSignInForm');
+    if (quickSignInForm) {
+      quickSignInForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('quickUserEmail');
+        const userVal = emailInput ? emailInput.value : 'Traveler';
+        profileDropdownCard.classList.remove('show');
+        headerUserBtn.setAttribute('aria-expanded', 'false');
+        quickSignInForm.reset();
+        showToast(`Welcome back, ${userVal}! Successfully signed in.`);
       });
     }
 
-    // Log out button inside profile card
-    const profileLogoutBtn = document.getElementById('profileLogoutBtn');
-    if (profileLogoutBtn) {
-      profileLogoutBtn.addEventListener('click', (e) => {
+    // Quick Book Tour link inside dropdown
+    const quickBookingLinks = profileDropdownCard.querySelectorAll('.trigger-booking-modal');
+    quickBookingLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
         e.preventDefault();
         profileDropdownCard.classList.remove('show');
-        showToast('You have been logged out successfully.');
+        headerUserBtn.setAttribute('aria-expanded', 'false');
+        openModal('bookingModal');
+      });
+    });
+
+    // Quick Help Desk link inside dropdown
+    const quickSupportLink = document.getElementById('quickSupportLink');
+    if (quickSupportLink) {
+      quickSupportLink.addEventListener('click', () => {
+        profileDropdownCard.classList.remove('show');
+        headerUserBtn.setAttribute('aria-expanded', 'false');
       });
     }
   }
@@ -263,119 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Profile Dropdown Menu Logic ---
-  const profileBtn = document.getElementById('profileBtn');
-  const profileDropdownCard = document.getElementById('profileDropdownCard');
-  const headerProfileDropdownWrap = document.getElementById('headerProfileDropdownWrap');
-  const profileDarkToggle = document.getElementById('profileDarkToggle');
+  // (Profile dropdown menu logic is consolidated above)
 
-  if (profileBtn && profileDropdownCard) {
-    profileBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isShowing = profileDropdownCard.classList.toggle('show');
-      profileBtn.setAttribute('aria-expanded', isShowing ? 'true' : 'false');
-    });
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (headerProfileDropdownWrap && !headerProfileDropdownWrap.contains(e.target)) {
-        profileDropdownCard.classList.remove('show');
-        profileBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && profileDropdownCard.classList.contains('show')) {
-        profileDropdownCard.classList.remove('show');
-        profileBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Dark Mode Toggle inside Dropdown
-    if (profileDarkToggle) {
-      profileDarkToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isActive = profileDarkToggle.classList.toggle('active');
-        profileDarkToggle.setAttribute('aria-checked', isActive ? 'true' : 'false');
-        showToast(isActive ? 'Dark mode enabled' : 'Dark mode disabled');
-      });
-    }
-
-    // Logout Click
-    const menuItemLogout = document.getElementById('menuItemLogout');
-    if (menuItemLogout) {
-      menuItemLogout.addEventListener('click', (e) => {
-        e.preventDefault();
-        profileDropdownCard.classList.remove('show');
-        profileBtn.setAttribute('aria-expanded', 'false');
-        showToast('Signed out of Traveler Account');
-      });
-    }
-
-    // Profile Click opens Traveler Account Modal
-    const menuItemProfile = document.getElementById('menuItemProfile');
-    if (menuItemProfile) {
-      menuItemProfile.addEventListener('click', (e) => {
-        e.preventDefault();
-        profileDropdownCard.classList.remove('show');
-        profileBtn.setAttribute('aria-expanded', 'false');
-        openModal('profileModal');
-      });
-    }
-
-    // Notifications Click
-    const menuItemNotifications = document.getElementById('menuItemNotifications');
-    if (menuItemNotifications) {
-      menuItemNotifications.addEventListener('click', (e) => {
-        e.preventDefault();
-        profileDropdownCard.classList.remove('show');
-        profileBtn.setAttribute('aria-expanded', 'false');
-        showToast('You have 2 new itinerary updates!');
-      });
-    }
-  }
-
-  // --- Category Tabs Sync with Tour Type Dropdown ---
-  const searchTabs = document.querySelectorAll('.search-tab');
-  const tourTypeSelect = document.getElementById('heroTourType');
-  const heroSearchFormElement = document.getElementById('heroSearchForm');
-  if (searchTabs.length && tourTypeSelect) {
-    searchTabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => {
-        searchTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const targetType = tab.getAttribute('data-type');
-        if (targetType) {
-          tourTypeSelect.value = targetType;
-        }
-        if (heroSearchFormElement) {
-          if (index === 0) {
-            heroSearchFormElement.classList.remove('first-tab-inactive');
-          } else {
-            heroSearchFormElement.classList.add('first-tab-inactive');
-          }
-        }
-      });
-    });
-
-    tourTypeSelect.addEventListener('change', () => {
-      searchTabs.forEach((tab, index) => {
-        if (tab.getAttribute('data-type') === tourTypeSelect.value) {
-          tab.classList.add('active');
-          if (heroSearchFormElement) {
-            if (index === 0) {
-              heroSearchFormElement.classList.remove('first-tab-inactive');
-            } else {
-              heroSearchFormElement.classList.add('first-tab-inactive');
-            }
-          }
-        } else {
-          tab.classList.remove('active');
-        }
-      });
-    });
-  }
 
   // Quick Hero Search Form handler
   const heroSearchForm = document.getElementById('heroSearchForm');
@@ -404,21 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Sticky Header Transparent-to-White on Scroll ---
-  const siteHeader = document.getElementById('siteHeader');
-  if (siteHeader) {
-    const onScroll = () => {
-      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-      if (scrollPos > 30) {
-        siteHeader.classList.add('scrolled');
-      } else {
-        siteHeader.classList.remove('scrolled');
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('load', onScroll);
-    onScroll();
-  }
+  // (Sticky header scroll effect is handled at top of script)
 
   // Active scroll highlight
   const sections = document.querySelectorAll('section[id]');
@@ -654,13 +628,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
-testiObserver.observe(testiTrack);
-    } else {
-  startTestiAutoScroll();
-}
+// Global helper for opening/closing the profile dropdown card
+window.toggleProfileDropdown = function (e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
   }
-});
+  const card = document.getElementById('profileDropdownCard');
+  const btn = document.getElementById('headerUserBtn');
+  if (card) {
+    const isShowing = card.classList.toggle('show');
+    if (btn) btn.setAttribute('aria-expanded', isShowing ? 'true' : 'false');
+  }
+};
 
 
