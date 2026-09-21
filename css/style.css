@@ -649,6 +649,10 @@ textarea {
   color: var(--white);
 }
 
+.mobile-menu-booknow-wrap {
+  display: none !important;
+}
+
 
 
 /* Search Icon Button */
@@ -2416,30 +2420,17 @@ textarea {
 
 @media (max-width: 860px) {
 
-  .header-right-actions {
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
-  }
-
-  /* Keep Book Now button visible, sleek, and touch-ready on tablet & mobile */
+  /* In mobile responsive header, remove Book Now button (it is in the menubar) */
   .btn-header-contact,
   .btn-plan-trip,
   #headerContactBtn {
-    display: inline-flex !important;
-    padding: 8px 16px;
-    font-size: 0.84rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    border-radius: 50px;
-    gap: 6px;
-    box-shadow: 0 3px 10px rgba(184, 137, 24, 0.3);
+    display: none !important;
   }
 
-  .btn-header-contact svg,
-  .btn-plan-trip svg {
-    width: 14px;
-    height: 14px;
+  .header-right-actions {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
   }
 
   .header-profile-dropdown-wrap {
@@ -2558,6 +2549,48 @@ textarea {
   .nav-menu-wrap .nav-link:hover {
     color: #b88918 !important;
     padding-left: 6px;
+  }
+
+  /* Book Now Button inside Mobile Menubar */
+  .mobile-menu-booknow-wrap {
+    display: block !important;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: none;
+    list-style: none;
+  }
+
+  .btn-mobile-menubar-book {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 20px;
+    background: linear-gradient(135deg, #B88918 0%, #D5B45A 100%);
+    color: #ffffff !important;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 12px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(184, 137, 24, 0.35);
+    border: none;
+    transition: all 0.25s ease;
+  }
+
+  .btn-mobile-menubar-book:hover {
+    background: linear-gradient(135deg, #173d2b 0%, #235c41 100%);
+    box-shadow: 0 6px 18px rgba(23, 61, 43, 0.35);
+    transform: translateY(-1px);
+    color: #ffffff !important;
+  }
+
+  .btn-mobile-menubar-book svg {
+    stroke: #ffffff !important;
   }
 
   .hero-headline {

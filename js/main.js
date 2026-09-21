@@ -339,11 +339,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Global click event delegation for #headerContactBtn or any a[href="#bookingModal"]
+  // Global click event delegation for #headerContactBtn, #menubarBookNowBtn, or any a[href="#bookingModal"]
   document.addEventListener('click', (e) => {
-    const trigger = e.target.closest('#headerContactBtn, a[href="#bookingModal"]');
+    const trigger = e.target.closest('#headerContactBtn, #menubarBookNowBtn, a[href="#bookingModal"], .trigger-booking-modal');
     if (trigger) {
       e.preventDefault();
+
+      // Close mobile menubar drawer if open
+      const navMenuWrap = document.getElementById('navMenuWrap');
+      const mobileToggle = document.getElementById('mobileToggle');
+      if (navMenuWrap && navMenuWrap.classList.contains('open')) {
+        navMenuWrap.classList.remove('open');
+        if (mobileToggle) mobileToggle.classList.remove('is-active');
+      }
+
+      // Close profile dropdown if open
+      const profileCard = document.getElementById('profileDropdownCard');
+      if (profileCard && profileCard.classList.contains('show')) {
+        profileCard.classList.remove('show');
+      }
+
       const packageName = trigger.getAttribute('data-package') || 'Custom Luxury Tour';
       const packageInput = document.getElementById('bookingTourInput');
       if (packageInput) {
