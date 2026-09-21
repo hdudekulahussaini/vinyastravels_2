@@ -1012,6 +1012,25 @@ textarea {
   font-weight: 500;
 }
 
+.search-col-date {
+  cursor: pointer;
+}
+
+.hero-date-picker-input {
+  cursor: pointer;
+}
+
+.hero-date-picker-input::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+.hero-date-picker-input::-webkit-inner-spin-button,
+.hero-date-picker-input::-webkit-clear-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
 .travelers-select-wrap {
   position: relative;
   display: flex;

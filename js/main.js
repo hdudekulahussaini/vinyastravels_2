@@ -90,6 +90,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Hero Departure Date Picker Setup ---
+  const heroDateInput = document.getElementById('heroDate');
+  const heroDateCol = document.getElementById('heroDateCol');
+  const bookingDepartureInput = document.getElementById('bookingDeparture');
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const minDateStr = `${yyyy}-${mm}-${dd}`;
+
+  if (heroDateInput) {
+    heroDateInput.min = minDateStr;
+
+    // Pre-fill with tomorrow's date if empty
+    if (!heroDateInput.value) {
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tY = tomorrow.getFullYear();
+      const tM = String(tomorrow.getMonth() + 1).padStart(2, '0');
+      const tD = String(tomorrow.getDate()).padStart(2, '0');
+      heroDateInput.value = `${tY}-${tM}-${tD}`;
+    }
+
+    const openPicker = () => {
+      try {
+        if (typeof heroDateInput.showPicker === 'function') {
+          heroDateInput.showPicker();
+        } else {
+          heroDateInput.focus();
+        }
+      } catch (err) {
+        heroDateInput.focus();
+      }
+    };
+
+    if (heroDateCol) {
+      heroDateCol.addEventListener('click', (e) => {
+        if (e.target !== heroDateInput) {
+          openPicker();
+        }
+      });
+    }
+
+    heroDateInput.addEventListener('click', () => {
+      openPicker();
+    });
+  }
+
+  if (bookingDepartureInput) {
+    bookingDepartureInput.min = minDateStr;
+  }
+
   // --- Mobile Menu Toggle ---
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenuWrap = document.getElementById('navMenuWrap');
