@@ -32,9 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll();
   }
 
-  // --- Hero Search Console Tabs (All Tours, Group Tours, Family Tours) ---
+  // --- Hero Search Console Tabs (All Tours, Group Tours) ---
   const heroTabBtns = document.querySelectorAll('.hero-tab-btn');
-  const heroTourType = document.getElementById('heroTourType');
   const heroSearchFormElement = document.getElementById('heroSearchForm');
 
   if (heroTabBtns.length) {
@@ -47,17 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
 
-        const tourType = btn.getAttribute('data-type');
-        if (heroTourType) {
-          if (tourType === 'Group Tours') {
-            heroTourType.value = 'Group (6+)';
-          } else if (tourType === 'Family Tours') {
-            heroTourType.value = 'Family (4+)';
-          } else {
-            heroTourType.value = '1 Adult';
-          }
-        }
-
         if (heroSearchFormElement) {
           if (index === 0) {
             heroSearchFormElement.classList.remove('first-tab-inactive');
@@ -67,84 +55,329 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
-
-    if (heroTourType) {
-      heroTourType.addEventListener('change', () => {
-        const val = heroTourType.value;
-        let activeType = 'All Tours';
-        if (val.includes('Group')) activeType = 'Group Tours';
-        else if (val.includes('Family')) activeType = 'Family Tours';
-
-        heroTabBtns.forEach((tab, index) => {
-          const isMatch = tab.getAttribute('data-type') === activeType;
-          tab.classList.toggle('active', isMatch);
-          tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
-          if (isMatch && heroSearchFormElement) {
-            if (index === 0) {
-              heroSearchFormElement.classList.remove('first-tab-inactive');
-            } else {
-              heroSearchFormElement.classList.add('first-tab-inactive');
-            }
-          }
-        });
-      });
-    }
   }
 
-  // Location Swap Button
-  const swapBtn = document.getElementById('swapLocationsBtn');
-  const fromInput = document.getElementById('searchFromInput');
-  const toInput = document.getElementById('heroDest');
-  if (swapBtn && fromInput && toInput) {
-    swapBtn.addEventListener('click', () => {
-      const temp = fromInput.value;
-      fromInput.value = toInput.value;
-      toInput.value = temp;
-    });
-  }
 
-  // --- Hero Departure Date Picker Setup ---
-  const heroDateInput = document.getElementById('heroDate');
-  const heroDateCol = document.getElementById('heroDateCol');
-  const bookingDepartureInput = document.getElementById('bookingDeparture');
+  // --- Duration / Days Range Dual Slider Controller (Matching User Reference) ---
+  const durationTriggerBtn = document.getElementById('durationTriggerBtn');
+  const durationRangePopover = document.getElementById('durationRangePopover');
+  const heroDurationCol = document.getElementById('heroDurationCol');
+  const durationChevron = document.getElementById('durationChevron');
+  const popoverToggleBtn = document.getElementById('popoverToggleBtn');
+  const popoverRangeTitle = document.getElementById('popoverRangeTitle');
+  const durationDisplayVal = document.getElementById('durationDisplayVal');
+  const heroDurationInput = document.getElementById('heroDurationInput');
+  const heroMinDays = document.getElementById('heroMinDays');
+  const heroMaxDays = document.getElementById('heroMaxDays');
 
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const dd = String(today.getDate()).padStart(2, '0');
-  const minDateStr = `${yyyy}-${mm}-${dd}`;
+  const rangeMinDays = document.getElementById('rangeMinDays');
+  const rangeMaxDays = document.getElementById('rangeMaxDays');
+  const dualSliderFill = document.getElementById('dualSliderFill');
+  const labelMinDays = document.getElementById('labelMinDays');
+  const labelMaxDays = document.getElementById('labelMaxDays');
 
-  if (heroDateInput) {
-    heroDateInput.min = minDateStr;
-    heroDateInput.value = ''; // Do not pre-fill date; show dd-mm-yyyy by default
+  if (rangeMinDays && rangeMaxDays) {
+    const minLimit = parseInt(rangeMinDays.min, 10) || 3;
+    const maxLimit = parseInt(rangeMaxDays.max, 10) || 16;
 
-    const openPicker = () => {
-      try {
-        if (typeof heroDateInput.showPicker === 'function') {
-          heroDateInput.showPicker();
+    const updateSlider = () => {
+      let minVal = parseInt(rangeMinDays.value, 10);
+      let maxVal = parseInt(rangeMaxDays.value, 10);
+
+      // Prevent thumbs from crossing
+      if (minVal >= maxVal) {
+        if (document.activeElement === rangeMinDays) {
+          minVal = maxVal - 1;
+          rangeMinDays.value = minVal;
         } else {
-          heroDateInput.focus();
+          maxVal = minVal + 1;
+          rangeMaxDays.value = maxVal;
         }
-      } catch (err) {
-        heroDateInput.focus();
+      }
+
+      // Calculate fill bar percentage between the thumbs
+      const leftPercent = ((minVal - minLimit) / (maxLimit - minLimit)) * 100;
+      const rightPercent = ((maxVal - minLimit) / (maxLimit - minLimit)) * 100;
+
+      if (dualSliderFill) {
+        dualSliderFill.style.left = `${leftPercent}%`;
+        dualSliderFill.style.width = `${rightPercent - leftPercent}%`;
+      }
+
+      const minText = `${minVal} Day${minVal > 1 ? 's' : ''}`;
+      const maxText = `${maxVal} Days`;
+      const combinedText = `${minText} - ${maxText}`;
+
+      if (labelMinDays) labelMinDays.textContent = minText;
+      if (labelMaxDays) labelMaxDays.textContent = maxText;
+      if (popoverRangeTitle) popoverRangeTitle.textContent = combinedText;
+      if (durationDisplayVal) durationDisplayVal.textContent = combinedText;
+      if (heroDurationInput) heroDurationInput.value = combinedText;
+      if (heroMinDays) heroMinDays.value = minVal;
+      if (heroMaxDays) heroMaxDays.value = maxVal;
+    };
+
+    rangeMinDays.addEventListener('input', updateSlider);
+    rangeMaxDays.addEventListener('input', updateSlider);
+
+    // Initial sync
+    updateSlider();
+
+    // Toggle popover visibility
+    const openPopover = () => {
+      if (durationRangePopover) {
+        durationRangePopover.classList.add('show');
+        if (durationTriggerBtn) durationTriggerBtn.setAttribute('aria-expanded', 'true');
+        if (heroDurationCol) heroDurationCol.classList.add('is-active');
+        // Close price popover if open
+        const pPopover = document.getElementById('priceRangePopover');
+        const pTrigger = document.getElementById('priceTriggerBtn');
+        const pCol = document.getElementById('heroPriceCol');
+        if (pPopover) pPopover.classList.remove('show');
+        if (pTrigger) pTrigger.setAttribute('aria-expanded', 'false');
+        if (pCol) pCol.classList.remove('is-active');
       }
     };
 
-    if (heroDateCol) {
-      heroDateCol.addEventListener('click', (e) => {
-        if (e.target !== heroDateInput) {
-          openPicker();
+    const closePopover = () => {
+      if (durationRangePopover) {
+        durationRangePopover.classList.remove('show');
+        if (durationTriggerBtn) durationTriggerBtn.setAttribute('aria-expanded', 'false');
+        if (heroDurationCol) heroDurationCol.classList.remove('is-active');
+      }
+    };
+
+    const togglePopover = (e) => {
+      if (e) e.stopPropagation();
+      const isOpen = durationRangePopover && durationRangePopover.classList.contains('show');
+      if (isOpen) {
+        closePopover();
+      } else {
+        openPopover();
+      }
+    };
+
+    if (durationTriggerBtn) {
+      durationTriggerBtn.addEventListener('click', togglePopover);
+      durationTriggerBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          togglePopover(e);
         }
       });
     }
 
-    heroDateInput.addEventListener('click', () => {
-      openPicker();
+    if (heroDurationCol) {
+      heroDurationCol.addEventListener('click', (e) => {
+        if (durationRangePopover && !durationRangePopover.contains(e.target) && e.target !== durationTriggerBtn) {
+          togglePopover(e);
+        }
+      });
+    }
+
+    if (popoverToggleBtn) {
+      popoverToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePopover();
+      });
+    }
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (durationRangePopover && durationRangePopover.classList.contains('show')) {
+        if (heroDurationCol && !heroDurationCol.contains(e.target)) {
+          closePopover();
+        }
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && durationRangePopover && durationRangePopover.classList.contains('show')) {
+        closePopover();
+      }
     });
   }
 
+  // --- Price Range Dual Slider Controller (Exact Match to User Reference) ---
+  const priceCol = document.getElementById('heroPriceCol');
+  const priceTrigger = document.getElementById('priceTriggerBtn');
+  const pricePopover = document.getElementById('priceRangePopover');
+  const priceToggleBtn = document.getElementById('pricePopoverToggleBtn');
+  const priceResetBtn = document.getElementById('priceResetBtn');
+  const priceApplyBtn = document.getElementById('priceApplyBtn');
+  const rangeMinPrice = document.getElementById('rangeMinPrice');
+  const rangeMaxPrice = document.getElementById('rangeMaxPrice');
+  const priceSliderFill = document.getElementById('priceSliderFill');
+  const labelMinPrice = document.getElementById('labelMinPrice');
+  const labelMaxPrice = document.getElementById('labelMaxPrice');
+  const priceDisplayVal = document.getElementById('priceDisplayVal');
+  const pricePopoverTitle = document.getElementById('pricePopoverTitle');
+  const heroPriceInput = document.getElementById('heroPriceInput');
+  const heroMinPrice = document.getElementById('heroMinPrice');
+  const heroMaxPrice = document.getElementById('heroMaxPrice');
+  const pricePresetChips = document.querySelectorAll('.price-preset-chip');
+
+  if (rangeMinPrice && rangeMaxPrice && priceSliderFill) {
+    const MIN_PRICE_LIMIT = 0;
+    const MAX_PRICE_LIMIT = 305441;
+    const MIN_PRICE_GAP = 5000;
+
+    function formatPrice(val) {
+      return '₹' + val;
+    }
+
+    function updatePriceFill(e) {
+      let minVal = parseInt(rangeMinPrice.value, 10);
+      let maxVal = parseInt(rangeMaxPrice.value, 10);
+
+      if (maxVal - minVal < MIN_PRICE_GAP) {
+        if (e && e.target === rangeMinPrice) {
+          rangeMinPrice.value = maxVal - MIN_PRICE_GAP;
+          minVal = maxVal - MIN_PRICE_GAP;
+        } else if (e && e.target === rangeMaxPrice) {
+          rangeMaxPrice.value = minVal + MIN_PRICE_GAP;
+          maxVal = minVal + MIN_PRICE_GAP;
+        }
+      }
+
+      const percent1 = ((minVal - MIN_PRICE_LIMIT) / (MAX_PRICE_LIMIT - MIN_PRICE_LIMIT)) * 100;
+      const percent2 = ((maxVal - MIN_PRICE_LIMIT) / (MAX_PRICE_LIMIT - MIN_PRICE_LIMIT)) * 100;
+
+      priceSliderFill.style.left = `${percent1}%`;
+      priceSliderFill.style.right = `${100 - percent2}%`;
+
+      const displayText = `${formatPrice(minVal)} - ${formatPrice(maxVal)}`;
+
+      if (labelMinPrice) labelMinPrice.textContent = formatPrice(minVal);
+      if (labelMaxPrice) labelMaxPrice.textContent = formatPrice(maxVal);
+      if (priceDisplayVal) priceDisplayVal.textContent = displayText;
+      if (pricePopoverTitle) pricePopoverTitle.textContent = displayText;
+      if (heroPriceInput) heroPriceInput.value = displayText;
+      if (heroMinPrice) heroMinPrice.value = minVal;
+      if (heroMaxPrice) heroMaxPrice.value = maxVal;
+
+      pricePresetChips.forEach(chip => {
+        const chipMin = parseInt(chip.getAttribute('data-min'), 10);
+        const chipMax = parseInt(chip.getAttribute('data-max'), 10);
+        chip.classList.toggle('active', chipMin === minVal && chipMax === maxVal);
+      });
+    }
+
+    rangeMinPrice.addEventListener('input', updatePriceFill);
+    rangeMaxPrice.addEventListener('input', updatePriceFill);
+
+    pricePresetChips.forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const cMin = parseInt(chip.getAttribute('data-min'), 10);
+        const cMax = parseInt(chip.getAttribute('data-max'), 10);
+        rangeMinPrice.value = cMin;
+        rangeMaxPrice.value = cMax;
+        updatePriceFill();
+      });
+    });
+
+    const openPricePopover = () => {
+      if (pricePopover) {
+        pricePopover.classList.add('show');
+        if (priceTrigger) priceTrigger.setAttribute('aria-expanded', 'true');
+        if (priceCol) priceCol.classList.add('is-active');
+        // Close duration popover if open
+        const dPopover = document.getElementById('durationRangePopover');
+        const dTrigger = document.getElementById('durationTriggerBtn');
+        const dCol = document.getElementById('heroDurationCol');
+        if (dPopover) dPopover.classList.remove('show');
+        if (dTrigger) dTrigger.setAttribute('aria-expanded', 'false');
+        if (dCol) dCol.classList.remove('is-active');
+      }
+    };
+
+    const closePricePopover = () => {
+      if (pricePopover) {
+        pricePopover.classList.remove('show');
+        if (priceTrigger) priceTrigger.setAttribute('aria-expanded', 'false');
+        if (priceCol) priceCol.classList.remove('is-active');
+      }
+    };
+
+    const togglePricePopover = (e) => {
+      if (e) e.stopPropagation();
+      const isOpen = pricePopover && pricePopover.classList.contains('show');
+      if (isOpen) {
+        closePricePopover();
+      } else {
+        openPricePopover();
+      }
+    };
+
+    if (priceTrigger) {
+      priceTrigger.addEventListener('click', togglePricePopover);
+      priceTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          togglePricePopover(e);
+        }
+      });
+    }
+
+    if (priceCol) {
+      priceCol.addEventListener('click', (e) => {
+        if (pricePopover && !pricePopover.contains(e.target) && e.target !== priceTrigger) {
+          togglePricePopover(e);
+        }
+      });
+    }
+
+    if (priceToggleBtn) {
+      priceToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePricePopover();
+      });
+    }
+
+    if (priceApplyBtn) {
+      priceApplyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePricePopover();
+      });
+    }
+
+    if (priceResetBtn) {
+      priceResetBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        rangeMinPrice.value = 0;
+        rangeMaxPrice.value = 305441;
+        updatePriceFill();
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (pricePopover && pricePopover.classList.contains('show')) {
+        if (priceCol && !priceCol.contains(e.target)) {
+          closePricePopover();
+        }
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && pricePopover && pricePopover.classList.contains('show')) {
+        closePricePopover();
+      }
+    });
+
+    // Initial setup
+    updatePriceFill();
+  }
+
+  // Booking Modal Departure Input Date Setup
+  const bookingDepartureInput = document.getElementById('bookingDeparture');
   if (bookingDepartureInput) {
-    bookingDepartureInput.min = minDateStr;
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    bookingDepartureInput.min = `${yyyy}-${mm}-${dd}`;
   }
 
   // --- Mobile Menu Toggle ---
@@ -458,12 +691,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroSearchForm) {
     heroSearchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const dest = document.getElementById('heroDest').value || 'Selected Destination';
-      const date = document.getElementById('heroDate').value;
-      const type = document.getElementById('heroTourType').value;
+      const dest = document.getElementById('heroDest') ? document.getElementById('heroDest').value : 'Selected Destination';
+      const duration = document.getElementById('heroDurationInput') ? document.getElementById('heroDurationInput').value : '3 Days - 16 Days';
+      const price = document.getElementById('heroPriceInput') ? document.getElementById('heroPriceInput').value : '₹0 - ₹305441';
       const packageInput = document.getElementById('bookingTourInput');
       if (packageInput) {
-        packageInput.value = `${dest} (${type}${date ? ' - ' + date : ''})`;
+        packageInput.value = `${dest} (${duration}, Budget: ${price})`;
       }
       openModal('bookingModal');
     });
