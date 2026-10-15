@@ -136,6 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pPopover) pPopover.classList.remove('show');
         if (pTrigger) pTrigger.setAttribute('aria-expanded', 'false');
         if (pCol) pCol.classList.remove('is-active');
+
+        // Close travelers popover if open
+        const tPopover = document.getElementById('travelersRangePopover');
+        const tTrigger = document.getElementById('travelersTriggerBtn');
+        const tCol = document.getElementById('heroTravelersCol');
+        if (tPopover) tPopover.classList.remove('show');
+        if (tTrigger) tTrigger.setAttribute('aria-expanded', 'false');
+        if (tCol) tCol.classList.remove('is-active');
       }
     };
 
@@ -290,6 +298,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dPopover) dPopover.classList.remove('show');
         if (dTrigger) dTrigger.setAttribute('aria-expanded', 'false');
         if (dCol) dCol.classList.remove('is-active');
+
+        // Close travelers popover if open
+        const tPopover = document.getElementById('travelersRangePopover');
+        const tTrigger = document.getElementById('travelersTriggerBtn');
+        const tCol = document.getElementById('heroTravelersCol');
+        if (tPopover) tPopover.classList.remove('show');
+        if (tTrigger) tTrigger.setAttribute('aria-expanded', 'false');
+        if (tCol) tCol.classList.remove('is-active');
       }
     };
 
@@ -368,6 +384,206 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial setup
     updatePriceFill();
+  }
+
+  // --- Number of People / Travelers Selector Controller ---
+  const travelersTrigger = document.getElementById('travelersTriggerBtn');
+  const travelersPopover = document.getElementById('travelersRangePopover');
+  const travelersCol = document.getElementById('heroTravelersCol');
+  const travelersDisplay = document.getElementById('travelersDisplayVal');
+  const travelersInput = document.getElementById('heroTravelersInput');
+  const adultsInput = document.getElementById('heroAdultsCount');
+  const childrenInput = document.getElementById('heroChildrenCount');
+  const travelersCloseBtn = document.getElementById('travelersPopoverToggleBtn');
+  const travelersResetBtn = document.getElementById('travelersResetBtn');
+  const travelersApplyBtn = document.getElementById('travelersApplyBtn');
+
+  const btnAdultsMinus = document.getElementById('btnAdultsMinus');
+  const btnAdultsPlus = document.getElementById('btnAdultsPlus');
+  const adultsCountDisplay = document.getElementById('adultsCountDisplay');
+
+  const btnChildrenMinus = document.getElementById('btnChildrenMinus');
+  const btnChildrenPlus = document.getElementById('btnChildrenPlus');
+  const childrenCountDisplay = document.getElementById('childrenCountDisplay');
+
+  const travelerPresets = document.querySelectorAll('.traveler-preset-chip');
+
+  if (travelersTrigger && travelersPopover) {
+    let adultsCount = 2;
+    let childrenCount = 0;
+
+    const updateTravelersDisplay = () => {
+      const totalPeople = adultsCount + childrenCount;
+      let text = '';
+      if (totalPeople === 1) {
+        text = '1 Person';
+      } else if (childrenCount === 0) {
+        text = `${adultsCount} People`;
+      } else {
+        text = `${totalPeople} People (${adultsCount}A, ${childrenCount}C)`;
+      }
+
+      if (travelersDisplay) travelersDisplay.textContent = text;
+      if (travelersInput) travelersInput.value = text;
+      if (adultsInput) adultsInput.value = adultsCount;
+      if (childrenInput) childrenInput.value = childrenCount;
+      if (adultsCountDisplay) adultsCountDisplay.textContent = adultsCount;
+      if (childrenCountDisplay) childrenCountDisplay.textContent = childrenCount;
+
+      if (btnAdultsMinus) btnAdultsMinus.disabled = adultsCount <= 1;
+      if (btnAdultsPlus) btnAdultsPlus.disabled = adultsCount >= 10;
+      if (btnChildrenMinus) btnChildrenMinus.disabled = childrenCount <= 0;
+      if (btnChildrenPlus) btnChildrenPlus.disabled = childrenCount >= 8;
+
+      travelerPresets.forEach(preset => {
+        const pAdults = parseInt(preset.getAttribute('data-adults'), 10);
+        const pChildren = parseInt(preset.getAttribute('data-children'), 10);
+        preset.classList.toggle('active', pAdults === adultsCount && pChildren === childrenCount);
+      });
+    };
+
+    const openTravelersPopover = () => {
+      travelersPopover.classList.add('show');
+      if (travelersTrigger) travelersTrigger.setAttribute('aria-expanded', 'true');
+      if (travelersCol) travelersCol.classList.add('is-active');
+
+      // Close duration popover if open
+      const dPopover = document.getElementById('durationRangePopover');
+      const dTrigger = document.getElementById('durationTriggerBtn');
+      const dCol = document.getElementById('heroDurationCol');
+      if (dPopover) dPopover.classList.remove('show');
+      if (dTrigger) dTrigger.setAttribute('aria-expanded', 'false');
+      if (dCol) dCol.classList.remove('is-active');
+
+      // Close price popover if open
+      const pPopover = document.getElementById('priceRangePopover');
+      const pTrigger = document.getElementById('priceTriggerBtn');
+      const pCol = document.getElementById('heroPriceCol');
+      if (pPopover) pPopover.classList.remove('show');
+      if (pTrigger) pTrigger.setAttribute('aria-expanded', 'false');
+      if (pCol) pCol.classList.remove('is-active');
+    };
+
+    const closeTravelersPopover = () => {
+      travelersPopover.classList.remove('show');
+      if (travelersTrigger) travelersTrigger.setAttribute('aria-expanded', 'false');
+      if (travelersCol) travelersCol.classList.remove('is-active');
+    };
+
+    const toggleTravelersPopover = (e) => {
+      if (e) e.stopPropagation();
+      const isOpen = travelersPopover.classList.contains('show');
+      if (isOpen) {
+        closeTravelersPopover();
+      } else {
+        openTravelersPopover();
+      }
+    };
+
+    travelersTrigger.addEventListener('click', toggleTravelersPopover);
+    travelersTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTravelersPopover(e);
+      }
+    });
+
+    if (travelersCol) {
+      travelersCol.addEventListener('click', (e) => {
+        if (travelersPopover && !travelersPopover.contains(e.target) && e.target !== travelersTrigger) {
+          toggleTravelersPopover(e);
+        }
+      });
+    }
+
+    if (travelersCloseBtn) {
+      travelersCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeTravelersPopover();
+      });
+    }
+
+    if (travelersApplyBtn) {
+      travelersApplyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeTravelersPopover();
+      });
+    }
+
+    if (travelersResetBtn) {
+      travelersResetBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        adultsCount = 2;
+        childrenCount = 0;
+        updateTravelersDisplay();
+      });
+    }
+
+    if (btnAdultsMinus) {
+      btnAdultsMinus.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (adultsCount > 1) {
+          adultsCount--;
+          updateTravelersDisplay();
+        }
+      });
+    }
+
+    if (btnAdultsPlus) {
+      btnAdultsPlus.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (adultsCount < 10) {
+          adultsCount++;
+          updateTravelersDisplay();
+        }
+      });
+    }
+
+    if (btnChildrenMinus) {
+      btnChildrenMinus.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (childrenCount > 0) {
+          childrenCount--;
+          updateTravelersDisplay();
+        }
+      });
+    }
+
+    if (btnChildrenPlus) {
+      btnChildrenPlus.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (childrenCount < 8) {
+          childrenCount++;
+          updateTravelersDisplay();
+        }
+      });
+    }
+
+    travelerPresets.forEach(preset => {
+      preset.addEventListener('click', (e) => {
+        e.stopPropagation();
+        adultsCount = parseInt(preset.getAttribute('data-adults'), 10) || 1;
+        childrenCount = parseInt(preset.getAttribute('data-children'), 10) || 0;
+        updateTravelersDisplay();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (travelersPopover.classList.contains('show')) {
+        if (travelersCol && !travelersCol.contains(e.target)) {
+          closeTravelersPopover();
+        }
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && travelersPopover.classList.contains('show')) {
+        closeTravelersPopover();
+      }
+    });
+
+    // Initial sync
+    updateTravelersDisplay();
   }
 
   // Booking Modal Departure Input Date Setup
@@ -562,42 +778,60 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   bookingModalTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const packageName = btn.getAttribute('data-package') || 'Custom Luxury Tour';
-      const packageInput = document.getElementById('bookingTourInput');
-      if (packageInput) {
-        packageInput.value = packageName;
+      // Exclude destinations section and direct navigation links
+      if (e.target.closest('#destinations') || e.target.closest('.popular-dest-section') || e.target.closest('.dest-overlay-cta') || (e.target.closest('a') && !e.target.closest('a').getAttribute('href')?.startsWith('#'))) {
+        return;
       }
-      openModal('bookingModal');
+      const modal = document.getElementById('bookingModal');
+      if (modal) {
+        e.preventDefault();
+        const packageName = btn.getAttribute('data-package') || 'Custom Luxury Tour';
+        const packageInput = document.getElementById('bookingTourInput');
+        if (packageInput) {
+          packageInput.value = packageName;
+        }
+        openModal('bookingModal');
+      } else {
+        window.location.href = 'listing.html';
+      }
     });
   });
 
   // Global click event delegation for #headerContactBtn, #menubarBookNowBtn, or any a[href="#bookingModal"]
   document.addEventListener('click', (e) => {
+    // Exclude destinations section and direct navigation links
+    if (e.target.closest('#destinations') || e.target.closest('.popular-dest-section') || e.target.closest('.dest-overlay-cta') || (e.target.closest('a') && !e.target.closest('a').getAttribute('href')?.startsWith('#'))) {
+      return;
+    }
     const trigger = e.target.closest('#headerContactBtn, #menubarBookNowBtn, a[href="#bookingModal"], .trigger-booking-modal');
     if (trigger) {
-      e.preventDefault();
+      const modal = document.getElementById('bookingModal');
+      if (modal) {
+        e.preventDefault();
 
-      // Close mobile menubar drawer if open
-      const navMenuWrap = document.getElementById('navMenuWrap');
-      const mobileToggle = document.getElementById('mobileToggle');
-      if (navMenuWrap && navMenuWrap.classList.contains('open')) {
-        navMenuWrap.classList.remove('open');
-        if (mobileToggle) mobileToggle.classList.remove('is-active');
-      }
+        // Close mobile menubar drawer if open
+        const navMenuWrap = document.getElementById('navMenuWrap');
+        const mobileToggle = document.getElementById('mobileToggle');
+        if (navMenuWrap && navMenuWrap.classList.contains('open')) {
+          navMenuWrap.classList.remove('open');
+          if (mobileToggle) mobileToggle.classList.remove('is-active');
+        }
 
-      // Close profile dropdown if open
-      const profileCard = document.getElementById('profileDropdownCard');
-      if (profileCard && profileCard.classList.contains('show')) {
-        profileCard.classList.remove('show');
-      }
+        // Close profile dropdown if open
+        const profileCard = document.getElementById('profileDropdownCard');
+        if (profileCard && profileCard.classList.contains('show')) {
+          profileCard.classList.remove('show');
+        }
 
-      const packageName = trigger.getAttribute('data-package') || 'Custom Luxury Tour';
-      const packageInput = document.getElementById('bookingTourInput');
-      if (packageInput) {
-        packageInput.value = packageName;
+        const packageName = trigger.getAttribute('data-package') || 'Custom Luxury Tour';
+        const packageInput = document.getElementById('bookingTourInput');
+        if (packageInput) {
+          packageInput.value = packageName;
+        }
+        openModal('bookingModal');
+      } else {
+        window.location.href = 'listing.html';
       }
-      openModal('bookingModal');
     }
   });
 
@@ -691,14 +925,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroSearchForm) {
     heroSearchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const dest = document.getElementById('heroDest') ? document.getElementById('heroDest').value : 'Selected Destination';
-      const duration = document.getElementById('heroDurationInput') ? document.getElementById('heroDurationInput').value : '3 Days - 16 Days';
-      const price = document.getElementById('heroPriceInput') ? document.getElementById('heroPriceInput').value : '₹0 - ₹305441';
-      const packageInput = document.getElementById('bookingTourInput');
-      if (packageInput) {
-        packageInput.value = `${dest} (${duration}, Budget: ${price})`;
-      }
-      openModal('bookingModal');
+      const dest = document.getElementById('heroDest') ? document.getElementById('heroDest').value : '';
+      window.location.href = dest ? `listing.html?dest=${encodeURIComponent(dest)}` : 'listing.html';
     });
   }
 

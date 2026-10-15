@@ -21,7 +21,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=143">
+  <link rel="stylesheet" href="css/style.css?v=161">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
@@ -64,8 +64,7 @@
             <li><a href="#packages" class="nav-link" id="navLinkCruise">Cruise</a></li>
             <!-- Mobile Menubar Book Now Item -->
             <li class="mobile-menu-booknow-wrap">
-              <a href="#bookingModal" class="btn-mobile-menubar-book" id="menubarBookNowBtn"
-                onclick="if(window.openModal){window.openModal('bookingModal');const m=document.getElementById('navMenuWrap');if(m)m.classList.remove('open');const t=document.getElementById('mobileToggle');if(t)t.classList.remove('is-active');return false;}">
+              <a href="listing.html" class="btn-mobile-menubar-book" id="menubarBookNowBtn">
                 <span>Book Now</span>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
                   stroke-linecap="round" stroke-linejoin="round">
@@ -142,8 +141,7 @@
               </form>
 
               <div class="quick-signin-footer">
-                <a href="#bookingModal" class="quick-footer-link trigger-booking-modal"
-                  data-package="Custom Luxury Tour">
+                <a href="listing.html" class="quick-footer-link" id="quickBookLink">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                     <line x1="16" y1="2" x2="16" y2="6" />
@@ -164,8 +162,7 @@
           </div>
 
           <!-- Plan Your Trip Navy Pill Button -->
-          <a href="#bookingModal" class="btn-header-contact btn-plan-trip" id="headerContactBtn"
-            onclick="if(window.openModal){window.openModal('bookingModal');return false;}">
+          <a href="listing.html" class="btn-header-contact btn-plan-trip" id="headerContactBtn">
             <span>Book Now</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
@@ -333,7 +330,7 @@
   <div class="hero-search-console-wrap" id="heroExploreBarWrap">
     <div class="container hero-search-container">
       <div class="hero-search-inner">
-        <!-- 2 Stepped Tabs: All Tours (active), Group Tours -->
+        <!-- Tab: All Tours -->
         <div class="hero-tabs-header" role="tablist">
           <button type="button" class="hero-tab-btn active" data-type="All Tours" role="tab" aria-selected="true"
             onclick="switchHeroTab(this)">
@@ -346,21 +343,10 @@
             </svg>
             <span>All Tours</span>
           </button>
-          <button type="button" class="hero-tab-btn" data-type="Group Tours" role="tab" aria-selected="false"
-            onclick="switchHeroTab(this)">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <span>Group Tours</span>
-          </button>
         </div>
 
         <!-- Main Search Form Card -->
-        <form class="hero-search-card" id="heroSearchForm">
+        <form class="hero-search-card" id="heroSearchForm" action="listing.html" method="GET">
           <div class="search-fields-grid">
             <!-- Col 1: Destination -->
             <div class="search-field-col search-col-destination" id="heroDestCol">
@@ -372,8 +358,8 @@
               </div>
               <div class="search-field-body">
                 <label for="heroDest" class="search-field-label">Destination</label>
-                <input type="text" class="search-field-input" id="heroDest" placeholder="Where would you like to go?"
-                  autocomplete="off" required>
+                <input type="text" class="search-field-input" id="heroDest" name="destination"
+                  placeholder="Where would you like to go?" autocomplete="off">
               </div>
             </div>
 
@@ -526,7 +512,106 @@
               </div>
             </div>
 
-            <!-- Col 4: Search Button -->
+            <!-- Col 4: Number of People / Travelers -->
+            <div class="search-field-col search-col-travelers" id="heroTravelersCol">
+              <div class="travelers-badge-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A87814" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="search-field-body">
+                <label class="search-field-label" for="travelersTriggerBtn">People</label>
+                <div class="travelers-selector-trigger" id="travelersTriggerBtn" role="button" tabindex="0"
+                  aria-haspopup="dialog" aria-expanded="false" title="Select number of people">
+                  <span class="travelers-display-text" id="travelersDisplayVal">2 People</span>
+                  <svg class="travelers-chevron-icon" id="travelersChevron" viewBox="0 0 24 24" width="14" height="14"
+                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+                <!-- Hidden inputs for form submission -->
+                <input type="hidden" id="heroTravelersInput" name="travelers" value="2 People">
+                <input type="hidden" id="heroAdultsCount" name="adults" value="2">
+                <input type="hidden" id="heroChildrenCount" name="children" value="0">
+              </div>
+
+              <!-- Number of People Popover -->
+              <div class="travelers-range-popover" id="travelersRangePopover" role="dialog"
+                aria-label="Number of people selector">
+                <div class="travelers-popover-top">
+                  <div class="travelers-popover-badge" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#A87814" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <span class="travelers-popover-title" id="travelersPopoverTitle">Number of People</span>
+                  <button type="button" class="travelers-popover-toggle-btn" id="travelersPopoverToggleBtn"
+                    aria-label="Close travelers popover">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Adults Counter Row -->
+                <div class="guest-counter-item">
+                  <div class="guest-counter-text">
+                    <div class="guest-counter-label">Adults</div>
+                    <div class="guest-counter-sub">Age 12+ years</div>
+                  </div>
+                  <div class="guest-counter-btns">
+                    <button type="button" class="btn-guest-ctrl" id="btnAdultsMinus"
+                      aria-label="Decrease adults">&minus;</button>
+                    <span class="guest-count-val" id="adultsCountDisplay">2</span>
+                    <button type="button" class="btn-guest-ctrl" id="btnAdultsPlus"
+                      aria-label="Increase adults">&plus;</button>
+                  </div>
+                </div>
+
+                <!-- Children Counter Row -->
+                <div class="guest-counter-item">
+                  <div class="guest-counter-text">
+                    <div class="guest-counter-label">Children</div>
+                    <div class="guest-counter-sub">Age 2–11 years</div>
+                  </div>
+                  <div class="guest-counter-btns">
+                    <button type="button" class="btn-guest-ctrl" id="btnChildrenMinus"
+                      aria-label="Decrease children">&minus;</button>
+                    <span class="guest-count-val" id="childrenCountDisplay">0</span>
+                    <button type="button" class="btn-guest-ctrl" id="btnChildrenPlus"
+                      aria-label="Increase children">&plus;</button>
+                  </div>
+                </div>
+
+                <!-- Quick Presets -->
+                <div class="travelers-quick-presets">
+                  <button type="button" class="traveler-preset-chip" data-adults="1" data-children="0">Solo (1)</button>
+                  <button type="button" class="traveler-preset-chip active" data-adults="2" data-children="0">Couple
+                    (2)</button>
+                  <button type="button" class="traveler-preset-chip" data-adults="2" data-children="1">Family
+                    (3)</button>
+                  <button type="button" class="traveler-preset-chip" data-adults="4" data-children="0">Group
+                    (4+)</button>
+                </div>
+
+                <!-- Actions -->
+                <div class="travelers-popover-actions">
+                  <button type="button" class="travelers-reset-btn" id="travelersResetBtn">Reset</button>
+                  <button type="button" class="travelers-apply-btn" id="travelersApplyBtn">Apply</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Col 5: Search Button -->
             <div class="search-field-col search-col-submit">
               <button type="submit" class="hero-search-submit-btn" id="heroExploreBtn">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -563,6 +648,178 @@
     }
   </script>
 
+
+
+  <!-- =========================================================================
+       03. POPULAR DESTINATIONS SECTION (CIRCULAR CAROUSEL DESIGN)
+       ========================================================================= -->
+  <section class="section-block popular-dest-section" id="destinations">
+    <div class="container popular-dest-container">
+      <div class="section-header popular-dest-header">
+        <h2 class="popular-dest-title">Popular <span class="popular-dest-title-gold">Destinations</span></h2>
+        <p class="popular-dest-desc">
+          Discover memorable travel experiences across some of the world's most exciting destinations.
+        </p>
+      </div>
+
+      <!-- Circular Carousel Container with Left/Right Navigation -->
+      <div class="dest-carousel-wrapper">
+        <!-- Prev Button -->
+        <button type="button" class="dest-nav-btn prev" id="destPrevBtn" aria-label="Previous Destinations">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+
+        <!-- Carousel Track (8 Destinations in Agency Inventory) -->
+        <div class="dest-cards-track" id="destCardsTrack">
+          <!-- 1. Dubai -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Dubai Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&auto=format&fit=crop"
+                alt="Dubai Skyline & Marina" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Dubai</span>
+                <p class="dest-overlay-desc">Modern skyline, luxury desert safaris &amp; iconic shopping.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Dubai</h3>
+            <span class="dest-card-activities">Tours (18)</span>
+          </a>
+
+          <!-- 2. Singapore -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Singapore Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=600&auto=format&fit=crop"
+                alt="Singapore Gardens by the Bay" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Singapore</span>
+                <p class="dest-overlay-desc">Futurism meets lush gardens &amp; vibrant cultural charm.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Singapore</h3>
+            <span class="dest-card-activities">Tours (15)</span>
+          </a>
+
+          <!-- 3. Thailand -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Thailand Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600&auto=format&fit=crop"
+                alt="Thailand Islands & Beaches" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Thailand</span>
+                <p class="dest-overlay-desc">Golden temples, tropical islands &amp; street food wonders.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Thailand</h3>
+            <span class="dest-card-activities">Tours (24)</span>
+          </a>
+
+          <!-- 4. Europe -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Europe Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop"
+                alt="Rome Colosseum Europe" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Europe</span>
+                <p class="dest-overlay-desc">Rich timeless history, alpine views &amp; romantic cities.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Europe</h3>
+            <span class="dest-card-activities">Tours (32)</span>
+          </a>
+
+          <!-- 5. Maldives -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Maldives Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=600&auto=format&fit=crop"
+                alt="Maldives Overwater Resort" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Maldives</span>
+                <p class="dest-overlay-desc">Pristine white beaches &amp; luxury overwater private villas.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Maldives</h3>
+            <span class="dest-card-activities">Tours (21)</span>
+          </a>
+
+          <!-- 6. Bali -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Bali Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=600&auto=format&fit=crop"
+                alt="Bali Lempuyang Temple Gates" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Bali</span>
+                <p class="dest-overlay-desc">Serene emerald rice terraces, beaches &amp; sacred shrines.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Bali</h3>
+            <span class="dest-card-activities">Tours (19)</span>
+          </a>
+
+          <!-- 7. Malaysia -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Malaysia Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=600&auto=format&fit=crop"
+                alt="Malaysia Petronas Towers" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Malaysia</span>
+                <p class="dest-overlay-desc">Modern skylines, lush rainforests &amp; heritage towns.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Malaysia</h3>
+            <span class="dest-card-activities">Tours (16)</span>
+          </a>
+
+          <!-- 8. Australia -->
+          <a href="listing.html" class="dest-card-item" aria-label="Explore Australia Tours">
+            <div class="dest-circle-wrap">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=600&auto=format&fit=crop"
+                alt="Australia Sydney Harbour" class="dest-circle-img" loading="lazy">
+              <div class="dest-circle-overlay">
+                <span class="dest-overlay-title">Australia</span>
+                <p class="dest-overlay-desc">Sun-kissed coasts, iconic harbors &amp; outback wonders.</p>
+                <span class="dest-overlay-cta">View All Tours &rarr;</span>
+              </div>
+            </div>
+            <h3 class="dest-card-name">Australia</h3>
+            <span class="dest-card-activities">Tours (22)</span>
+          </a>
+        </div>
+
+        <!-- Next Button -->
+        <button type="button" class="dest-nav-btn next" id="destNextBtn" aria-label="Next Destinations">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Bottom CTA: Explore Destinations -->
+      <div class="dest-cta-row">
+        <a href="listing.html" class="btn-explore-dest" id="btnExploreDestinations">
+          <span>Explore Destinations</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- =========================================================================
        02. EXPLORE OUR TOURS SECTION (FEATURED EXPERIENCES)
        ========================================================================= -->
@@ -597,7 +854,7 @@
             </p>
           </div>
           <div class="tour-card-content-bottom">
-            <a href="#bookingModal" class="tour-card-cta trigger-booking-modal" data-package="Group Tours">
+            <a href="listing.html" class="tour-card-cta">
               <span>Explore Group Tours</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -625,7 +882,7 @@
             </p>
           </div>
           <div class="tour-card-content-bottom">
-            <a href="#bookingModal" class="tour-card-cta trigger-booking-modal" data-package="Family & Private Tours">
+            <a href="listing.html" class="tour-card-cta">
               <span>Explore Family Tours</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -641,146 +898,6 @@
 
   </section>
 
-  <!-- =========================================================================
-       03. POPULAR DESTINATIONS SECTION (CIRCULAR CAROUSEL DESIGN)
-       ========================================================================= -->
-  <section class="section-block popular-dest-section" id="destinations">
-
-
-    <div class="container popular-dest-container">
-      <div class="section-header popular-dest-header">
-        <h2 class="popular-dest-title">Popular <span class="popular-dest-title-gold">Destinations</span></h2>
-        <p class="popular-dest-desc">
-          Discover memorable travel experiences across some of the world's most exciting destinations.
-        </p>
-      </div>
-
-      <!-- Circular Carousel Container with Left/Right Navigation -->
-      <div class="dest-carousel-wrapper">
-        <!-- Prev Button -->
-        <button type="button" class="dest-nav-btn prev" id="destPrevBtn" aria-label="Previous Destinations">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </button>
-
-        <!-- Carousel Track (8 Destinations in Agency Inventory) -->
-        <div class="dest-cards-track" id="destCardsTrack">
-          <!-- 1. Dubai -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Dubai Luxury Holiday" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&auto=format&fit=crop"
-                alt="Dubai Skyline & Marina" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Dubai</h3>
-            <span class="dest-card-activities">Tours (18)</span>
-          </div>
-
-          <!-- 2. Singapore -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Singapore City & Sentosa Tour" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=600&auto=format&fit=crop"
-                alt="Singapore Gardens by the Bay" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Singapore</h3>
-            <span class="dest-card-activities">Tours (15)</span>
-          </div>
-
-          <!-- 3. Thailand -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Thailand Beach & Bangkok Explorer"
-            role="button" tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600&auto=format&fit=crop"
-                alt="Thailand Islands & Beaches" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Thailand</h3>
-            <span class="dest-card-activities">Tours (24)</span>
-          </div>
-
-          <!-- 4. Europe -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Grand Europe Heritage Tour" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop"
-                alt="Rome Colosseum Europe" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Europe</h3>
-            <span class="dest-card-activities">Tours (32)</span>
-          </div>
-
-          <!-- 5. Maldives -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Maldives Island Luxury Resort" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=600&auto=format&fit=crop"
-                alt="Maldives Overwater Resort" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Maldives</h3>
-            <span class="dest-card-activities">Tours (21)</span>
-          </div>
-
-          <!-- 6. Bali -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Bali Tropical Paradise Tour" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=600&auto=format&fit=crop"
-                alt="Bali Lempuyang Temple Gates" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Bali</h3>
-            <span class="dest-card-activities">Tours (19)</span>
-          </div>
-
-          <!-- 7. Malaysia -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Malaysia Discovery Tour" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=600&auto=format&fit=crop"
-                alt="Malaysia Petronas Towers" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Malaysia</h3>
-            <span class="dest-card-activities">Tours (16)</span>
-          </div>
-
-          <!-- 8. Australia -->
-          <div class="dest-card-item trigger-booking-modal" data-package="Australia Highlights & Sydney" role="button"
-            tabindex="0">
-            <div class="dest-circle-wrap">
-              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=600&auto=format&fit=crop"
-                alt="Australia Sydney Harbour" class="dest-circle-img" loading="lazy">
-            </div>
-            <h3 class="dest-card-name">Australia</h3>
-            <span class="dest-card-activities">Tours (22)</span>
-          </div>
-        </div>
-
-        <!-- Next Button -->
-        <button type="button" class="dest-nav-btn next" id="destNextBtn" aria-label="Next Destinations">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Bottom CTA: Explore Destinations -->
-      <div class="dest-cta-row">
-        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal"
-          data-package="Popular International Destinations">
-          <span>Explore Destinations</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- =========================================================================
        04. FEATURED GROUP TOURS SECTION (SCREENSHOT MATCHING DESIGN)
@@ -795,46 +912,45 @@
       </div>
 
       <div class="pkg-cards-grid">
-        <!-- Group Tour Card 1: Dubai & Abu Dhabi -->
+        <!-- Group Tour Card 1: Europe Grand Tour -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop"
-              alt="Dubai & Abu Dhabi Skyline" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop"
+              alt="Paris Eiffel Tower Europe" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Group Tour</span>
             </div>
           </div>
           <div class="pkg-body">
-            <h3 class="pkg-card-title">Dubai & Abu Dhabi Royal Tour</h3>
+            <h3 class="pkg-card-title">Europe Grand Tour – Paris, Rome & Zurich</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
                 </svg>
-                Ex-Hyderabad, UAE
+                Ex-Hyderabad, Europe
               </span>
               <span class="pkg-meta-arrow">⟷</span>
-              <span class="pkg-meta-dur">05 Nights / 06 Days</span>
+              <span class="pkg-meta-dur">09 Nights / 10 Days</span>
             </div>
             <div class="pkg-extra-info">
-              <span>📅 Dep: 15 Oct 2026</span>
-              <span class="seats-badge">🔥 08 Seats Left</span>
+              <span>📅 Dep: 10 Nov 2026</span>
+              <span class="seats-badge">🔥 10 Seats Left</span>
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal"
-                  data-package="Dubai & Abu Dhabi Group Tour">
+                <a href="listing.html" class="pkg-action-btn btn-gold">
                   <span>Book Now</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
-                </button>
+                </a>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Per Person</span>
-                <span class="pkg-price-val">₹38,500</span>
+                <span class="pkg-price-val">₹1,45,000</span>
               </div>
             </div>
             <div class="pkg-divider"></div>
@@ -851,45 +967,45 @@
           </div>
         </article>
 
-        <!-- Group Tour Card 2: Bali Paradise -->
+        <!-- Group Tour Card 2: Vietnam Heritage -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop"
-              alt="Bali Paradise Tour" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800&auto=format&fit=crop"
+              alt="Vietnam Heritage Tour" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Group Tour</span>
             </div>
           </div>
           <div class="pkg-body">
-            <h3 class="pkg-card-title">Bali Paradise & Nusa Penida</h3>
+            <h3 class="pkg-card-title">Vietnam Heritage – Hanoi & Ha Long Bay</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
                 </svg>
-                Ex-Hyderabad, Indonesia
+                Ex-Hyderabad, Vietnam
               </span>
               <span class="pkg-meta-arrow">⟷</span>
               <span class="pkg-meta-dur">06 Nights / 07 Days</span>
             </div>
             <div class="pkg-extra-info">
-              <span>📅 Dep: 22 Oct 2026</span>
-              <span class="seats-badge">🔥 12 Seats Left</span>
+              <span>📅 Dep: 28 Nov 2026</span>
+              <span class="seats-badge">🔥 14 Seats Left</span>
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal" data-package="Bali Paradise Group Tour">
+                <a href="listing.html" class="pkg-action-btn btn-gold">
                   <span>Book Now</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
-                </button>
+                </a>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Per Person</span>
-                <span class="pkg-price-val">₹42,999</span>
+                <span class="pkg-price-val">₹39,999</span>
               </div>
             </div>
             <div class="pkg-divider"></div>
@@ -906,46 +1022,45 @@
           </div>
         </article>
 
-        <!-- Group Tour Card 3: Thailand Wonders -->
+        <!-- Group Tour Card 3: Japan Sakura -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop"
-              alt="Thailand Beach Explorer" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800&auto=format&fit=crop"
+              alt="Japan Tokyo Cherry Blossom" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Group Tour</span>
             </div>
           </div>
           <div class="pkg-body">
-            <h3 class="pkg-card-title">Thailand Bangkok & Phuket Wonders</h3>
+            <h3 class="pkg-card-title">Japan Sakura – Tokyo, Kyoto & Osaka</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
                 </svg>
-                Ex-Hyderabad, Thailand
+                Ex-Hyderabad, Japan
               </span>
               <span class="pkg-meta-arrow">⟷</span>
-              <span class="pkg-meta-dur">05 Nights / 06 Days</span>
+              <span class="pkg-meta-dur">07 Nights / 08 Days</span>
             </div>
             <div class="pkg-extra-info">
-              <span>📅 Dep: 05 Nov 2026</span>
-              <span class="seats-badge">🔥 06 Seats Left</span>
+              <span>📅 Dep: 20 Dec 2026</span>
+              <span class="seats-badge">🔥 08 Seats Left</span>
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal"
-                  data-package="Thailand Wonders Group Tour">
+                <a href="listing.html" class="pkg-action-btn btn-gold">
                   <span>Book Now</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
-                </button>
+                </a>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Per Person</span>
-                <span class="pkg-price-val">₹34,500</span>
+                <span class="pkg-price-val">₹98,500</span>
               </div>
             </div>
             <div class="pkg-divider"></div>
@@ -965,7 +1080,7 @@
 
       <!-- CTA: View All Group Tours -->
       <div class="dest-cta-row">
-        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal" data-package="All Group Tours Calendar">
+        <a href="listing.html" class="btn-explore-dest" id="btnViewAllTours">
           <span>View All Group Tours</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -991,144 +1106,141 @@
       </div>
 
       <div class="pkg-cards-grid">
-        <!-- Family Tour Card 1: European Family Escape -->
+        <!-- Family Tour Card 1: Bali Family Paradise -->
         <article class="pkg-card-item">
           <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop"
-              alt="European Family Escape" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop"
+              alt="Bali Family Paradise Tour" loading="lazy">
             <div class="pkg-badges-wrap">
               <span class="badge-tour-type">Family Tour</span>
             </div>
           </div>
           <div class="pkg-body">
-            <h3 class="pkg-card-title">European Family Escape (Swiss & Paris)</h3>
+            <h3 class="pkg-card-title">Bali Family Paradise & Waterpark Adventure</h3>
             <div class="pkg-card-meta">
               <span class="pkg-meta-loc">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
                 </svg>
-                Switzerland, France
-              </span>
-              <span class="pkg-meta-arrow">⟷</span>
-              <span class="pkg-meta-dur">10 Nights / 11 Days</span>
-            </div>
-            <div class="pkg-card-action-row">
-              <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal"
-                  data-package="European Family Escape (Inquiry)">
-                  <span>Enquire Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </button>
-              </div>
-              <div class="pkg-price-box">
-                <span class="pkg-price-label">Custom Quote</span>
-                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
-                  Request</span>
-              </div>
-            </div>
-            <div class="pkg-divider"></div>
-            <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                </svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Inclusion ⓘ</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Family Tour Card 2: Maldives Private Island -->
-        <article class="pkg-card-item">
-          <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop"
-              alt="Maldives Private Island Retreat" loading="lazy">
-            <div class="pkg-badges-wrap">
-              <span class="badge-tour-type">Family Tour</span>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <h3 class="pkg-card-title">Maldives Private Island & Villa Getaway</h3>
-            <div class="pkg-card-meta">
-              <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                </svg>
-                South Atoll, Maldives
-              </span>
-              <span class="pkg-meta-arrow">⟷</span>
-              <span class="pkg-meta-dur">04 Nights / 05 Days</span>
-            </div>
-            <div class="pkg-card-action-row">
-              <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal"
-                  data-package="Maldives Private Island (Inquiry)">
-                  <span>Enquire Now</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </button>
-              </div>
-              <div class="pkg-price-box">
-                <span class="pkg-price-label">Custom Quote</span>
-                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
-                  Request</span>
-              </div>
-            </div>
-            <div class="pkg-divider"></div>
-            <div class="pkg-card-footer">
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                </svg> Experience ⓘ</span>
-              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Inclusion ⓘ</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Family Tour Card 3: Singapore & Sentosa -->
-        <article class="pkg-card-item">
-          <div class="pkg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop"
-              alt="Singapore & Sentosa Family Fun" loading="lazy">
-            <div class="pkg-badges-wrap">
-              <span class="badge-tour-type">Family Tour</span>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <h3 class="pkg-card-title">Singapore & Sentosa Family Fun Explorer</h3>
-            <div class="pkg-card-meta">
-              <span class="pkg-meta-loc">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                </svg>
-                Singapore, Sentosa Island
+                Bali, Indonesia
               </span>
               <span class="pkg-meta-arrow">⟷</span>
               <span class="pkg-meta-dur">05 Nights / 06 Days</span>
             </div>
             <div class="pkg-card-action-row">
               <div class="pkg-btn-wrap">
-                <button class="pkg-action-btn btn-gold trigger-booking-modal"
-                  data-package="Singapore Family Fun (Inquiry)">
+                <a href="listing.html" class="pkg-action-btn btn-gold">
                   <span>Enquire Now</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
-                </button>
+                </a>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Custom Quote</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
+                  Request</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Family Tour Card 2: Thailand Family Adventure -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop"
+              alt="Thailand Family Adventure Tour" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Family Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Thailand Family Fun – Phuket & Bangkok</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                Phuket & Bangkok, Thailand
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">06 Nights / 07 Days</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <a href="listing.html" class="pkg-action-btn btn-gold">
+                  <span>Enquire Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Custom Quote</span>
+                <span class="pkg-price-val" style="font-size: 1.05rem; font-weight:700; color:#475569;">Price on
+                  Request</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Experience ⓘ</span>
+              <span class="pkg-footer-feat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Inclusion ⓘ</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Family Tour Card 3: Dubai Family Delight -->
+        <article class="pkg-card-item">
+          <div class="pkg-img-wrap">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop"
+              alt="Dubai Family Delight Tour" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Family Tour</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">Dubai Family Delight – Safari & Theme Parks</h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                Dubai, UAE
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">04 Nights / 05 Days</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <a href="listing.html" class="pkg-action-btn btn-gold">
+                  <span>Enquire Now</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
               </div>
               <div class="pkg-price-box">
                 <span class="pkg-price-label">Custom Quote</span>
@@ -1153,8 +1265,7 @@
 
       <!-- CTA: Explore Family Tours -->
       <div class="dest-cta-row">
-        <a href="#bookingModal" class="btn-explore-dest trigger-booking-modal"
-          data-package="Custom Family Holiday Inquiry">
+        <a href="listing.html" class="btn-explore-dest" id="btnViewFamilyTours">
           <span>Explore Family Tours</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -1776,48 +1887,35 @@
   <div id="contact"></div>
 
   <!-- =========================================================================
-       11. FINAL CTA (EXACT MOCKUP: WHERE WILL YOUR NEXT JOURNEY TAKE YOU?)
+       11. FINAL CTA (DISCOVER NEW PLACES, CREATE LASTING MEMORIES BANNER)
        ========================================================================= -->
   <section class="final-cta-section" id="finalCta">
     <div class="container final-cta-container">
-      <div class="final-cta-content">
-        <!-- Headline -->
-        <h2 class="final-cta-headline">
-          Where Will Your Next<br>
-          <span class="gold-highlight">Journey</span> Take You?
-        </h2>
+      <div class="discover-banner-card" style="background-image: url('images/image.png');">
+        <!-- Content on left -->
+        <div class="discover-banner-content">
+          <!-- Headline -->
+          <h2 class="discover-banner-title">
+            Ready to<br>
+            <span class="gold-highlight">Explore the World?</span>
+          </h2>
 
-        <!-- Description -->
-        <p class="final-cta-narrative">
-          Explore our group tours or tell us about your ideal family holiday. Let's start planning your next
-          unforgettable journey.
-        </p>
+          <!-- Narrative description -->
+          <p class="discover-banner-desc">
+            Discover unforgettable destinations with travel experiences planned around you.
+          </p>
 
-        <!-- CTA Buttons Row -->
-        <div class="final-cta-buttons-row">
-          <a href="#packages" class="btn-cta-explore-group">
-            <span>Explore Group Tours</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-          <a href="#contact" class="btn-cta-plan-trip">
-            <span>Plan Your Trip</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Bottom Tagline -->
-        <div class="final-cta-bottom-tagline">
-          <span class="cta-tagline-line"></span>
-          <span class="cta-tagline-text">IT'S TIME FOR A NEW STORY</span>
-          <span class="cta-tagline-line"></span>
+          <!-- Action Button -->
+          <div class="discover-cta-row">
+            <a href="listing.html" class="btn-discover-explore">
+              <span>Plan Your Trip</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -2197,54 +2295,6 @@
        MODALS
        ========================================================================= -->
 
-  <!-- 1. Booking Modal -->
-  <div class="modal-backdrop" id="bookingModal">
-    <div class="modal-card">
-      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
-      <div class="modal-header">
-        <h3 class="modal-title">Book Your Tour</h3>
-        <p class="modal-subtitle">Reserve with Vinyas Travels &bull; Instant Confirmation Support</p>
-      </div>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="bookingTourInput">Selected Package / Tour</label>
-          <input type="text" id="bookingTourInput" value="Golden Triangle Heritage Royal Tour" required>
-        </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="bookingName">Full Name *</label>
-            <input type="text" id="bookingName" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label for="bookingPhone">Phone *</label>
-            <input type="tel" id="bookingPhone" placeholder="+91 9876543210" required>
-          </div>
-        </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="bookingDeparture">Departure Date</label>
-            <input type="date" id="bookingDeparture" required>
-          </div>
-          <div class="form-group">
-            <label for="bookingTravelers">Travelers Count</label>
-            <select id="bookingTravelers">
-              <option>1 Adult</option>
-              <option selected>2 Adults (Couple)</option>
-              <option>Family (2 Adults + 1 Child)</option>
-              <option>Family (2 Adults + 2 Children)</option>
-              <option>Group (5+ Travelers)</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="bookingNotes">Special Requests (Optional)</label>
-          <textarea id="bookingNotes" rows="2"
-            placeholder="Vegetarian meals, pickup location, hotel tier..."></textarea>
-        </div>
-        <button type="submit" class="btn-gold-submit" id="confirmBookingBtn">Confirm Reservation Inquiry</button>
-      </form>
-    </div>
-  </div>
 
   <!-- 2. Search Modal -->
   <div class="modal-backdrop" id="searchModal">
@@ -2310,7 +2360,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- JavaScript -->
-  <script src="js/main.js?v=26"></script>
+  <script src="js/main.js?v=29"></script>
 </body>
 
 </html>

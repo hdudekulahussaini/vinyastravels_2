@@ -1,0 +1,3067 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bali Tropical Island Sanctuary Retreat | Vinyas Travels</title>
+
+  <!-- Google Fonts: Caveat, Cinzel, Oswald, Playfair Display, Plus Jakarta Sans & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@600;700;800;900&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=148">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Leaflet CSS & JS for Interactive Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Poppins"', 'sans-serif'],
+            sans: ['"Poppins"', 'sans-serif'],
+          },
+          colors: {
+            luxe: {
+              cream: '#ffffff',
+              sand: '#F2EDE4',
+              sandDark: '#E4DDD2',
+              emerald: '#0B332B',
+              emeraldLight: '#144B40',
+              accent: '#C5A059', // Antique Champagne Gold
+              accentLight: '#E8D5AB',
+              charcoal: '#121816',
+              cardDark: '#1A2321',
+              muted: '#697470',
+            }
+          },
+          boxShadow: {
+            'luxe': '0 20px 40px -15px rgba(11, 51, 43, 0.08)',
+            'floating': '0 30px 60px -12px rgba(11, 24, 20, 0.18)',
+            'gold': '0 10px 25px -5px rgba(197, 160, 89, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* =========================================================
+       GLOBAL FONT OVERRIDE — POPPINS EVERYWHERE
+    ========================================================= */
+    *,
+    *::before,
+    *::after,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    span,
+    li,
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    nav,
+    header,
+    footer {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    /* Custom refined styling */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .glass-dark {
+      background: rgba(14, 23, 20, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #DFBE7A 0%, #C5A059 50%, #9E7B35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .nav-active {
+      color: #0B332B !important;
+      border-color: #C5A059 !important;
+      font-weight: 700;
+    }
+
+    /* Custom Leaflet Map styling */
+    .leaflet-control-attribution {
+      display: none !important;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Vinyas Travels Sticky Header Refinements */
+    .site-header {
+      background-color: #ffffff !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .site-header .main-navbar {
+      padding: 14px 0 !important;
+    }
+
+    .site-header .logo-transparent {
+      display: none !important;
+    }
+
+    .site-header .logo-sticky {
+      display: block !important;
+    }
+
+    .site-header .nav-link {
+      color: #102A35 !important;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .site-header .nav-link:hover,
+    .site-header .nav-link.active {
+      color: #B88918 !important;
+    }
+
+    .site-header .header-user-btn svg {
+      stroke: #8a660e !important;
+    }
+
+    .site-header .mobile-toggle svg {
+      stroke: #102A35 !important;
+    }
+
+    /* Sub-Navigation Unified Capsule Bar & Pill Styles */
+    .subnav-capsule-bar {
+      background: #edf1ee !important;
+      border: 1px solid #dce3de !important;
+      border-radius: 9999px !important;
+      padding: 5px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+      width: 100% !important;
+      min-width: 580px !important;
+    }
+
+    .subnav-pill-link {
+      color: #475569 !important;
+      padding: 8px 18px !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      border-radius: 9999px !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      display: inline-block !important;
+      white-space: nowrap !important;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .subnav-pill-link:hover {
+      color: #061f18 !important;
+      background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .subnav-pill-link.active {
+      background: #061f18 !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
+    }
+
+    /* Reviews Carousel Viewport & Cards Border Guarantee */
+    #reviews-viewport {
+      overflow: hidden !important;
+      padding: 8px 6px !important;
+      margin: 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    #reviews-slider-track {
+      display: flex !important;
+      gap: 16px !important;
+      padding: 4px 0 !important;
+    }
+
+    #reviews-slider-track > div {
+      border: 1px solid #e5e7eb !important;
+      border-right: 1.5px solid #d1d5db !important;
+      box-sizing: border-box !important;
+    }
+
+    #reviews-slider-track > div:hover {
+      border-color: #c28e2b !important;
+      border-right-color: #c28e2b !important;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-luxe-charcoal font-sans antialiased selection:bg-luxe-accent selection:text-white">
+
+  <!-- =========================================================================
+       SITE HEADER (VINYAS TRAVELS LUXURY NAVIGATION)
+       ========================================================================= -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="main-navbar">
+      <div class="container nav-container">
+        <!-- Left: Brand Logo -->
+        <a href="index.html" class="brand-logo" id="brandLogo" aria-label="Vinyas Travels Home">
+          <img src="images/logo-white.png" alt="Vinyas Travels" class="brand-logo-img logo-transparent">
+          <img src="images/logo-backup.png" alt="Vinyas Travels" class="brand-logo-img logo-sticky">
+        </a>
+
+        <!-- Center Menu Links -->
+        <nav class="nav-menu-wrap" id="navMenuWrap">
+          <!-- Mobile Drawer Top with Close Icon -->
+          <div class="nav-menu-drawer-top">
+            <button type="button" class="nav-menu-close-btn" id="navMenuCloseBtn" aria-label="Close Menu">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html#home" class="nav-link">Home</a></li>
+            <li><a href="index.html#packages" class="nav-link" id="navLinkGroupTours">Group Tours</a></li>
+            <li><a href="index.html#destinations" class="nav-link" id="navLinkInternational">International</a></li>
+            <li><a href="index.html#packages" class="nav-link" id="navLinkDomestic">Domestic</a></li>
+            <li><a href="index.html#packages" class="nav-link" id="navLinkAdventure">Adventure</a></li>
+            <li><a href="index.html#packages" class="nav-link" id="navLinkWildlife">Wildlife</a></li>
+            <li><a href="index.html#packages" class="nav-link" id="navLinkPilgrim">Pilgrim</a></li>
+            <li><a href="index.html#packages" class="nav-link" id="navLinkCruise">Cruise</a></li>
+            <!-- Mobile Menubar Book Now Item -->
+            <li class="mobile-menu-booknow-wrap">
+              <a href="#bookingModal" class="btn-mobile-menubar-book" id="menubarBookNowBtn"
+                onclick="if(window.openModal){window.openModal('bookingModal');const m=document.getElementById('navMenuWrap');if(m)m.classList.remove('open');const t=document.getElementById('mobileToggle');if(t)t.classList.remove('is-active');return false;}">
+                <span>Book Now</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Actions: Login Icon Dropdown & Book Now Button -->
+        <div class="header-right-actions">
+          <!-- Traveler Account / Profile Dropdown Wrap -->
+          <div class="header-profile-dropdown-wrap" id="headerProfileDropdownWrap">
+            <button type="button" class="header-user-btn" id="headerUserBtn" aria-label="Sign In / Traveler Account"
+              title="Sign In / Traveler Account" onclick="toggleProfileDropdown(event)">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#8a660e" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20a6 6 0 0 0-12 0" />
+                <circle cx="12" cy="10" r="4" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+            </button>
+
+            <!-- Quick Traveler Sign-In Dropdown Card -->
+            <div class="profile-dropdown-card quick-signin-dropdown" id="profileDropdownCard">
+              <div class="quick-signin-header">
+                <div class="quick-signin-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a660e" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="quick-signin-title">Traveler Portal</h4>
+                  <p class="quick-signin-subtitle">Sign in to manage your holidays</p>
+                </div>
+              </div>
+
+              <form class="quick-signin-form" id="quickSignInForm">
+                <div class="quick-form-group">
+                  <label for="quickUserEmail" class="quick-form-label">Email or Mobile</label>
+                  <div class="quick-input-wrap">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    <input type="text" id="quickUserEmail" class="quick-form-input" placeholder="name@example.com"
+                      required>
+                  </div>
+                </div>
+
+                <div class="quick-form-group">
+                  <label for="quickUserPassword" class="quick-form-label">Password</label>
+                  <div class="quick-input-wrap">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <input type="password" id="quickUserPassword" class="quick-form-input" placeholder="••••••••"
+                      required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-quick-signin" id="quickSignInSubmitBtn">
+                  <span>Sign In</span>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </form>
+
+              <div class="quick-signin-footer">
+                <a href="#bookingModal" class="quick-footer-link trigger-booking-modal"
+                  data-package="Custom Luxury Tour">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                  </svg>
+                  <span>Book Tour</span>
+                </a>
+                <span class="quick-footer-dot">•</span>
+                <a href="index.html#contact" class="quick-footer-link" id="quickSupportLink">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  <span>Help Desk</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plan Your Trip / Book Now Button -->
+          <a href="#bookingModal" class="btn-header-contact btn-plan-trip" id="headerContactBtn"
+            onclick="if(window.openModal){window.openModal('bookingModal');return false;}">
+            <span>Book Now</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+            <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       FULL-WIDTH HERO SECTION (BALI TROPICAL RETREAT BANNER)
+       ========================================================================= -->
+  <section class="relative w-full min-h-[500px] lg:min-h-[540px] bg-cover bg-center flex items-center pt-28 pb-16"
+    style="background-image: linear-gradient(to right, rgba(6, 20, 16, 0.48) 0%, rgba(6, 20, 16, 0.22) 55%, rgba(6, 20, 16, 0.10) 100%), linear-gradient(180deg, rgba(6, 20, 16, 0.15) 0%, rgba(6, 20, 16, 0.32) 100%), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=85');">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-white/80 text-xs font-medium mb-3">
+        <a href="index.html" class="hover:text-amber-400 transition">Home</a>
+        <span class="opacity-50">&gt;</span>
+        <a href="listing.html?country=indonesia" class="hover:text-amber-400 transition">Indonesia</a>
+        <span class="opacity-50">&gt;</span>
+        <span class="text-white/95 font-semibold">Bali Tropical Sanctuary &amp; Volcanic Archipelago Retreat</span>
+      </nav>
+
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mt-2">
+        <div class="max-w-3xl">
+          <!-- Country Pill -->
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] font-bold tracking-wider uppercase mb-3">
+            <span class="inline-block w-4 h-2.5 rounded-sm overflow-hidden shadow-sm"
+              style="background: linear-gradient(to bottom, #ED1B24 50%, #FFFFFF 50%);"></span>
+            INDONESIA
+          </div>
+
+          <!-- Main Title -->
+          <h1
+            class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[46px] text-white tracking-tight leading-[1.18] mb-3">
+            Bali Tropical Sanctuary &amp;<br class="hidden sm:inline" />
+            Volcanic Archipelago Retreat
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-white/85 text-sm sm:text-base font-normal leading-relaxed max-w-2xl mb-6">
+            A perfect blend of natural beauty, cultural heritage and relaxing island life across Bali's temples, beaches
+            and volcanic landscapes.
+          </p>
+
+          <!-- 4 Badges in a Row -->
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span
+              class="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-xs font-medium flex items-center gap-2">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i> 15 Days
+            </span>
+            <span
+              class="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-xs font-medium flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i> Bali &amp; Islands
+            </span>
+            <span
+              class="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-xs font-medium flex items-center gap-2">
+              <i data-lucide="landmark" class="w-3.5 h-3.5 text-amber-400"></i> Cultural &amp; Nature
+            </span>
+            <span
+              class="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-xs font-medium flex items-center gap-2">
+              <i data-lucide="users" class="w-3.5 h-3.5 text-amber-400"></i> Private Tour
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+    <!-- =========================================================================
+         SECTION 1: GALLERY & STICKY BOOKING CARD (2 COLUMNS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: PHOTO GALLERY, TOUR DETAILS, MAP & REVIEWS (8 COLS) -->
+      <div class="lg:col-span-8 space-y-12">
+
+        <!-- Photo Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 md:h-[460px]">
+          <!-- Main Hero Image (Col 8) -->
+          <div id="hero-main-card"
+            class="relative md:col-span-8 h-72 sm:h-80 md:h-full min-h-0 rounded-2xl overflow-hidden group cursor-pointer shadow-sm"
+            onclick="openLightbox(0)">
+            <img id="hero-main-img"
+              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85"
+              alt="Pura Ulun Danu Bratan Lake Temple"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+
+            <!-- Left & Right Arrow Buttons -->
+            <button type="button" onclick="event.stopPropagation(); prevGalleryImage();"
+              class="absolute left-3.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-gray-800 flex items-center justify-center shadow-md transition"
+              aria-label="Previous Photo">
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+            <button type="button" onclick="event.stopPropagation(); nextGalleryImage();"
+              class="absolute right-3.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-gray-800 flex items-center justify-center shadow-md transition"
+              aria-label="Next Photo">
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+
+            <!-- Counter Pill -->
+            <span id="gallery-main-counter"
+              class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-bold tracking-wider">
+              1/12
+            </span>
+          </div>
+
+          <!-- 3 Stacked Thumbnails (Col 4) -->
+          <div
+            class="grid grid-cols-3 md:grid-cols-1 md:grid-rows-3 gap-3 md:col-span-4 h-24 sm:h-28 md:h-full min-h-0">
+            <div class="relative rounded-2xl overflow-hidden group cursor-pointer shadow-sm h-full min-h-0"
+              onclick="openLightbox(1)">
+              <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=600&q=80"
+                alt="Uluwatu Sunset Temple"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            </div>
+            <div class="relative rounded-2xl overflow-hidden group cursor-pointer shadow-sm h-full min-h-0"
+              onclick="openLightbox(2)">
+              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80"
+                alt="Nusa Penida Coastal Waters"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            </div>
+            <div class="relative rounded-2xl overflow-hidden group cursor-pointer shadow-sm h-full min-h-0"
+              onclick="openLightbox(3)">
+              <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=600&q=80"
+                alt="Tropical Jungle Waterfall"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Navigation Pill Tab Bar (Unified Capsule Design) -->
+        <div class="w-full overflow-x-auto hide-scrollbar pt-2 relative z-20">
+          <nav class="subnav-capsule-bar">
+            <a href="#destination-overview" onclick="setActiveSubNav(this)" class="subnav-pill-link active">
+              Overview
+            </a>
+            <a href="#curated-itinerary" onclick="setActiveSubNav(this)" class="subnav-pill-link">
+              Itinerary
+            </a>
+            <a href="#inclusions-matrix" onclick="setActiveSubNav(this)" class="subnav-pill-link">
+              Inclusions
+            </a>
+            <a href="javascript:void(0)" onclick="openLightbox(0); setActiveSubNav(this)" class="subnav-pill-link">
+              Gallery
+            </a>
+            <a href="#archipelago-map" onclick="setActiveSubNav(this)" class="subnav-pill-link">
+              Map
+            </a>
+            <a href="#guest-reviews" onclick="setActiveSubNav(this)" class="subnav-pill-link">
+              Reviews
+            </a>
+            <a href="#faqs" onclick="setActiveSubNav(this)" class="subnav-pill-link">
+              FAQs
+            </a>
+          </nav>
+        </div>
+
+        <!-- =========================================================================
+             SECTION 2: DESTINATION OVERVIEW & 5 QUICK FACTS
+             ========================================================================= -->
+        <section id="destination-overview" class="scroll-mt-28 pt-2">
+          <div class="mb-2">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Destination
+              Overview</span>
+            <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">The Soul of the Indonesian Archipelago</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mt-4">
+            <!-- Paragraph Text Left -->
+            <div class="md:col-span-7 text-gray-600 text-sm leading-relaxed space-y-3">
+              <p>
+                Bali is a tropical paradise known for its stunning beaches, ancient temples, volcanic mountains and
+                vibrant
+                culture. This 15-day journey takes you through the island's most iconic destinations, offering a perfect
+                mix
+                of adventure, relaxation and cultural experiences.
+              </p>
+              <div>
+                <button type="button"
+                  onclick="showLuxeToast('Full destination handbook and itinerary details expanded.')"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#c28e2b] text-[#c28e2b] text-xs font-bold uppercase tracking-wider hover:bg-[#c28e2b] hover:text-white transition duration-300">
+                  <span>Read More</span>
+                  <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Editorial Photo Right -->
+            <div class="md:col-span-5 rounded-2xl overflow-hidden shadow-sm h-48 sm:h-52">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80"
+                alt="Bali Temple Sunset"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
+
+          <!-- 5 Quick Facts Horizontal Cards -->
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div class="p-3.5 rounded-2xl bg-[#fbf9f6] border border-[#ece7de] text-center hover:shadow-xs transition">
+              <i data-lucide="clock" class="w-5 h-5 text-[#c28e2b] mx-auto mb-1.5"></i>
+              <p class="text-xs font-bold text-[#11241f]">15 Days</p>
+              <p class="text-[10px] text-gray-500 font-medium">Tour Duration</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#fbf9f6] border border-[#ece7de] text-center hover:shadow-xs transition">
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#c28e2b] mx-auto mb-1.5"></i>
+              <p class="text-xs font-bold text-[#11241f]">Bali &amp; Nearby Islands</p>
+              <p class="text-[10px] text-gray-500 font-medium">Destination</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#fbf9f6] border border-[#ece7de] text-center hover:shadow-xs transition">
+              <i data-lucide="hotel" class="w-5 h-5 text-[#c28e2b] mx-auto mb-1.5"></i>
+              <p class="text-xs font-bold text-[#11241f]">4* Hotels</p>
+              <p class="text-[10px] text-gray-500 font-medium">Accommodation</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#fbf9f6] border border-[#ece7de] text-center hover:shadow-xs transition">
+              <i data-lucide="car" class="w-5 h-5 text-[#c28e2b] mx-auto mb-1.5"></i>
+              <p class="text-xs font-bold text-[#11241f]">Private Transfers</p>
+              <p class="text-[10px] text-gray-500 font-medium">Transportation</p>
+            </div>
+
+            <div
+              class="p-3.5 rounded-2xl bg-[#fbf9f6] border border-[#ece7de] text-center hover:shadow-xs transition col-span-2 sm:col-span-1">
+              <i data-lucide="landmark" class="w-5 h-5 text-[#c28e2b] mx-auto mb-1.5"></i>
+              <p class="text-xs font-bold text-[#11241f]">Cultural &amp; Nature</p>
+              <p class="text-[10px] text-gray-500 font-medium">Experience</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 3: KEY SANCTUARY STATIONS (POPULAR DESTINATIONS)
+         ========================================================================= -->
+        <section id="popular-destinations" class="scroll-mt-28 pt-4">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Popular
+                Destinations</span>
+              <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">Key Sanctuary Stations</h2>
+            </div>
+            <a href="listing.html?country=indonesia"
+              class="text-xs font-bold text-[#c28e2b] hover:underline flex items-center gap-1">
+              <span>View All Destinations</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- 5-Column Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+            <!-- 1. Ubud Highlands -->
+            <div
+              class="group cursor-pointer rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300">
+              <div class="h-32 sm:h-36 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
+                  alt="Ubud Highlands"
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="p-3 text-center">
+                <h4 class="font-bold text-sm text-[#11241f] group-hover:text-[#c28e2b] transition">Ubud Highlands</h4>
+                <p class="text-[11px] text-gray-500">Rice Terraces</p>
+              </div>
+            </div>
+
+            <!-- 2. Mount Batur -->
+            <div
+              class="group cursor-pointer rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300">
+              <div class="h-32 sm:h-36 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+                  alt="Mount Batur" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="p-3 text-center">
+                <h4 class="font-bold text-sm text-[#11241f] group-hover:text-[#c28e2b] transition">Mount Batur</h4>
+                <p class="text-[11px] text-gray-500">Volcano</p>
+              </div>
+            </div>
+
+            <!-- 3. Tanah Lot -->
+            <div
+              class="group cursor-pointer rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300">
+              <div class="h-32 sm:h-36 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1558005530-a7958896ec60?auto=format&fit=crop&w=600&q=80"
+                  alt="Tanah Lot" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="p-3 text-center">
+                <h4 class="font-bold text-sm text-[#11241f] group-hover:text-[#c28e2b] transition">Tanah Lot</h4>
+                <p class="text-[11px] text-gray-500">Sea Temple</p>
+              </div>
+            </div>
+
+            <!-- 4. Nusa Penida -->
+            <div
+              class="group cursor-pointer rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300">
+              <div class="h-32 sm:h-36 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80"
+                  alt="Nusa Penida" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="p-3 text-center">
+                <h4 class="font-bold text-sm text-[#11241f] group-hover:text-[#c28e2b] transition">Nusa Penida</h4>
+                <p class="text-[11px] text-gray-500">Island</p>
+              </div>
+            </div>
+
+            <!-- 5. Uluwatu -->
+            <div
+              class="group cursor-pointer rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300 col-span-2 sm:col-span-1">
+              <div class="h-32 sm:h-36 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=600&q=80"
+                  alt="Uluwatu" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="p-3 text-center">
+                <h4 class="font-bold text-sm text-[#11241f] group-hover:text-[#c28e2b] transition">Uluwatu</h4>
+                <p class="text-[11px] text-gray-500">Cliff Temple</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 4: UNIQUE EXPERIENCES (CURATED EXPERIENCES)
+         ========================================================================= -->
+        <section id="experience-highlights" class="scroll-mt-28 pt-4">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Unique
+                Experiences</span>
+              <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">Curated Experiences</h2>
+            </div>
+            <a href="#curated-itinerary"
+              class="text-xs font-bold text-[#c28e2b] hover:underline flex items-center gap-1">
+              <span>View All Experiences</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            <!-- 1. Private Temple Tours -->
+            <div
+              class="rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300 group">
+              <div class="h-40 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80"
+                  alt="Private Temple Tours"
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="px-4 pb-4 pt-0 relative">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#c28e2b] text-white flex items-center justify-center -mt-4 mb-2 relative z-10 shadow-md border-2 border-white">
+                  <i data-lucide="landmark" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-sm text-[#11241f] mb-1 group-hover:text-[#c28e2b] transition">Private Temple
+                  Tours
+                </h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Explore iconic temples with expert local guides.</p>
+              </div>
+            </div>
+
+            <!-- 2. Volcanic Sunrise Trek -->
+            <div
+              class="rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300 group">
+              <div class="h-40 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=600&q=80"
+                  alt="Volcanic Sunrise Trek"
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="px-4 pb-4 pt-0 relative">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#c28e2b] text-white flex items-center justify-center -mt-4 mb-2 relative z-10 shadow-md border-2 border-white">
+                  <i data-lucide="mountain" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-sm text-[#11241f] mb-1 group-hover:text-[#c28e2b] transition">Volcanic Sunrise
+                  Trek</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Witness breathtaking sunrises at Mount Batur.</p>
+              </div>
+            </div>
+
+            <!-- 3. Island Hopping -->
+            <div
+              class="rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300 group">
+              <div class="h-40 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80"
+                  alt="Island Hopping"
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="px-4 pb-4 pt-0 relative">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#c28e2b] text-white flex items-center justify-center -mt-4 mb-2 relative z-10 shadow-md border-2 border-white">
+                  <i data-lucide="compass" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-sm text-[#11241f] mb-1 group-hover:text-[#c28e2b] transition">Island Hopping
+                </h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Discover crystal-clear waters and vibrant marine life.
+                </p>
+              </div>
+            </div>
+
+            <!-- 4. Local Food & Culture -->
+            <div
+              class="rounded-2xl bg-white border border-[#ece7de] overflow-hidden shadow-xs hover:shadow-md transition duration-300 group">
+              <div class="h-40 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                  alt="Local Food & Culture"
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              </div>
+              <div class="px-4 pb-4 pt-0 relative">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#c28e2b] text-white flex items-center justify-center -mt-4 mb-2 relative z-10 shadow-md border-2 border-white">
+                  <i data-lucide="utensils" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-sm text-[#11241f] mb-1 group-hover:text-[#c28e2b] transition">Local Food &
+                  Culture
+                </h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Experience authentic Balinese cuisine and traditions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 5: DETAILED ITINERARY (THE 15-DAY JOURNEY ROADMAP)
+         ========================================================================= -->
+        <section id="curated-itinerary" class="scroll-mt-28 pt-4">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Detailed
+                Itinerary</span>
+              <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">The 15-Day Journey Roadmap</h2>
+            </div>
+            <button type="button" onclick="toggleAllItineraries()"
+              class="text-xs font-bold text-[#c28e2b] hover:underline flex items-center gap-1">
+              <span id="expand-all-text">Expand All</span>
+              <i data-lucide="chevron-down" id="expand-all-icon" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Roadmap Timeline Container -->
+          <div
+            class="relative pl-6 sm:pl-8 before:absolute before:left-[11px] sm:before:left-[15px] before:top-5 before:bottom-6 before:w-[2px] before:bg-[#c28e2b]/40 space-y-4">
+
+            <!-- Day 1 (Expanded) -->
+            <div class="relative group">
+              <!-- Timeline Node Marker -->
+              <div class="absolute -left-6 sm:-left-8 top-4 w-6 sm:w-8 flex items-center justify-center">
+                <span
+                  class="w-3.5 h-3.5 rounded-full bg-white border-2 border-[#c28e2b] flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#c28e2b]"></span>
+                </span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-2">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-[#c28e2b] text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow-xs">
+                  Day 1
+                </span>
+              </div>
+
+              <!-- Day 1 Card -->
+              <div
+                class="bg-white rounded-2xl border border-[#ece7de] overflow-hidden shadow-2xs transition hover:shadow-xs">
+                <div onclick="toggleAccordion('itinerary-1')"
+                  class="p-4 sm:p-5 flex items-center justify-between cursor-pointer">
+                  <h4 class="font-bold text-base text-[#11241f]">Arrival in Bali &amp; Sunset at Uluwatu Temple</h4>
+                  <i id="itinerary-1-icon" data-lucide="chevron-up"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </div>
+
+                <div id="itinerary-1" class="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-gray-600 space-y-3.5">
+                  <p class="leading-relaxed">
+                    Arrive at Denpasar Airport, transfer to hotel and enjoy a stunning sunset at Uluwatu Temple with
+                    traditional Kecak dance performance.
+                  </p>
+                  <!-- 3 Feature Tags -->
+                  <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Hotel Transfer
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Uluwatu Temple
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Dinner Included
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 2 (Collapsed) -->
+            <div class="relative group">
+              <div class="absolute -left-6 sm:-left-8 top-4 w-6 sm:w-8 flex items-center justify-center">
+                <span
+                  class="w-3.5 h-3.5 rounded-full bg-white border-2 border-[#c28e2b] flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#c28e2b]"></span>
+                </span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-2">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-[#11241f] text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow-xs">
+                  Day 2
+                </span>
+              </div>
+
+              <div
+                class="bg-white rounded-2xl border border-[#ece7de] overflow-hidden shadow-2xs transition hover:shadow-xs">
+                <div onclick="toggleAccordion('itinerary-2')"
+                  class="p-4 sm:p-5 flex items-center justify-between cursor-pointer">
+                  <h4 class="font-bold text-base text-[#11241f]">Ubud Cultural Heart &amp; Rice Terraces</h4>
+                  <i id="itinerary-2-icon" data-lucide="chevron-down"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </div>
+                <div id="itinerary-2" class="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-gray-600 space-y-3.5 hidden">
+                  <p class="leading-relaxed">
+                    Explore the lush Tegallalang Rice Terraces, Ubud Monkey Forest sanctuary, sacred Tirta Empul water
+                    purification fountains, and an authentic Balinese culinary workshop.
+                  </p>
+                  <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Rice Terraces Hike
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Sacred Water Cleansing
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Breakfast &amp; Lunch
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 3 (Collapsed) -->
+            <div class="relative group">
+              <div class="absolute -left-6 sm:-left-8 top-4 w-6 sm:w-8 flex items-center justify-center">
+                <span
+                  class="w-3.5 h-3.5 rounded-full bg-white border-2 border-[#c28e2b] flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#c28e2b]"></span>
+                </span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-2">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-[#11241f] text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow-xs">
+                  Day 3
+                </span>
+              </div>
+
+              <div
+                class="bg-white rounded-2xl border border-[#ece7de] overflow-hidden shadow-2xs transition hover:shadow-xs">
+                <div onclick="toggleAccordion('itinerary-3')"
+                  class="p-4 sm:p-5 flex items-center justify-between cursor-pointer">
+                  <h4 class="font-bold text-base text-[#11241f]">Mount Batur Sunrise Trek &amp; Hot Springs</h4>
+                  <i id="itinerary-3-icon" data-lucide="chevron-down"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </div>
+                <div id="itinerary-3" class="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-gray-600 space-y-3.5 hidden">
+                  <p class="leading-relaxed">
+                    Early morning guided trek to Mount Batur summit to witness an awe-inspiring sunrise above the cloud
+                    bank, followed by soaking in natural volcanic hot springs beside Lake Batur.
+                  </p>
+                  <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Sunrise Summit Trek
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Lake Batur Hot Springs
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Summit Breakfast
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 4 (Collapsed) -->
+            <div class="relative group">
+              <div class="absolute -left-6 sm:-left-8 top-4 w-6 sm:w-8 flex items-center justify-center">
+                <span
+                  class="w-3.5 h-3.5 rounded-full bg-white border-2 border-[#c28e2b] flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#c28e2b]"></span>
+                </span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-2">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-[#11241f] text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow-xs">
+                  Day 4
+                </span>
+              </div>
+
+              <div
+                class="bg-white rounded-2xl border border-[#ece7de] overflow-hidden shadow-2xs transition hover:shadow-xs">
+                <div onclick="toggleAccordion('itinerary-4')"
+                  class="p-4 sm:p-5 flex items-center justify-between cursor-pointer">
+                  <h4 class="font-bold text-base text-[#11241f]">Nusa Penida Island Exploration</h4>
+                  <i id="itinerary-4-icon" data-lucide="chevron-down"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </div>
+                <div id="itinerary-4" class="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-gray-600 space-y-3.5 hidden">
+                  <p class="leading-relaxed">
+                    Speedboat voyage across Badung Strait to Nusa Penida. Visit the iconic T-Rex cliff at Kelingking
+                    Beach,
+                    Broken Beach, Angel's Billabong and snorkel with giant manta rays.
+                  </p>
+                  <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Speedboat Tickets
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Manta Snorkeling
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Seafood Beach Lunch
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 5 - 15 (Collapsed) -->
+            <div class="relative group">
+              <div class="absolute -left-6 sm:-left-8 top-4 w-6 sm:w-8 flex items-center justify-center">
+                <span
+                  class="w-3.5 h-3.5 rounded-full bg-white border-2 border-[#c28e2b] flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#c28e2b]"></span>
+                </span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-2">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-[#11241f] text-white font-bold text-xs uppercase tracking-wider shrink-0 shadow-xs">
+                  Day 5 - 15
+                </span>
+              </div>
+
+              <div
+                class="bg-white rounded-2xl border border-[#ece7de] overflow-hidden shadow-2xs transition hover:shadow-xs">
+                <div onclick="toggleAccordion('itinerary-5')"
+                  class="p-4 sm:p-5 flex items-center justify-between cursor-pointer">
+                  <h4 class="font-bold text-base text-[#11241f]">Remaining Journey (Days 5 - 15)</h4>
+                  <i id="itinerary-5-icon" data-lucide="chevron-down"
+                    class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </div>
+                <div id="itinerary-5" class="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-gray-600 space-y-3.5 hidden">
+                  <p class="leading-relaxed">
+                    Days 5–8: Gili Islands yacht cruise and sea turtle conservation; Days 9–11: North Bali waterfalls,
+                    Lovina dolphin tour, and Banjar hot springs; Days 12–15: Seminyak luxury beach retreat, spa
+                    treatments,
+                    Tanah Lot sunset, and VIP airport departure transfer.
+                  </p>
+                  <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Gili Catamaran Cruise
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      Luxury Spa Days
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf9f6] text-[#11241f] border border-[#ece7de] font-medium">
+                      <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+                      All Breakfasts &amp; Gala Dinner
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 6: INCLUSIONS & DETAILS (CURATED INCLUSIONS & DETAILS)
+         ========================================================================= -->
+        <section id="inclusions-matrix" class="scroll-mt-28 pt-4">
+          <div class="mb-5">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Inclusions &amp;
+              Details</span>
+            <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">Curated Inclusions &amp; Details</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+            <!-- 1. Included in Your Package -->
+            <div class="bg-[#eef8f2] border border-[#cbeada] rounded-2xl p-5 sm:p-6 shadow-2xs">
+              <div class="flex items-center gap-2.5 mb-4">
+                <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <h3 class="font-bold text-base text-[#11241f]">Included in Your Package</h3>
+              </div>
+              <ul class="space-y-3 text-xs sm:text-[13px] text-gray-700">
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 stroke-[2.5]"></i>
+                  <span>Airport transfers and private transportation</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 stroke-[2.5]"></i>
+                  <span>4+/5* hotel accommodation</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 stroke-[2.5]"></i>
+                  <span>Daily breakfast and selected meals</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 stroke-[2.5]"></i>
+                  <span>Guided tours &amp; entry fees</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 stroke-[2.5]"></i>
+                  <span>Island hopping and ferry tickets</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 stroke-[2.5]"></i>
+                  <span>Professional English-speaking guide</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 2. Not Included -->
+            <div class="bg-[#fef9ee] border border-[#fae9c7] rounded-2xl p-5 sm:p-6 shadow-2xs">
+              <div class="flex items-center gap-2.5 mb-4">
+                <div class="w-7 h-7 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0">
+                  <i data-lucide="minus" class="w-4 h-4 stroke-[2.5]"></i>
+                </div>
+                <h3 class="font-bold text-base text-[#11241f]">Not Included</h3>
+              </div>
+              <ul class="space-y-3 text-xs sm:text-[13px] text-gray-700">
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="minus" class="w-4 h-4 text-amber-500 shrink-0 stroke-[2.5]"></i>
+                  <span>International and domestic flights</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="minus" class="w-4 h-4 text-amber-500 shrink-0 stroke-[2.5]"></i>
+                  <span>Travel insurance</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="minus" class="w-4 h-4 text-amber-500 shrink-0 stroke-[2.5]"></i>
+                  <span>Personal expenses and shopping</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="minus" class="w-4 h-4 text-amber-500 shrink-0 stroke-[2.5]"></i>
+                  <span>Optional activities and adventure sports</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="minus" class="w-4 h-4 text-amber-500 shrink-0 stroke-[2.5]"></i>
+                  <span>Meals not mentioned in the itinerary</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="minus" class="w-4 h-4 text-amber-500 shrink-0 stroke-[2.5]"></i>
+                  <span>Tips and gratuities</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 3. Visual Sunset Temple Photo Banner -->
+            <div class="col-span-1 md:col-span-2 rounded-2xl overflow-hidden shadow-2xs h-44 sm:h-52">
+              <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=1200&q=80"
+                alt="Uluwatu Sunset Temple Cliff"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 7: INTERACTIVE ROUTE MAP & ROUTE STATIONS
+         ========================================================================= -->
+        <section id="archipelago-map" class="scroll-mt-28 pt-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Explore Your
+                Journey</span>
+              <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">Interactive Route Map</h2>
+            </div>
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#fbf9f6] border border-[#ece7de] text-xs font-semibold text-gray-700 self-start sm:self-auto">
+              <span class="w-2 h-2 rounded-full bg-[#c28e2b]"></span>
+              <span>5 Key Stations &bull; ~420 km Island Loop</span>
+            </div>
+          </div>
+
+          <!-- Map Canvas (Full Width of Left Column) -->
+          <div
+            class="w-full rounded-2xl overflow-hidden border border-[#ece7de] shadow-xs bg-[#f4f7f6] relative h-[360px] sm:h-[420px]">
+            <div id="bali-map" class="w-full h-full z-10"></div>
+
+            <!-- Bottom Left Map / Satellite Switcher -->
+            <div
+              class="absolute bottom-3 left-3 z-20 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm p-1 rounded-xl shadow-md border border-gray-200 text-xs font-bold text-gray-700">
+              <button type="button" id="btn-map-standard" onclick="switchMapLayer('standard')"
+                class="px-3 py-1.5 rounded-lg bg-[#11241f] text-white transition">
+                Map
+              </button>
+              <button type="button" id="btn-map-satellite" onclick="switchMapLayer('satellite')"
+                class="px-3 py-1.5 rounded-lg hover:bg-gray-100 text-gray-700 transition">
+                Satellite
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Connected Route Stations (Horizontal Grid Below Map) -->
+          <div class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <!-- 1. Denpasar -->
+            <div onclick="if(window.focusMapStation)focusMapStation(0)"
+              class="p-3.5 rounded-2xl bg-white border border-gray-200 shadow-2xs hover:border-[#c28e2b] hover:shadow-xs transition duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="w-6 h-6 rounded-full bg-[#c28e2b] text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                <span class="text-[10px] font-bold text-[#c28e2b] uppercase tracking-wider">Start</span>
+              </div>
+              <h4 class="font-bold text-xs sm:text-sm text-[#11241f] group-hover:text-[#c28e2b] transition truncate">
+                Denpasar</h4>
+              <p class="text-[11px] text-gray-500 truncate">Arrival Gateway</p>
+            </div>
+
+            <!-- 2. Ubud -->
+            <div onclick="if(window.focusMapStation)focusMapStation(1)"
+              class="p-3.5 rounded-2xl bg-white border border-gray-200 shadow-2xs hover:border-[#c28e2b] hover:shadow-xs transition duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="w-6 h-6 rounded-full bg-[#c28e2b] text-white text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Culture</span>
+              </div>
+              <h4 class="font-bold text-xs sm:text-sm text-[#11241f] group-hover:text-[#c28e2b] transition truncate">
+                Ubud Highlands</h4>
+              <p class="text-[11px] text-gray-500 truncate">Rainforest &amp; Terraces</p>
+            </div>
+
+            <!-- 3. Mount Batur -->
+            <div onclick="if(window.focusMapStation)focusMapStation(2)"
+              class="p-3.5 rounded-2xl bg-white border border-gray-200 shadow-2xs hover:border-[#c28e2b] hover:shadow-xs transition duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="w-6 h-6 rounded-full bg-[#c28e2b] text-white text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Volcano</span>
+              </div>
+              <h4 class="font-bold text-xs sm:text-sm text-[#11241f] group-hover:text-[#c28e2b] transition truncate">
+                Mount Batur</h4>
+              <p class="text-[11px] text-gray-500 truncate">Sunrise Caldera Trek</p>
+            </div>
+
+            <!-- 4. Nusa Penida -->
+            <div onclick="if(window.focusMapStation)focusMapStation(3)"
+              class="p-3.5 rounded-2xl bg-white border border-gray-200 shadow-2xs hover:border-[#c28e2b] hover:shadow-xs transition duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="w-6 h-6 rounded-full bg-[#c28e2b] text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Islands</span>
+              </div>
+              <h4 class="font-bold text-xs sm:text-sm text-[#11241f] group-hover:text-[#c28e2b] transition truncate">
+                Nusa Penida</h4>
+              <p class="text-[11px] text-gray-500 truncate">Kelingking Cliffs</p>
+            </div>
+
+            <!-- 5. Uluwatu -->
+            <div onclick="if(window.focusMapStation)focusMapStation(4)"
+              class="p-3.5 rounded-2xl bg-white border border-gray-200 shadow-2xs hover:border-[#c28e2b] hover:shadow-xs transition duration-200 cursor-pointer group col-span-2 sm:col-span-1">
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="w-6 h-6 rounded-full bg-[#c28e2b] text-white text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Sunset</span>
+              </div>
+              <h4 class="font-bold text-xs sm:text-sm text-[#11241f] group-hover:text-[#c28e2b] transition truncate">
+                Uluwatu Temple</h4>
+              <p class="text-[11px] text-gray-500 truncate">Cliff &amp; Fire Dance</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 8: TRAVELER STORIES (TRAVELER CHRONICLE NOTES)
+         ========================================================================= -->
+        <section id="guest-reviews" class="scroll-mt-28 pt-4">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Traveler
+                Stories</span>
+              <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">Traveler Chronicle Notes</h2>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="openReviewModal()"
+                class="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-[#c28e2b] hover:underline mr-1">
+                <span>View All Reviews</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+              <!-- Carousel Controls directly in section header -->
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="prevReviewSlide()" id="btn-review-prev" aria-label="Previous Review"
+                  class="w-9 h-9 rounded-full border border-gray-200 bg-white hover:bg-gray-100 flex items-center justify-center text-gray-700 shadow-xs transition hover:scale-105 active:scale-95 cursor-pointer">
+                  <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                </button>
+                <button type="button" onclick="nextReviewSlide()" id="btn-review-next" aria-label="Next Review"
+                  class="w-9 h-9 rounded-full border border-gray-200 bg-white hover:bg-gray-100 flex items-center justify-center text-gray-700 shadow-xs transition hover:scale-105 active:scale-95 cursor-pointer">
+                  <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rating Summary Wide Banner (Spacious Two-Tier Layout) -->
+          <div
+            class="rounded-2xl bg-[#11241f] text-white p-5 sm:p-6 mb-6 shadow-sm border border-emerald-950/60 relative overflow-hidden">
+            <!-- Top Tier: Rating Metrics & Action Buttons -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+              <div class="flex items-center gap-4">
+                <div
+                  class="px-3.5 py-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 flex items-baseline gap-1 shrink-0">
+                  <span class="text-3xl font-black text-amber-400">4.9</span>
+                  <span class="text-xs text-gray-400 font-normal">/ 5.0</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1 text-amber-400 text-sm">
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    <span class="text-xs font-bold text-white ml-1.5">Exceptional</span>
+                  </div>
+                  <p class="text-xs text-gray-300 mt-0.5">Based on 248+ verified sanctuary reviews</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 self-start sm:self-auto shrink-0">
+                <span
+                  class="px-3 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center gap-1.5">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>98% Recommended</span>
+                </span>
+                <button type="button" onclick="openReviewModal()"
+                  class="px-3.5 py-1.5 rounded-full border border-[#c28e2b] text-[#c28e2b] hover:bg-[#c28e2b] hover:text-white transition duration-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                  <span>Write Review</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bottom Tier: Full-Width Highlight Quote -->
+            <div class="pt-3.5 flex items-start gap-3 text-xs sm:text-[13px] text-emerald-100/90 italic">
+              <i data-lucide="quote" class="w-4 h-4 text-[#c28e2b] shrink-0 mt-0.5"></i>
+              <p class="leading-relaxed">
+                “An unforgettable journey filled with culture, nature and incredible experiences. Highly recommended!”
+              </p>
+            </div>
+          </div>
+
+          <!-- Full-Width Reviews Carousel Slider (100% Width) -->
+          <div class="relative" id="reviews-carousel-wrapper">
+            <!-- Reviews Sliding Viewport (With padding clearance to prevent right border clipping) -->
+            <div id="reviews-viewport" class="overflow-hidden rounded-2xl p-2">
+              <div id="reviews-slider-track" class="flex gap-4 transition-transform duration-500 ease-in-out">
+
+                <!-- Review 1: Samantha Bell -->
+                <div
+                  class="w-full sm:w-[calc(50%-0.5rem)] shrink-0 min-w-full sm:min-w-[calc(50%-0.5rem)] p-6 rounded-2xl bg-white border border-gray-200 hover:border-[#c28e2b] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between select-none">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+                          alt="Samantha Bell" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+                        <div>
+                          <h4 class="font-bold text-sm text-[#11241f]">Samantha Bell</h4>
+                          <p class="text-[11px] text-gray-400">15 Sep 2026 &bull; United Kingdom</p>
+                        </div>
+                      </div>
+                      <div class="flex text-amber-500 text-xs">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-gray-600 leading-relaxed italic">
+                      “Absolutely amazing experience! The itinerary was perfectly planned and our private local guides
+                      were fantastic throughout the 15 days.”
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span
+                      class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                      <i data-lucide="check" class="w-3 h-3"></i> Verified Stay
+                    </span>
+                    <span class="text-[11px] text-gray-400">Couples Retreat</span>
+                  </div>
+                </div>
+
+                <!-- Review 2: Rohit Sharma -->
+                <div
+                  class="w-full sm:w-[calc(50%-0.5rem)] shrink-0 min-w-full sm:min-w-[calc(50%-0.5rem)] p-6 rounded-2xl bg-white border border-gray-200 hover:border-[#c28e2b] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between select-none">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                          alt="Rohit Sharma" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+                        <div>
+                          <h4 class="font-bold text-sm text-[#11241f]">Rohit Sharma</h4>
+                          <p class="text-[11px] text-gray-400">02 Sep 2026 &bull; India</p>
+                        </div>
+                      </div>
+                      <div class="flex text-amber-500 text-xs">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-gray-600 leading-relaxed italic">
+                      “Breathtaking views, beautiful ancient temples and excellent luxury service throughout the
+                      journey. Truly a once-in-a-lifetime experience.”
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span
+                      class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                      <i data-lucide="check" class="w-3 h-3"></i> Verified Stay
+                    </span>
+                    <span class="text-[11px] text-gray-400">Family Holiday</span>
+                  </div>
+                </div>
+
+                <!-- Review 3: Elena Rostova -->
+                <div
+                  class="w-full sm:w-[calc(50%-0.5rem)] shrink-0 min-w-full sm:min-w-[calc(50%-0.5rem)] p-6 rounded-2xl bg-white border border-gray-200 hover:border-[#c28e2b] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between select-none">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80"
+                          alt="Elena Rostova" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+                        <div>
+                          <h4 class="font-bold text-sm text-[#11241f]">Elena Rostova</h4>
+                          <p class="text-[11px] text-gray-400">28 Aug 2026 &bull; Germany</p>
+                        </div>
+                      </div>
+                      <div class="flex text-amber-500 text-xs">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-gray-600 leading-relaxed italic">
+                      “Staying amidst the Ubud rice terraces and watching the volcanic sunrise at Mount Batur were pure
+                      magic. Impeccable luxury service!”
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span
+                      class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                      <i data-lucide="check" class="w-3 h-3"></i> Verified Stay
+                    </span>
+                    <span class="text-[11px] text-gray-400">Luxury Sanctuary</span>
+                  </div>
+                </div>
+
+                <!-- Review 4: Marcus Vance -->
+                <div
+                  class="w-full sm:w-[calc(50%-0.5rem)] shrink-0 min-w-full sm:min-w-[calc(50%-0.5rem)] p-6 rounded-2xl bg-white border border-gray-200 hover:border-[#c28e2b] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between select-none">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+                          alt="Marcus Vance" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+                        <div>
+                          <h4 class="font-bold text-sm text-[#11241f]">Marcus Vance</h4>
+                          <p class="text-[11px] text-gray-400">19 Aug 2026 &bull; Australia</p>
+                        </div>
+                      </div>
+                      <div class="flex text-amber-500 text-xs">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-gray-600 leading-relaxed italic">
+                      “Every detail from private airport pickup to speedboat transfers in Nusa Penida was seamless.
+                      5-star perfection in every aspect.”
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span
+                      class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                      <i data-lucide="check" class="w-3 h-3"></i> Verified Stay
+                    </span>
+                    <span class="text-[11px] text-gray-400">Island Exploration</span>
+                  </div>
+                </div>
+
+                <!-- Review 5: Ananya Patel -->
+                <div
+                  class="w-full sm:w-[calc(50%-0.5rem)] shrink-0 min-w-full sm:min-w-[calc(50%-0.5rem)] p-6 rounded-2xl bg-white border border-gray-200 hover:border-[#c28e2b] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between select-none">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
+                          alt="Ananya Patel" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+                        <div>
+                          <h4 class="font-bold text-sm text-[#11241f]">Ananya Patel</h4>
+                          <p class="text-[11px] text-gray-400">10 Aug 2026 &bull; India</p>
+                        </div>
+                      </div>
+                      <div class="flex text-amber-500 text-xs">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-gray-600 leading-relaxed italic">
+                      “The Kecak fire dance sunset in Uluwatu was transcendent. Highly recommend their bespoke private
+                      guides and seamless arrangements!”
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span
+                      class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                      <i data-lucide="check" class="w-3 h-3"></i> Verified Stay
+                    </span>
+                    <span class="text-[11px] text-gray-400">Cultural Tour</span>
+                  </div>
+                </div>
+
+                <!-- Review 6: Liam Davies -->
+                <div
+                  class="w-full sm:w-[calc(50%-0.5rem)] shrink-0 min-w-full sm:min-w-[calc(50%-0.5rem)] p-6 rounded-2xl bg-white border border-gray-200 hover:border-[#c28e2b] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between select-none">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80"
+                          alt="Liam Davies" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+                        <div>
+                          <h4 class="font-bold text-sm text-[#11241f]">Liam Davies</h4>
+                          <p class="text-[11px] text-gray-400">24 Jul 2026 &bull; United States</p>
+                        </div>
+                      </div>
+                      <div class="flex text-amber-500 text-xs">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-gray-600 leading-relaxed italic">
+                      “Our private villa with plunge pool in Ubud was absolute paradise. The cultural immersions felt
+                      authentic, luxurious, and deeply respectful.”
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                    <span
+                      class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                      <i data-lucide="check" class="w-3 h-3"></i> Verified Stay
+                    </span>
+                    <span class="text-[11px] text-gray-400">Luxury Sanctuary</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Bottom Control Bar: Centered Interactive Dots -->
+            <div class="flex items-center justify-center mt-5 px-1 text-xs text-gray-400">
+              <div id="reviews-dots-container" class="flex items-center gap-1.5">
+                <!-- Rendered dynamically via JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================================
+         SECTION 8.5: FREQUENTLY ASKED QUESTIONS
+         ========================================================================= -->
+        <section id="faqs" class="scroll-mt-28 pt-4">
+          <div class="mb-4">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Got
+              Questions?</span>
+            <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">Frequently Asked Questions</h2>
+          </div>
+
+          <div class="space-y-3">
+            <!-- FAQ 1 -->
+            <div class="rounded-2xl border border-[#ece7de] bg-white overflow-hidden shadow-2xs">
+              <button type="button" onclick="toggleAccordion('faq-1')"
+                class="w-full p-4 text-left flex items-center justify-between font-bold text-sm text-[#11241f] hover:text-[#c28e2b] transition">
+                <span>What is the best time to visit Bali for this retreat?</span>
+                <i data-lucide="chevron-down" id="faq-1-icon"
+                  class="w-4 h-4 text-gray-400 transition-transform duration-200"></i>
+              </button>
+              <div id="faq-1"
+                class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-50 pt-2">
+                Bali is ideal between April and October during the dry season, offering warm sunny days, gentle ocean
+                breezes,
+                and crystal-clear waters perfect for temples, volcano treks, and beach sanctuaries.
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="rounded-2xl border border-[#ece7de] bg-white overflow-hidden shadow-2xs">
+              <button type="button" onclick="toggleAccordion('faq-2')"
+                class="w-full p-4 text-left flex items-center justify-between font-bold text-sm text-[#11241f] hover:text-[#c28e2b] transition">
+                <span>Are international flights and airport pickups included?</span>
+                <i data-lucide="chevron-down" id="faq-2-icon"
+                  class="w-4 h-4 text-gray-400 transition-transform duration-200"></i>
+              </button>
+              <div id="faq-2"
+                class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-50 pt-2">
+                Private VIP airport transfers upon arrival and departure at Ngurah Rai International Airport (DPS) are
+                fully
+                included. International airfare can be arranged upon request with our flight desk.
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="rounded-2xl border border-[#ece7de] bg-white overflow-hidden shadow-2xs">
+              <button type="button" onclick="toggleAccordion('faq-3')"
+                class="w-full p-4 text-left flex items-center justify-between font-bold text-sm text-[#11241f] hover:text-[#c28e2b] transition">
+                <span>Can dietary preferences (Vegetarian / Jain / Vegan) be accommodated?</span>
+                <i data-lucide="chevron-down" id="faq-3-icon"
+                  class="w-4 h-4 text-gray-400 transition-transform duration-200"></i>
+              </button>
+              <div id="faq-3"
+                class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-50 pt-2">
+                Yes, our culinary itineraries cater to all dietary needs, including pure vegetarian, Jain, vegan, and
+                gluten-free choices across all luxury resorts and selected private restaurants.
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+      <!-- END LEFT COLUMN (lg:col-span-8) -->
+
+      <!-- =========================================================================
+         RIGHT COLUMN: STICKY BOOKING CARD (4 COLS)
+         ========================================================================= -->
+      <div class="lg:col-span-4 sticky top-24 space-y-6">
+        <div class="rounded-3xl bg-white p-6 border border-[#ece7de] shadow-lg space-y-5">
+
+          <!-- Top Row: Best Seller Badge + Rating -->
+          <div class="flex items-center justify-between">
+            <span
+              class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              Best Seller
+            </span>
+            <div class="flex items-center gap-1 text-xs font-semibold text-gray-700">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <span class="font-bold text-gray-900">4.9</span>
+              <span class="text-gray-500 font-normal">(248 Reviews)</span>
+            </div>
+          </div>
+
+          <!-- Price & Stars -->
+          <div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-extrabold text-[#11241f]">₹<span id="price-per-person">3,450</span></span>
+              <span class="text-xs text-gray-500 font-normal">/person</span>
+            </div>
+            <div class="flex items-center gap-1 text-amber-400 text-xs mt-1">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+            </div>
+          </div>
+
+          <!-- Form: Select Departure Date -->
+          <div class="space-y-1">
+            <label class="block text-xs font-medium text-gray-600">Select Departure Date</label>
+            <div class="relative">
+              <div
+                class="flex items-center justify-between w-full border border-gray-200 rounded-xl px-3.5 py-2.5 bg-gray-50/60 text-xs font-semibold text-gray-800 cursor-pointer">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i>
+                  <span id="display-departure-date">15 Nov 2026</span>
+                </span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
+              </div>
+              <input type="date" id="expedition-date" value="2026-11-15"
+                class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                onchange="document.getElementById('display-departure-date').innerText = this.value; recalculateSummary();" />
+            </div>
+          </div>
+
+          <!-- Form: Travelers Stepper -->
+          <div class="space-y-1">
+            <label class="block text-xs font-medium text-gray-600">Travelers</label>
+            <div class="flex items-center justify-between border border-gray-200 rounded-xl px-2 py-1.5 bg-gray-50/60">
+              <button type="button" onclick="updateGuests(-1)"
+                class="w-8 h-8 rounded-lg bg-white border border-gray-200 text-gray-700 font-bold flex items-center justify-center hover:bg-gray-100 transition shadow-2xs">
+                -
+              </button>
+              <span id="guest-count" class="font-bold text-sm text-[#11241f]">2</span>
+              <button type="button" onclick="updateGuests(1)"
+                class="w-8 h-8 rounded-lg bg-white border border-gray-200 text-gray-700 font-bold flex items-center justify-center hover:bg-gray-100 transition shadow-2xs">
+                +
+              </button>
+            </div>
+          </div>
+
+          <!-- Form: Package Type Dropdown -->
+          <div class="space-y-1">
+            <label class="block text-xs font-medium text-gray-600">Package Type</label>
+            <div class="relative">
+              <select id="suite-tier" onchange="recalculateSummary()"
+                class="w-full appearance-none border border-gray-200 rounded-xl px-3.5 py-2.5 bg-gray-50/60 text-xs font-semibold text-gray-800 pr-8 focus:outline-none focus:border-[#c28e2b]">
+                <option value="standard">Standard Package</option>
+                <option value="deluxe">Deluxe Package (+₹800)</option>
+                <option value="luxury">Luxury Suite (+₹1,500)</option>
+              </select>
+              <i data-lucide="chevron-down"
+                class="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Total Price Row -->
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-gray-600">Total Price</span>
+            <span id="total-investment" class="text-2xl font-black text-[#11241f]">₹6,900</span>
+          </div>
+
+          <!-- CTA Reserve Button -->
+          <button onclick="initiateReservation()"
+            class="w-full py-3.5 rounded-full bg-[#c28e2b] hover:bg-[#b07d22] text-white font-bold text-xs uppercase tracking-wider shadow-md transition duration-300 flex items-center justify-center gap-2 cursor-pointer">
+            <span>Reserve Your Adventure</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+
+          <!-- 3 Check Guarantees -->
+          <div class="pt-2 space-y-2 text-xs text-gray-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Free cancellation up to 7 days</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Instant confirmation</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Secure online booking</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Need Help / Travel Desk Card -->
+        <div class="rounded-3xl bg-[#fbf9f6] p-5 border border-[#ece7de] flex items-center gap-3.5 shadow-2xs">
+          <div class="w-10 h-10 rounded-full bg-[#c28e2b]/15 text-[#c28e2b] flex items-center justify-center shrink-0">
+            <i data-lucide="phone-call" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs">
+            <h4 class="font-bold text-[#11241f]">Have questions about Bali?</h4>
+            <p class="text-gray-500">Call our travel desk: <a href="tel:+919876543210"
+                class="text-[#c28e2b] font-semibold hover:underline">+91 98765 43210</a></p>
+          </div>
+        </div>
+
+      </div>
+      <!-- END RIGHT COLUMN (lg:col-span-4) -->
+
+    </div>
+    <!-- END MAIN 2-COLUMN GRID (lg:grid-cols-12) -->
+
+    <!-- =========================================================================
+         SECTION 9: SIMILAR DESTINATIONS (YOU MAY ALSO LIKE)
+         ========================================================================= -->
+    <section class="scroll-mt-28 pt-4 pb-12">
+      <div class="mb-5">
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c28e2b] block mb-1">Similar
+          Destinations</span>
+        <h2 class="font-bold text-2xl sm:text-3xl text-[#11241f]">You May Also Like</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Listing Card 1: Bali Island Escape -->
+        <article class="pkg-card-item tour-item">
+          <a href="tour_details.html" class="pkg-img-wrap" style="display:block;">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80"
+              alt="Bali Island Escape" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">International Tour</span>
+            </div>
+          </a>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">
+              <a href="tour_details.html" style="color:inherit; text-decoration:none;">Bali Island Escape</a>
+            </h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                Bali, Indonesia
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">06 Nights / 07 Days</span>
+            </div>
+            <div class="pkg-extra-info">
+              <span>📅 Dep: 12 Nov 2026</span>
+              <span class="seats-badge">🔥 06 Seats Left</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <a href="tour_details.html" class="pkg-action-btn btn-gold"
+                  style="display:inline-flex; align-items:center; gap:6px; text-decoration:none;">
+                  <span>View Details</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Per Person</span>
+                <span class="pkg-price-val">₹55,899</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Nusa Penida Beach
+              </span>
+              <span class="pkg-footer-feat">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Tanah Lot Sunset
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Listing Card 2: Nusa Penida Adventure -->
+        <article class="pkg-card-item tour-item">
+          <a href="tour_details.html" class="pkg-img-wrap" style="display:block;">
+            <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+              alt="Nusa Penida Adventure" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Island Special</span>
+            </div>
+          </a>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">
+              <a href="tour_details.html" style="color:inherit; text-decoration:none;">Nusa Penida Adventure</a>
+            </h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                Nusa Penida, Bali
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">04 Nights / 05 Days</span>
+            </div>
+            <div class="pkg-extra-info">
+              <span>📅 Dep: 18 Nov 2026</span>
+              <span class="seats-badge">🔥 04 Seats Left</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <a href="tour_details.html" class="pkg-action-btn btn-gold"
+                  style="display:inline-flex; align-items:center; gap:6px; text-decoration:none;">
+                  <span>View Details</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Per Person</span>
+                <span class="pkg-price-val">₹72,500</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Kelingking Cliff
+              </span>
+              <span class="pkg-footer-feat">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Manta Bay Snorkel
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Listing Card 3: Lombok & Gili Islands Retreat -->
+        <article class="pkg-card-item tour-item">
+          <a href="tour_details.html" class="pkg-img-wrap" style="display:block;">
+            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=80"
+              alt="Lombok & Gili Islands Retreat" loading="lazy">
+            <div class="pkg-badges-wrap">
+              <span class="badge-tour-type">Tropical Retreat</span>
+            </div>
+          </a>
+          <div class="pkg-body">
+            <h3 class="pkg-card-title">
+              <a href="tour_details.html" style="color:inherit; text-decoration:none;">Lombok &amp; Gili Islands
+                Retreat</a>
+            </h3>
+            <div class="pkg-card-meta">
+              <span class="pkg-meta-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+                Lombok, Indonesia
+              </span>
+              <span class="pkg-meta-arrow">⟷</span>
+              <span class="pkg-meta-dur">07 Nights / 08 Days</span>
+            </div>
+            <div class="pkg-extra-info">
+              <span>📅 Dep: 25 Nov 2026</span>
+              <span class="seats-badge">🔥 08 Seats Left</span>
+            </div>
+            <div class="pkg-card-action-row">
+              <div class="pkg-btn-wrap">
+                <a href="tour_details.html" class="pkg-action-btn btn-gold"
+                  style="display:inline-flex; align-items:center; gap:6px; text-decoration:none;">
+                  <span>View Details</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="pkg-price-box">
+                <span class="pkg-price-label">Per Person</span>
+                <span class="pkg-price-val">₹48,000</span>
+              </div>
+            </div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-card-footer">
+              <span class="pkg-footer-feat">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg> Gili Cruise Tour
+              </span>
+              <span class="pkg-footer-feat">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> Mount Rinjani View
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+
+
+  <!-- =========================================================================
+       FOOTER (VINYAS ROYAL BRAND WITH GOLD WORLD MAP & MONUMENTS SKYLINE)
+       ========================================================================= -->
+  <footer class="site-footer" id="footer">
+    <!-- Background Artwork Layer: Landmarks Skyline, Dotted World Map, Flight Path, Compass Rose & Watermark -->
+    <div class="footer-bg-decor" aria-hidden="true">
+      <!-- 1. Dotted World Map Watermark (Top Right) -->
+      <div class="footer-bg-map">
+        <svg class="footer-map-svg" viewBox="0 0 1000 500" fill="none">
+          <defs>
+            <pattern id="goldWorldDotsBali" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+              <circle cx="4" cy="4" r="1.8" fill="#c2a05e" />
+            </pattern>
+          </defs>
+          <g fill="url(#goldWorldDotsBali)" opacity="0.32">
+            <!-- North America & Greenland -->
+            <path
+              d="M 75 105 C 95 80, 135 65, 175 70 C 215 60, 255 55, 295 65 C 330 80, 340 105, 325 125 C 305 130, 290 145, 290 160 C 315 170, 325 195, 310 225 C 290 230, 275 245, 265 270 C 250 270, 235 240, 215 245 C 195 240, 175 250, 160 225 C 145 195, 130 175, 140 150 C 125 140, 95 140, 75 125 Z" />
+            <path d="M 365 40 C 390 30, 425 35, 435 55 C 440 80, 420 110, 395 115 C 370 118, 355 85, 365 40 Z" />
+            <!-- South America -->
+            <path
+              d="M 260 310 C 295 295, 340 305, 370 325 C 410 350, 425 385, 410 425 C 390 465, 355 490, 340 515 C 325 515, 315 480, 305 440 C 290 400, 270 370, 255 340 C 248 328, 252 318, 260 310 Z" />
+            <!-- Europe -->
+            <path
+              d="M 515 65 C 535 50, 565 55, 580 75 C 585 100, 560 135, 540 130 C 530 110, 535 90, 515 65 Z M 455 160 C 490 150, 530 155, 565 170 C 560 195, 530 205, 510 215 C 485 215, 455 225, 445 195 C 440 175, 445 165, 455 160 Z" />
+            <path
+              d="M 465 115 C 480 108, 485 125, 475 145 C 465 150, 458 135, 465 115 Z M 445 122 C 455 120, 455 135, 448 140 C 442 135, 440 128, 445 122 Z" />
+            <!-- Africa -->
+            <path
+              d="M 460 225 C 520 215, 580 220, 625 245 C 640 270, 620 310, 590 360 C 570 410, 555 445, 535 445 C 515 440, 495 370, 465 320 C 435 285, 435 250, 460 225 Z" />
+            <path d="M 635 360 C 645 355, 645 395, 635 405 C 625 400, 628 375, 635 360 Z" />
+            <!-- Middle East -->
+            <path d="M 595 240 C 625 240, 645 260, 635 285 C 615 295, 595 280, 595 255 Z" />
+            <!-- Asia -->
+            <path
+              d="M 565 75 C 640 60, 740 55, 840 65 C 925 80, 945 115, 915 135 C 865 135, 815 120, 765 125 C 705 115, 635 130, 565 120 Z" />
+            <path d="M 630 135 C 715 125, 800 130, 855 160 C 865 190, 840 230, 785 235 C 735 225, 685 200, 630 185 Z" />
+            <path
+              d="M 670 225 C 715 220, 735 250, 715 290 C 695 300, 675 265, 670 225 Z M 712 302 C 718 300, 720 312, 714 316 C 708 314, 708 306, 712 302 Z" />
+            <path d="M 885 150 C 905 155, 895 190, 875 185 C 870 170, 875 155, 885 150 Z" />
+            <path d="M 750 235 C 785 230, 795 270, 765 285 C 750 270, 745 250, 750 235 Z" />
+            <path
+              d="M 755 300 C 785 310, 770 325, 750 315 Z M 780 320 C 815 325, 805 335, 775 330 Z M 795 285 C 825 280, 830 310, 805 310 Z M 870 310 C 910 310, 905 330, 865 325 Z M 835 255 C 850 265, 840 290, 830 275 Z" />
+            <!-- Australia & Oceania -->
+            <path d="M 795 355 C 840 340, 885 350, 905 380 C 915 420, 885 445, 835 445 C 790 440, 775 400, 795 355 Z" />
+            <path
+              d="M 865 455 C 875 455, 872 468, 862 468 C 858 462, 860 455, 865 455 Z M 930 425 C 942 430, 935 455, 925 450 Z M 938 460 C 950 470, 940 490, 930 480 Z" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 2. Curved Golden Flight Trail & Airplane (Top Right) -->
+      <div class="footer-flight-decor">
+        <svg viewBox="0 0 260 180" width="260" height="180" fill="none">
+          <path d="M 10 160 C 65 135, 150 100, 218 40" stroke="#c2a05e" stroke-width="1.8" stroke-dasharray="5 5"
+            stroke-opacity="0.65" stroke-linecap="round" />
+          <!-- Golden Airplane at Flight Trail Tip -->
+          <g transform="translate(230, 28) rotate(45) scale(1.15) translate(-12, -12)">
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+              fill="#c2a05e" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 3. World Monuments Skyline Silhouette (Along Bottom Edge) -->
+      <div class="footer-skyline-decor">
+        <svg class="footer-skyline-svg" viewBox="0 0 1200 200" width="100%" height="100%" fill="none" stroke="#c2a05e"
+          stroke-linecap="round" stroke-linejoin="round">
+          <!-- Eiffel Tower -->
+          <g stroke-width="1.3" stroke-opacity="0.48">
+            <line x1="110" y1="10" x2="110" y2="35" stroke-width="2" />
+            <circle cx="110" cy="10" r="2" fill="#c2a05e" fill-opacity="0.7" />
+            <rect x="105" y="35" width="10" height="5" />
+            <line x1="106" y1="40" x2="100" y2="85" />
+            <line x1="114" y1="40" x2="120" y2="85" />
+            <line x1="103" y1="52" x2="117" y2="52" />
+            <line x1="101" y1="68" x2="119" y2="68" />
+            <line x1="106" y1="40" x2="119" y2="52" />
+            <line x1="114" y1="40" x2="103" y2="52" />
+            <line x1="103" y1="52" x2="119" y2="68" />
+            <line x1="117" y1="52" x2="101" y2="68" />
+            <rect x="94" y="85" width="32" height="7" rx="1" />
+            <path d="M 98 92 L 68 196" />
+            <path d="M 85 92 L 76 196" />
+            <path d="M 122 92 L 152 196" />
+            <path d="M 135 92 L 144 196" />
+            <line x1="94" y1="115" x2="126" y2="115" />
+            <line x1="88" y1="140" x2="132" y2="140" />
+            <line x1="80" y1="168" x2="140" y2="168" />
+            <line x1="94" y1="115" x2="132" y2="140" />
+            <line x1="126" y1="115" x2="88" y2="140" />
+            <line x1="88" y1="140" x2="140" y2="168" />
+            <line x1="132" y1="140" x2="80" y2="168" />
+            <path d="M 82 196 C 92 145, 128 145, 138 196" stroke-width="1.8" />
+          </g>
+          <!-- Roman Colosseum -->
+          <g stroke-width="1.3" stroke-opacity="0.42">
+            <path d="M 195 145 C 205 130, 225 125, 260 125 C 295 125, 315 132, 320 148 L 320 196 L 195 196 Z" />
+            <path
+              d="M 195 145 L 205 142 L 208 148 L 220 140 L 225 145 L 245 135 L 255 138 L 275 128 L 290 134 L 305 130 L 320 148"
+              stroke-width="1.6" />
+            <line x1="196" y1="150" x2="319" y2="150" />
+            <line x1="195" y1="168" x2="320" y2="168" />
+            <line x1="195" y1="182" x2="320" y2="182" />
+            <path d="M 202 196 L 202 188 C 202 185, 208 185, 208 188 L 208 196" />
+            <path d="M 214 196 L 214 188 C 214 185, 220 185, 220 188 L 220 196" />
+            <path d="M 226 196 L 226 188 C 226 185, 232 185, 232 188 L 232 196" />
+            <path d="M 238 196 L 238 188 C 238 185, 244 185, 244 188 L 244 196" />
+            <path d="M 250 196 L 250 188 C 250 185, 256 185, 256 188 L 256 196" />
+            <path d="M 262 196 L 262 188 C 262 185, 268 185, 268 188 L 268 196" />
+            <path d="M 274 196 L 274 188 C 274 185, 280 185, 280 188 L 280 196" />
+            <path d="M 286 196 L 286 188 C 286 185, 292 185, 292 188 L 292 196" />
+            <path d="M 298 196 L 298 188 C 298 185, 304 185, 304 188 L 304 196" />
+            <path d="M 310 196 L 310 188 C 310 185, 316 185, 316 188 L 316 196" />
+            <path d="M 205 182 L 205 174 C 205 171, 211 171, 211 174 L 211 182" />
+            <path d="M 217 182 L 217 174 C 217 171, 223 171, 223 174 L 223 182" />
+            <path d="M 229 182 L 229 174 C 229 171, 235 171, 235 174 L 235 182" />
+            <path d="M 241 182 L 241 174 C 241 171, 247 171, 247 174 L 247 182" />
+            <path d="M 253 182 L 253 174 C 253 171, 259 171, 259 174 L 259 182" />
+            <path d="M 265 182 L 265 174 C 265 171, 271 171, 271 174 L 271 182" />
+            <path d="M 277 182 L 277 174 C 277 171, 283 171, 283 174 L 283 182" />
+            <path d="M 289 182 L 289 174 C 289 171, 295 171, 295 174 L 295 182" />
+            <path d="M 301 182 L 301 174 C 301 171, 307 171, 307 174 L 307 182" />
+          </g>
+          <!-- Taj Mahal -->
+          <g stroke-width="1.3" stroke-opacity="0.48">
+            <rect x="360" y="190" width="150" height="6" />
+            <line x1="365" y1="190" x2="367" y2="78" />
+            <line x1="371" y1="190" x2="369" y2="78" />
+            <rect x="364" y="115" width="8" height="3" />
+            <rect x="365" y="150" width="6" height="3" />
+            <path
+              d="M 363 78 L 373 78 L 370 70 C 368 66, 368 66, 368 64 L 368 58 L 368 64 C 368 66, 368 66, 366 70 Z" />
+            <line x1="499" y1="190" x2="501" y2="78" />
+            <line x1="505" y1="190" x2="503" y2="78" />
+            <rect x="498" y="115" width="8" height="3" />
+            <rect x="499" y="150" width="6" height="3" />
+            <path
+              d="M 497 78 L 507 78 L 504 70 C 502 66, 502 66, 502 64 L 502 58 L 502 64 C 502 66, 502 66, 500 70 Z" />
+            <rect x="390" y="145" width="90" height="45" />
+            <path d="M 416 190 L 416 156 C 416 148, 435 145, 435 145 C 435 145, 454 148, 454 156 L 454 190 Z"
+              stroke-width="1.5" />
+            <rect x="420" y="132" width="30" height="13" />
+            <path d="M 420 132 C 412 118, 414 98, 435 88 C 456 98, 458 118, 450 132 Z" stroke-width="1.8" />
+            <line x1="435" y1="88" x2="435" y2="70" stroke-width="2" />
+            <circle cx="435" cy="74" r="2" fill="#c2a05e" fill-opacity="0.6" />
+            <circle cx="435" cy="70" r="1.3" fill="#c2a05e" fill-opacity="0.9" />
+            <rect x="402" y="136" width="12" height="9" />
+            <path d="M 400 136 C 398 128, 418 128, 416 136 Z" />
+            <rect x="456" y="136" width="12" height="9" />
+            <path d="M 454 136 C 452 128, 472 128, 470 136 Z" />
+          </g>
+          <!-- Asian Pagoda -->
+          <g stroke-width="1.3" stroke-opacity="0.45">
+            <rect x="565" y="172" width="40" height="24" />
+            <path d="M 550 172 C 555 164, 615 164, 620 172" stroke-width="1.8" />
+            <rect x="570" y="148" width="30" height="18" />
+            <path d="M 556 148 C 562 140, 608 140, 614 148" stroke-width="1.8" />
+            <rect x="575" y="126" width="20" height="16" />
+            <path d="M 562 126 C 568 118, 602 118, 608 126" stroke-width="1.8" />
+            <rect x="579" y="106" width="12" height="14" />
+            <path d="M 568 106 C 573 98, 597 98, 602 106" stroke-width="1.8" />
+            <line x1="585" y1="98" x2="585" y2="68" stroke-width="2" />
+            <circle cx="585" cy="74" r="3" />
+            <circle cx="585" cy="80" r="4" />
+          </g>
+          <!-- Big Ben / London -->
+          <g stroke-width="1.3" stroke-opacity="0.42">
+            <rect x="685" y="60" width="32" height="136" />
+            <circle cx="701" cy="84" r="10" stroke-width="1.5" />
+            <line x1="701" y1="84" x2="701" y2="78" />
+            <line x1="701" y1="84" x2="705" y2="84" />
+            <polygon points="685,60 701,20 717,60" stroke-width="1.6" />
+            <line x1="701" y1="20" x2="701" y2="8" stroke-width="2" />
+            <circle cx="701" cy="8" r="1.5" fill="#c2a05e" />
+            <rect x="717" y="125" width="55" height="71" />
+            <path d="M 724 165 L 724 145 C 724 140, 728 138, 728 138 C 728 138, 732 140, 732 145 L 732 165 Z" />
+            <path d="M 738 165 L 738 145 C 738 140, 742 138, 742 138 C 742 138, 746 140, 746 145 L 746 165 Z" />
+            <path d="M 752 165 L 752 145 C 752 140, 756 138, 756 138 C 756 138, 760 140, 760 145 L 760 165 Z" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 4. Nautical Compass Rose Watermark (Bottom Right) -->
+      <div class="footer-compass-decor">
+        <svg class="footer-compass-svg" viewBox="0 0 300 300" width="100%" height="100%" fill="none" stroke="#c2a05e">
+          <circle cx="150" cy="150" r="140" stroke-width="1.2" stroke-opacity="0.4" />
+          <circle cx="150" cy="150" r="132" stroke-width="0.8" stroke-dasharray="3 3" stroke-opacity="0.4" />
+          <circle cx="150" cy="150" r="100" stroke-width="1" stroke-opacity="0.3" />
+          <circle cx="150" cy="150" r="48" stroke-width="1" stroke-opacity="0.35" />
+          <!-- Cardinal Letters -->
+          <text x="150" y="32" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">N</text>
+          <text x="150" y="278" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">S</text>
+          <text x="278" y="156" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">E</text>
+          <text x="22" y="156" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#c2a05e"
+            fill-opacity="0.75" text-anchor="middle" stroke="none">W</text>
+          <!-- 4 Primary Points -->
+          <polygon points="150,150 150,42 140,140" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 150,42 160,140" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <polygon points="150,150 150,258 160,160" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 150,258 140,160" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <polygon points="150,150 258,150 160,140" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 258,150 160,160" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <polygon points="150,150 42,150 140,160" fill="#c2a05e" fill-opacity="0.45" stroke="none" />
+          <polygon points="150,150 42,150 140,140" fill="#c2a05e" fill-opacity="0.2" stroke="none" />
+          <circle cx="150" cy="150" r="10" fill="#c2a05e" fill-opacity="0.6" stroke="#c2a05e" stroke-width="1.5" />
+          <circle cx="150" cy="150" r="3" fill="#ffffff" stroke="none" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="container footer-container">
+      <div class="footer-grid-4col">
+        <!-- Column 1: Brand, Royal Crest & Narrative -->
+        <div class="footer-brand-col">
+          <a href="index.html" class="footer-brand-link" aria-label="Vinyas Travels Home">
+            <img src="images/logo-white.png" alt="Vinyas Travels Royal Emblem" class="footer-brand-logo">
+          </a>
+          <div class="footer-brand-motto">EXPLORE &bull; EXPERIENCE &bull; ENJOY</div>
+          <p class="footer-about-p">
+            At Vinyas Travels, we turn your travel dreams into unforgettable experiences. From bespoke island
+            sanctuaries to family
+            holidays, we bring you closer to the world with trusted service and personalized care.
+          </p>
+          <div class="footer-social-row">
+            <a href="#" class="footer-social-circle" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social-circle" aria-label="X">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
+          <!-- Script Tagline: Travel More Live Better with gold line and swoosh -->
+          <div class="footer-script-wrap">
+            <span class="script-dash-line"></span>
+            <span class="script-tag-cursive">Travel More Live Better</span>
+            <svg class="script-tag-swoosh" viewBox="0 0 140 12" fill="none">
+              <path d="M 4 8 C 45 12, 95 6, 136 2" stroke="#c2a05e" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Column 2: QUICK LINKS -->
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">QUICK LINKS</h4>
+          <div class="footer-title-bar"></div>
+          <ul class="footer-menu-links">
+            <li><a href="index.html"><span class="chevron">&rsaquo;</span> Home</a></li>
+            <li><a href="index.html#destinations"><span class="chevron">&rsaquo;</span> Destinations</a></li>
+            <li><a href="listing.html?type=group"><span class="chevron">&rsaquo;</span> Group Tours</a></li>
+            <li><a href="listing.html?country=indonesia"><span class="chevron">&rsaquo;</span> International Tours</a>
+            </li>
+            <li><a href="listing.html?country=india"><span class="chevron">&rsaquo;</span> India Packages</a></li>
+            <li><a href="index.html#contact"><span class="chevron">&rsaquo;</span> Contact Desk</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: POPULAR DESTINATIONS -->
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">POPULAR DESTINATIONS</h4>
+          <div class="footer-title-bar"></div>
+          <ul class="footer-menu-links">
+            <li><a href="listing.html?country=uae&state=dubai"><span class="chevron">&rsaquo;</span> Dubai</a></li>
+            <li><a href="listing.html?country=uae&state=abudhabi"><span class="chevron">&rsaquo;</span> Abu Dhabi</a>
+            </li>
+            <li><a href="listing.html?country=indonesia&state=bali"><span class="chevron">&rsaquo;</span> Bali</a></li>
+            <li><a href="listing.html?country=thailand"><span class="chevron">&rsaquo;</span> Thailand</a></li>
+            <li><a href="listing.html?country=singapore"><span class="chevron">&rsaquo;</span> Singapore</a></li>
+            <li><a href="listing.html?country=india&state=kashmir"><span class="chevron">&rsaquo;</span> Kashmir</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: GET IN TOUCH -->
+        <div class="footer-contact-col">
+          <h4 class="footer-col-title">GET IN TOUCH</h4>
+          <div class="footer-title-bar"></div>
+          <div class="footer-contact-items">
+            <div class="footer-ci-row">
+              <div class="footer-gold-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                </svg>
+              </div>
+              <div class="footer-ci-desc">
+                123 Travel Street, New-Nallakunta,<br>
+                Hyderabad, India - 500081
+              </div>
+            </div>
+
+            <div class="footer-ci-row">
+              <div class="footer-gold-badge">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path
+                    d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.72 11.72 0 0 0 3.7.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.72 11.72 0 0 0 .59 3.7 1 1 0 0 1-.25 1.02l-2.22 2.07z" />
+                </svg>
+              </div>
+              <div class="footer-ci-desc">
+                <a href="tel:+919876543210">+91 98765 43210</a>
+              </div>
+            </div>
+
+            <div class="footer-ci-row">
+              <div class="footer-gold-badge">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </div>
+              <div class="footer-ci-desc">
+                <a href="mailto:info@vinyastravels.com">info@vinyastravels.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Copyright & Legal Links Bar -->
+      <div class="footer-royal-bottom">
+        <p class="footer-bottom-copy">&copy; 2026 Vinyas Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-actions">
+          <div class="footer-legal-nav">
+            <a href="#">Privacy Policy</a>
+            <span class="legal-pipe">|</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="legal-pipe">|</span>
+            <a href="#">FAQ</a>
+            <span class="legal-pipe">|</span>
+            <a href="#">Sitemap</a>
+          </div>
+          <a href="#siteHeader" class="footer-scroll-up-btn" aria-label="Scroll to top of page">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       BOOKING MODAL (PRE-FILLED FOR BALI SANCTUARY RETREAT)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Book Your Tour</h3>
+        <p class="modal-subtitle">Reserve with Vinyas Travels &bull; Instant Confirmation Support</p>
+      </div>
+      <form id="bookingForm"
+        onsubmit="event.preventDefault(); alert('Reservation inquiry submitted successfully for ' + document.getElementById('bookingTourInput').value + '! Our travel expert will contact you.'); window.closeModal('bookingModal');">
+        <div class="form-group">
+          <label for="bookingTourInput">Selected Package / Tour</label>
+          <input type="text" id="bookingTourInput" value="Bali Tropical Island Sanctuary Retreat" required>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="bookingName">Full Name *</label>
+            <input type="text" id="bookingName" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="bookingPhone">Phone / WhatsApp *</label>
+            <input type="tel" id="bookingPhone" placeholder="+91 98765 43210" required>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="bookingDeparture">Departure Date</label>
+            <input type="date" id="bookingDeparture" value="2026-10-14">
+          </div>
+          <div class="form-group">
+            <label for="bookingTravelers">Travelers Count</label>
+            <select id="bookingTravelers">
+              <option>1 Adult</option>
+              <option selected>2 Adults (Couple)</option>
+              <option>Family (2 Adults + 1 Child)</option>
+              <option>Family (2 Adults + 2 Children)</option>
+              <option>Group (5+ Travelers)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bookingNotes">Special Requests (Optional)</label>
+          <textarea id="bookingNotes" rows="2"
+            placeholder="Vegetarian meals, flight preference from Hyderabad, villa class..."></textarea>
+        </div>
+        <button type="submit" class="btn-gold-submit" id="confirmBookingBtn">Confirm Reservation Inquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lightbox Carousel Modal for Photo Gallery (z-[99999] so header never shows on top) -->
+  <div id="lightbox-modal"
+    class="fixed inset-0 hidden items-center justify-center p-2 sm:p-6 bg-black/95 backdrop-blur-md transition-all duration-300"
+    style="z-index: 99999;" role="dialog" aria-modal="true" aria-label="Photo Gallery Carousel">
+
+    <!-- Top Action Bar: Counter, Title & Close Button -->
+    <div
+      class="absolute top-0 left-0 right-0 p-4 sm:p-6 flex items-center justify-between z-30 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
+      <div class="flex items-center gap-3">
+        <span id="lightbox-counter"
+          class="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold tracking-wide">
+          1 / 8
+        </span>
+        <span class="text-white/80 text-xs sm:text-sm font-medium hidden sm:inline">Bali Island Sanctuary Retreat</span>
+      </div>
+
+      <button type="button" onclick="closeLightbox()"
+        class="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition shadow-lg cursor-pointer"
+        aria-label="Close Lightbox">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Main Carousel Display (Image + Arrows) -->
+    <div class="relative w-full max-w-5xl h-full flex flex-col items-center justify-center px-4 sm:px-12 py-16">
+      <!-- Previous Button -->
+      <button type="button" onclick="prevLightboxImage()"
+        class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-white text-white hover:text-[#11241f] border border-white/20 flex items-center justify-center transition shadow-2xl z-20 cursor-pointer"
+        aria-label="Previous Image">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Current Image Container -->
+      <div
+        class="relative max-h-[72vh] sm:max-h-[76vh] flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl">
+        <img id="lightbox-img" src="" alt="Gallery Image"
+          class="max-h-[72vh] sm:max-h-[76vh] max-w-full w-auto object-contain rounded-2xl transition-all duration-300" />
+      </div>
+
+      <!-- Next Button -->
+      <button type="button" onclick="nextLightboxImage()"
+        class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-white text-white hover:text-[#11241f] border border-white/20 flex items-center justify-center transition shadow-2xl z-20 cursor-pointer"
+        aria-label="Next Image">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Thumbnail Carousel Strip -->
+    <div class="absolute bottom-3 sm:bottom-4 left-0 right-0 z-30 flex justify-center px-4">
+      <div id="lightbox-thumbnails"
+        class="flex items-center gap-2 overflow-x-auto max-w-2xl p-2 bg-black/50 backdrop-blur-md rounded-2xl border border-white/10 hide-scrollbar">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Leaflet Interactive Map Setup for Bali 5 Sanctuary Stations
+    let mapInstance = null;
+    let standardLayer = null;
+    let satelliteLayer = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        mapInstance = L.map('bali-map', {
+          scrollWheelZoom: false,
+          attributionControl: false
+        }).setView([-8.5200, 115.2800], 10);
+
+        // Free High-Resolution Map Layer (Esri World Topo Map - Works over file:// and web servers without API keys)
+        standardLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+          attribution: '&copy; <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>, DeLorme, USGS, NPS',
+          maxZoom: 18
+        }).addTo(mapInstance);
+
+        // Satellite Layer (Esri World Imagery)
+        satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+          attribution: '&copy; <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a> & Earthstar Geographics',
+          maxZoom: 18
+        });
+
+        const stations = [
+          { num: "1", name: "Denpasar", desc: "Arrival Point & Airport Concierge", coords: [-8.7482, 115.1672] },
+          { num: "2", name: "Ubud", desc: "Cultural Nature & Sacred Terraces", coords: [-8.5069, 115.2625] },
+          { num: "3", name: "Mount Batur", desc: "Sunrise Trek & Hot Springs", coords: [-8.2422, 115.3753] },
+          { num: "4", name: "Nusa Penida", desc: "Island Exploration & Manta Rays", coords: [-8.7278, 115.5444] },
+          { num: "5", name: "Uluwatu", desc: "Cliff Temple & Kecak Sunset", coords: [-8.8291, 115.0849] }
+        ];
+
+        window.stationMarkers = [];
+        stations.forEach((st, idx) => {
+          const numberIcon = L.divIcon({
+            className: 'custom-map-pin',
+            html: `<div style="background:#c28e2b;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;border:2px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,0.35);cursor:pointer;">${st.num}</div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+            popupAnchor: [0, -15]
+          });
+
+          const marker = L.marker(st.coords, { icon: numberIcon }).addTo(mapInstance);
+          marker.bindPopup(`
+            <div style="font-family: inherit; padding: 2px;">
+              <div style="font-weight: 700; font-size: 13px; color: #11241f; margin-bottom: 2px;">
+                <span style="color:#c28e2b;margin-right:4px;">#${st.num}</span>${st.name}
+              </div>
+              <div style="font-size: 11px; color: #64748b; line-height: 1.4;">${st.desc}</div>
+            </div>
+          `);
+          marker.bindTooltip(st.name, { permanent: false, direction: 'top', offset: [0, -12] });
+          window.stationMarkers.push(marker);
+        });
+
+        // Add scenic connecting route line
+        const pathCoords = stations.map(s => s.coords);
+        const polyline = L.polyline(pathCoords, {
+          color: '#c28e2b',
+          weight: 3,
+          dashArray: '6, 8',
+          opacity: 0.9
+        }).addTo(mapInstance);
+
+        // Auto-fit bounds so all 5 stations and the full route are framed perfectly
+        mapInstance.fitBounds(polyline.getBounds(), {
+          padding: [35, 35],
+          maxZoom: 11
+        });
+
+        window.addEventListener('resize', () => {
+          if (mapInstance) mapInstance.invalidateSize();
+        });
+
+      } catch (err) {
+        console.warn('Map initialization deferred or not supported', err);
+      }
+    });
+
+    // Smoothly fly map to selected station & open popup
+    function focusMapStation(idx) {
+      if (!mapInstance || !window.stationMarkers || !window.stationMarkers[idx]) return;
+      const marker = window.stationMarkers[idx];
+      mapInstance.flyTo(marker.getLatLng(), 12, { animate: true, duration: 1 });
+      marker.openPopup();
+    }
+    window.focusMapStation = focusMapStation;
+
+    // Map Layer Switcher
+    function switchMapLayer(type) {
+      if (!mapInstance || !standardLayer || !satelliteLayer) return;
+      const btnStd = document.getElementById('btn-map-standard');
+      const btnSat = document.getElementById('btn-map-satellite');
+
+      if (type === 'satellite') {
+        mapInstance.removeLayer(standardLayer);
+        mapInstance.addLayer(satelliteLayer);
+        btnSat.className = 'px-3 py-1.5 rounded-lg bg-[#11241f] text-white transition';
+        btnStd.className = 'px-3 py-1.5 rounded-lg hover:bg-gray-100 text-gray-700 transition';
+      } else {
+        mapInstance.removeLayer(satelliteLayer);
+        mapInstance.addLayer(standardLayer);
+        btnStd.className = 'px-3 py-1.5 rounded-lg bg-[#11241f] text-white transition';
+        btnSat.className = 'px-3 py-1.5 rounded-lg hover:bg-gray-100 text-gray-700 transition';
+      }
+      setTimeout(() => mapInstance.invalidateSize(), 50);
+    }
+
+    // Curated Bali Sanctuary Photo Gallery (12 Destinations)
+    const galleryItems = [
+      { src: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&fit=crop&w=1600&q=85" },
+      { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=85" }
+    ];
+    let currentGalleryIndex = 0;
+
+    function nextGalleryImage() {
+      currentGalleryIndex = (currentGalleryIndex + 1) % galleryItems.length;
+      updateHeroImage();
+    }
+
+    function prevGalleryImage() {
+      currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateHeroImage();
+    }
+
+    function updateHeroImage() {
+      const img = document.getElementById('hero-main-img');
+      if (img) img.src = galleryItems[currentGalleryIndex].src;
+      const counter = document.getElementById('gallery-main-counter');
+      if (counter) counter.innerText = `${currentGalleryIndex + 1}/${galleryItems.length}`;
+      const mainCard = document.getElementById('hero-main-card');
+      if (mainCard) mainCard.setAttribute('onclick', `openLightbox(${currentGalleryIndex})`);
+    }
+
+    // Booking Calculation Logic
+    let guestCount = 2;
+    const baseRatePerGuest = 3450;
+
+    function updateGuests(delta) {
+      guestCount = Math.max(1, Math.min(10, guestCount + delta));
+      const el = document.getElementById('guest-count');
+      if (el) el.innerText = guestCount;
+      recalculateSummary();
+    }
+
+    function recalculateSummary() {
+      const suiteEl = document.getElementById('suite-tier');
+      let tierSurcharge = 0;
+      if (suiteEl) {
+        if (suiteEl.value === 'deluxe') tierSurcharge = 800;
+        if (suiteEl.value === 'luxury') tierSurcharge = 1500;
+      }
+
+      let subtotalPerGuest = baseRatePerGuest + tierSurcharge;
+      let total = subtotalPerGuest * guestCount;
+
+      const pricePpEl = document.getElementById('price-per-person');
+      if (pricePpEl) pricePpEl.innerText = subtotalPerGuest.toLocaleString();
+      const totalEl = document.getElementById('total-investment');
+      if (totalEl) totalEl.innerText = '₹' + total.toLocaleString();
+    }
+
+    // Itinerary Accordion
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(id + '-icon');
+      if (!el) return;
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllItineraries() {
+      allExpanded = !allExpanded;
+      const ids = ['itinerary-1', 'itinerary-2', 'itinerary-3', 'itinerary-4', 'itinerary-5'];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        const icon = document.getElementById(id + '-icon');
+        if (el) {
+          if (allExpanded) {
+            el.classList.remove('hidden');
+            if (icon) icon.classList.add('rotate-180');
+          } else {
+            el.classList.add('hidden');
+            if (icon) icon.classList.remove('rotate-180');
+          }
+        }
+      });
+      const textEl = document.getElementById('expand-all-text');
+      if (textEl) textEl.innerText = allExpanded ? 'Collapse All' : 'Expand All';
+    }
+
+    // Gallery Lightbox Carousel State & Helpers
+    let currentLightboxIdx = 0;
+
+    function renderLightboxThumbnails() {
+      const container = document.getElementById('lightbox-thumbnails');
+      if (!container) return;
+      container.innerHTML = galleryItems.map((item, idx) => `
+        <button type="button" onclick="showLightboxSlide(${idx})"
+          class="w-12 h-9 sm:w-14 sm:h-11 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${idx === currentLightboxIdx ? 'border-amber-400 scale-105 opacity-100 shadow-md' : 'border-transparent opacity-50 hover:opacity-85'}"
+          aria-label="View photo ${idx + 1}">
+          <img src="${item.src}" alt="Bali Photo ${idx + 1}" class="w-full h-full object-cover pointer-events-none" />
+        </button>
+      `).join('');
+    }
+
+    function showLightboxSlide(idx) {
+      currentLightboxIdx = (idx + galleryItems.length) % galleryItems.length;
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+
+      if (img) {
+        img.style.opacity = '0.4';
+        setTimeout(() => {
+          img.src = galleryItems[currentLightboxIdx].src;
+          img.alt = `Bali Sanctuary Photo ${currentLightboxIdx + 1}`;
+          img.style.opacity = '1';
+        }, 120);
+      }
+      if (counter) counter.innerText = `${currentLightboxIdx + 1} / ${galleryItems.length}`;
+      renderLightboxThumbnails();
+    }
+
+    function openLightbox(index = 0) {
+      const modal = document.getElementById('lightbox-modal');
+      if (!modal) return;
+      currentLightboxIdx = typeof index === 'number' ? index : 0;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      showLightboxSlide(currentLightboxIdx);
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+      currentGalleryIndex = currentLightboxIdx;
+      updateHeroImage();
+    }
+
+    function nextLightboxImage() {
+      showLightboxSlide(currentLightboxIdx + 1);
+    }
+
+    function prevLightboxImage() {
+      showLightboxSlide(currentLightboxIdx - 1);
+    }
+
+    // Keyboard navigation & backdrop click for Lightbox Carousel
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightbox-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      if (e.key === 'ArrowRight') nextLightboxImage();
+      if (e.key === 'ArrowLeft') prevLightboxImage();
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.addEventListener('click', (e) => {
+      const modal = document.getElementById('lightbox-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      // Close if clicked directly on the modal backdrop container
+      if (e.target === modal) {
+        closeLightbox();
+      }
+    });
+
+    // Global Modal Helpers
+    window.openModal = function (modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closeModal = function (modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.toggleProfileDropdown = function (e) {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
+      var profileCard = document.getElementById('profileDropdownCard');
+      var userBtn = document.getElementById('headerUserBtn');
+      if (profileCard) {
+        var isShowing = profileCard.classList.toggle('show');
+        if (userBtn) userBtn.setAttribute('aria-expanded', isShowing ? 'true' : 'false');
+      }
+    };
+
+    // Modal Close Buttons & Backdrop Click
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.trigger-booking-modal');
+      if (btn) {
+        e.preventDefault();
+        const pkgName = btn.getAttribute('data-package') || 'Bali Tropical Island Sanctuary Retreat';
+        const tourInput = document.getElementById('bookingTourInput');
+        if (tourInput) tourInput.value = pkgName;
+        window.openModal('bookingModal');
+      }
+
+      const closeBtn = e.target.closest('.modal-close-btn');
+      if (closeBtn) {
+        const modalBackdrop = closeBtn.closest('.modal-backdrop');
+        if (modalBackdrop) window.closeModal(modalBackdrop.id);
+      }
+
+      if (e.target.classList.contains('modal-backdrop')) {
+        window.closeModal(e.target.id);
+      }
+    });
+
+    // Close profile dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      var profileCard = document.getElementById('profileDropdownCard');
+      var userBtn = document.getElementById('headerUserBtn');
+      if (profileCard && profileCard.classList.contains('show')) {
+        if (!profileCard.contains(e.target) && (!userBtn || !userBtn.contains(e.target))) {
+          profileCard.classList.remove('show');
+          if (userBtn) userBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+
+    // Mobile Hamburger Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenuWrap = document.getElementById('navMenuWrap');
+    const navMenuCloseBtn = document.getElementById('navMenuCloseBtn');
+
+    if (mobileToggle && navMenuWrap) {
+      mobileToggle.addEventListener('click', () => {
+        navMenuWrap.classList.toggle('open');
+        mobileToggle.classList.toggle('is-active');
+      });
+    }
+
+    if (navMenuCloseBtn && navMenuWrap) {
+      navMenuCloseBtn.addEventListener('click', () => {
+        navMenuWrap.classList.remove('open');
+        if (mobileToggle) mobileToggle.classList.remove('is-active');
+      });
+    }
+
+    // Toast and Action handling
+    function initiateReservation() {
+      const tourInput = document.getElementById('bookingTourInput');
+      if (tourInput) tourInput.value = 'Bali Tropical Island Sanctuary Retreat';
+      if (window.openModal) {
+        window.openModal('bookingModal');
+      } else {
+        showLuxeToast("Sanctuary reservation initiated. Opening booking modal...");
+      }
+    }
+
+    function requestBespokeConsultation() {
+      const tourInput = document.getElementById('bookingTourInput');
+      if (tourInput) tourInput.value = 'Custom Itinerary Brief: Bali Tropical Island';
+      if (window.openModal) {
+        window.openModal('bookingModal');
+      } else {
+        showLuxeToast("Consultation requested. Your dedicated travel designer will respond within 4 hours.");
+      }
+    }
+
+    function openReviewModal() {
+      showLuxeToast("Verified traveler reflection portal opened.");
+    }
+
+    function filterItinerary(tag) {
+      showLuxeToast("Highlighting itinerary stops for " + tag);
+    }
+
+    function toggleWishlistMain() {
+      showLuxeToast("Saved to your personal Vinyas Travels Wishlist.");
+    }
+
+    function showLuxeToast(msg) {
+      const existing = document.getElementById('luxe-toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.id = 'luxe-toast';
+      toast.className = 'fixed bottom-8 right-8 z-50 bg-[#0B332B] text-[#FAF8F5] border border-[#C5A059]/40 px-5 py-3 rounded-2xl shadow-2xl text-xs font-semibold flex items-center gap-3 transition-all duration-300';
+      toast.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#C5A059]"></span> ${msg}`;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+      }, 3200);
+    }
+
+    // Sub-navigation active pill handler
+    function setActiveSubNav(clickedEl) {
+      document.querySelectorAll('.subnav-pill-link').forEach(link => {
+        link.classList.remove('active');
+        link.style.removeProperty('background');
+        link.style.removeProperty('color');
+        link.style.removeProperty('box-shadow');
+      });
+      clickedEl.classList.add('active');
+    }
+
+    // =========================================================================
+    // TRAVELER REVIEWS AUTO-SCROLL CAROUSEL CONTROLLER
+    // =========================================================================
+    let currentReviewIndex = 0;
+    let reviewAutoScrollTimer = null;
+    let isReviewAutoScrollActive = true;
+    const REVIEW_AUTOSCROLL_INTERVAL = 3800; // 3.8 seconds per transition
+
+    function getTotalReviewsCount() {
+      const track = document.getElementById('reviews-slider-track');
+      return track ? track.children.length : 0;
+    }
+
+    function getVisibleCardsCount() {
+      return window.innerWidth >= 768 ? 2 : 1;
+    }
+
+    function getMaxReviewIndex() {
+      const total = getTotalReviewsCount();
+      const visible = getVisibleCardsCount();
+      return Math.max(0, total - visible);
+    }
+
+    function updateReviewCarousel() {
+      const track = document.getElementById('reviews-slider-track');
+      if (!track || !track.firstElementChild) return;
+
+      const maxIdx = getMaxReviewIndex();
+      if (currentReviewIndex > maxIdx) currentReviewIndex = maxIdx;
+      if (currentReviewIndex < 0) currentReviewIndex = 0;
+
+      const cardWidth = track.firstElementChild.offsetWidth;
+      const gap = 16; // 1rem gap
+      const offset = currentReviewIndex * (cardWidth + gap);
+      track.style.transform = `translateX(-${offset}px)`;
+
+      renderReviewDots();
+    }
+
+    function nextReviewSlide(isAuto = false) {
+      const maxIdx = getMaxReviewIndex();
+      if (currentReviewIndex >= maxIdx) {
+        currentReviewIndex = 0;
+      } else {
+        currentReviewIndex++;
+      }
+      updateReviewCarousel();
+      if (!isAuto) resetReviewTimer();
+    }
+
+    function prevReviewSlide() {
+      const maxIdx = getMaxReviewIndex();
+      if (currentReviewIndex <= 0) {
+        currentReviewIndex = maxIdx;
+      } else {
+        currentReviewIndex--;
+      }
+      updateReviewCarousel();
+      resetReviewTimer();
+    }
+
+    function goToReviewSlide(index) {
+      currentReviewIndex = index;
+      updateReviewCarousel();
+      resetReviewTimer();
+    }
+
+    function renderReviewDots() {
+      const container = document.getElementById('reviews-dots-container');
+      if (!container) return;
+      const maxIdx = getMaxReviewIndex();
+      const totalDots = maxIdx + 1;
+
+      let html = '';
+      for (let i = 0; i < totalDots; i++) {
+        const isActive = i === currentReviewIndex;
+        html += `<button type="button" onclick="goToReviewSlide(${i})" aria-label="Go to review slide ${i + 1}"
+          class="h-1.5 rounded-full transition-all duration-300 cursor-pointer ${isActive ? 'w-5 bg-[#c28e2b]' : 'w-1.5 bg-gray-300 hover:bg-gray-400'}"></button>`;
+      }
+      container.innerHTML = html;
+    }
+
+    function startReviewAutoScroll() {
+      stopReviewAutoScroll();
+      if (!isReviewAutoScrollActive) return;
+      reviewAutoScrollTimer = setInterval(() => {
+        nextReviewSlide(true);
+      }, REVIEW_AUTOSCROLL_INTERVAL);
+    }
+
+    function stopReviewAutoScroll() {
+      if (reviewAutoScrollTimer) {
+        clearInterval(reviewAutoScrollTimer);
+        reviewAutoScrollTimer = null;
+      }
+    }
+
+    function resetReviewTimer() {
+      if (isReviewAutoScrollActive) {
+        startReviewAutoScroll();
+      }
+    }
+
+
+
+    // Auto-scroll initialization and pause on hover
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+      renderReviewDots();
+      startReviewAutoScroll();
+
+      const carouselEl = document.getElementById('reviews-carousel-wrapper');
+      if (carouselEl) {
+        carouselEl.addEventListener('mouseenter', () => {
+          stopReviewAutoScroll();
+        });
+        carouselEl.addEventListener('mouseleave', () => {
+          if (isReviewAutoScrollActive) startReviewAutoScroll();
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        updateReviewCarousel();
+      });
+    });
+  </script>
+</body>
+
+</html>
